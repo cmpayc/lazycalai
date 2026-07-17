@@ -1,0 +1,15 @@
+diff --git a/node_modules/@bam.tech/react-native-image-resizer/react-native-image-resizer.podspec b/node_modules/@bam.tech/react-native-image-resizer/react-native-image-resizer.podspec
+index 1848ae8..dc0fe1e 100644
+--- a/node_modules/@bam.tech/react-native-image-resizer/react-native-image-resizer.podspec
++++ b/node_modules/@bam.tech/react-native-image-resizer/react-native-image-resizer.podspec
+@@ -27,7 +27,9 @@ Pod::Spec.new do |s|
+         "CLANG_CXX_LANGUAGE_STANDARD" => "c++17"
+     }
+     s.dependency "React-Codegen"
+-    s.dependency "RCT-Folly"
++    if ENV['RCT_USE_PREBUILT_RNCORE'] != '1' then
++      s.dependency "RCT-Folly"
++    end
+     s.dependency "RCTRequired"
+     s.dependency "RCTTypeSafety"
+     s.dependency "ReactCommon/turbomodule/core"

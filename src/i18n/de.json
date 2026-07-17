@@ -1,0 +1,287 @@
+{
+  "onboarding": {
+    "welcome": {
+      "title": "LazyCalAI",
+      "subtitle": "Zähle deine Kalorien mit KI-gestützter Lebensmittelerkennung. Fotografiere einfach deine Mahlzeit und überlasse den Rest der KI.",
+      "demoModeTitle": "Über den Demomodus",
+      "apiKeyNotice": "Zur Erkennung von Gerichten benötigt die App einen API-Schlüssel für einen KI-Anbieter (kostenlose Modelle von OpenRouter können ohne Kreditkarte genutzt werden). Im Demomodus sind nur 5 Erkennungen verfügbar.",
+      "getStarted": "Los geht's",
+      "privacyPolicy": "Datenschutz",
+      "termsOfService": "Nutzungsbedingungen"
+    },
+    "userInfo": {
+      "title": "Erzähl uns von dir",
+      "sex": "Geschlecht",
+      "male": "Männlich",
+      "female": "Weiblich",
+      "weight": "Gewicht",
+      "height": "Größe",
+      "age": "Alter",
+      "calculate": "Berechnen",
+      "next": "Weiter"
+    },
+    "goal": {
+      "title": "Was ist dein Ziel?",
+      "lose": "Abnehmen",
+      "maintain": "Halten",
+      "gain": "Zunehmen",
+      "pace": "Wie schnell?",
+      "pace_casually": "Locker",
+      "pace_mild": "Leicht",
+      "pace_moderate": "Moderat",
+      "pace_aggressive": "Intensiv",
+      "perMonth": "{{value}} {{unit}} / Monat",
+      "dailyCalories": "Tägliche Kalorienzufuhr",
+      "continue": "Weiter"
+    },
+    "result": {
+      "title": "Deine Ergebnisse",
+      "bmi": "BMI",
+      "obesityLevel": "Kategorie",
+      "goal": "Ziel",
+      "goalSummary": "{{goal}} · {{value}} {{unit}} / Monat",
+      "weightToLose": "Abzunehmendes Gewicht",
+      "timeframe": "Geschätzter Zeitraum",
+      "weeks": "Wochen",
+      "dailyCalories": "Empfohlene tägliche Kalorien",
+      "adjustGoal": "Ziel anpassen",
+      "continue": "Weiter",
+      "level_underweight": "Untergewicht",
+      "level_normal": "Normalgewicht",
+      "level_overweight": "Übergewicht",
+      "level_obese_class_1": "Adipositas Grad I",
+      "level_obese_class_2": "Adipositas Grad II",
+      "level_obese_class_3": "Adipositas Grad III"
+    },
+    "apiKey": {
+      "title": "KI-Anbieter einrichten",
+      "provider": "Anbieter",
+      "model": "Modell",
+      "apiKey": "API-Schlüssel",
+      "apiKeyPlaceholder": "Gib deinen API-Schlüssel ein",
+      "finish": "Einrichtung abschließen",
+      "howToGet": "So erhältst du einen API-Schlüssel?",
+      "guide": {
+        "title": "Hol dir deinen {{provider}} API-Schlüssel",
+        "intro": "Folge diesen Schritten, um einen API-Schlüssel zu erstellen, und kopiere ihn dann zurück in die App.",
+        "openLink": "{{provider}}-Konsole öffnen",
+        "openai": "1. Gehe zu platform.openai.com und melde dich an (oder erstelle ein Konto).\n2. Öffne die Seite „API keys“ in der linken Seitenleiste.\n3. Klicke auf „Create new secret key“, benenne ihn und bestätige.\n4. Kopiere den Schlüssel (er beginnt mit sk-) sofort — du kannst ihn später nicht mehr sehen.\n5. Für die Nutzung der API ist ein Guthaben auf deinem OpenAI-Konto erforderlich.",
+        "claude": "1. Gehe zu console.anthropic.com und melde dich an (oder erstelle ein Konto).\n2. Öffne „API Keys“ in deinen Kontoeinstellungen.\n3. Klicke auf „Create Key“, benenne ihn und bestätige.\n4. Kopiere den Schlüssel und füge ihn zurück in die App ein.\n5. Für Anfragen benötigst du ein Guthaben auf deinem Anthropic-Konto.",
+        "gemini": "1. Gehe zu aistudio.google.com und melde dich mit deinem Google-Konto an.\n2. Klicke oben links im Menü auf „Get API key“.\n3. Klicke auf „Create API key“ und wähle ein Google-Cloud-Projekt.\n4. Kopiere den generierten Schlüssel und füge ihn zurück in die App ein.\n5. Der kostenlose Tarif ist großzügig, du kannst also meist ohne Abrechnung starten.",
+        "grok": "1. Gehe zu console.x.ai und melde dich mit deinem X-Konto an.\n2. Öffne den Bereich „API Keys“.\n3. Klicke auf „Create API Key“, benenne ihn und bestätige.\n4. Kopiere den Schlüssel und füge ihn zurück in die App ein.\n5. xAI erfordert ein Prepaid-Guthaben, bevor die API funktioniert.",
+        "qwen": "1. Gehe zu bailian.console.aliyun.com (Alibaba Cloud Model Studio) und melde dich an.\n2. Öffne die „API-KEY“-Verwaltung im Kontomenü.\n3. Klicke auf „Create API Key“ und bestätige.\n4. Kopiere den Schlüssel und füge ihn zurück in die App ein.\n5. Stelle sicher, dass die Qwen-(Tongyi-)Modelle für dein Konto aktiviert sind.",
+        "openrouter": "1. Gehe zu openrouter.ai und melde dich an (oder erstelle ein Konto).\n2. Öffne „Keys“ in deinem Kontomenü.\n3. Klicke auf „Create Key“, benenne ihn und bestätige.\n4. Kopiere den Schlüssel und füge ihn zurück in die App ein.\n5. Lade Guthaben auf dein OpenRouter-Konto, um kostenpflichtige Modelle zu nutzen.\n**5.1. Für kostenlose Modelle brauchst du keine Kreditkarte - diesen Schritt kannst du überspringen."
+      }
+    }
+  },
+  "home": {
+    "title": "LazyCalAI",
+    "today": "Heute",
+    "consumed": "Verbraucht",
+    "remaining": "Verbleibend",
+    "goal": "Ziel",
+    "noMeals": "Heute noch keine Mahlzeiten erfasst. Tippe auf +, um eine hinzuzufügen.",
+    "addMeal": "Mahlzeit hinzufügen",
+    "pickFromGallery": "Aus Galerie auswählen",
+    "tips": {
+      "title": "Tipps",
+      "items": {
+        "accuracy": {
+          "title": "Zahlen überprüfen",
+          "body": "Die KI erkennt Gramm und Kalorien nicht immer exakt. Behalte die Werte im Auge und passe sie bei Bedarf an."
+        },
+        "lighting": {
+          "title": "Bei gutem Licht fotografieren",
+          "body": "Die KI erkennt scharfe, gut beleuchtete Fotos deutlich besser. Vermeide Unschärfe und starke Schatten."
+        },
+        "averaging": {
+          "title": "In Durchschnitten denken",
+          "body": "Die App ist nicht für exakte Messungen gedacht. Sie mittelt deine Kalorienaufnahme über eine Woche oder einen Monat und liefert so ein genaueres Bild deiner Ernährung."
+        },
+        "packaging": {
+          "title": "Verpackung fotografieren",
+          "body": "Manchmal ist es besser, die Verpackung zu fotografieren (Fertiggericht, Burger, eine Dose Cola oder Saft), damit die KI besser versteht, was du isst."
+        },
+        "scale": {
+          "title": "Küchenwaage verwenden",
+          "body": "Damit die KI die Gramm besser bestimmen kann, stelle den Teller auf eine Waage und fotografiere ihn samt Anzeige (denke daran, das Tellergewicht zu tarieren)."
+        },
+        "models": {
+          "title": "Wähle ein leistungsfähiges Modell",
+          "body": "Manche KI-Modelle sind besser als andere. Nutze OpenAI/gpt-4o oder Google/gemini-3.5-flash für das beste Preis-Leistungs-Verhältnis."
+        }
+      }
+    }
+  },
+  "history": {
+    "title": "Verlauf",
+    "noDays": "Noch keine Mahlzeiten erfasst.",
+    "mealsCount": "{{count}} Mahlzeit",
+    "mealsCount_plural": "{{count}} Mahlzeiten",
+    "dayDetail": "Tagesdetails"
+  },
+  "tabs": {
+    "today": "Heute",
+    "history": "Verlauf",
+    "analytics": "Analyse",
+    "settings": "Einstellungen"
+  },
+  "months": {
+    "0": "Januar",
+    "1": "Februar",
+    "2": "März",
+    "3": "April",
+    "4": "Mai",
+    "5": "Juni",
+    "6": "Juli",
+    "7": "August",
+    "8": "September",
+    "9": "Oktober",
+    "10": "November",
+    "11": "Dezember"
+  },
+  "analytics": {
+    "title": "Analyse",
+    "week": "Woche",
+    "month": "Monat",
+    "totalCalories": "Kalorien",
+    "totalProtein": "Eiweiß",
+    "totalCarbs": "Kohlenhydrate",
+    "totalFat": "Fett",
+    "daysOverLimit": "{{count}} von {{total}} Tagen über dem Limit",
+    "calorieBudget": "Kalorienbudget",
+    "dailyCalories": "Tägliche Kalorien",
+    "weeklyCalories": "Wöchentliche Kalorien",
+    "noData": "Keine Daten für diesen Zeitraum",
+    "weekLabel": "KW{{number}}"
+  },
+  "addMeal": {
+    "title": "Mahlzeit hinzufügen",
+    "takePhoto": "Fotografiere dein Essen",
+    "analyzing": "Deine Mahlzeit wird analysiert...",
+    "editNutrition": "Nährwerte bearbeiten",
+    "itemName": "Name",
+    "grams": "Gramm",
+    "calories": "Kalorien",
+    "protein": "Eiweiß (g)",
+    "carbs": "Kohlenhydrate (g)",
+    "fat": "Fett (g)",
+    "fiber": "Ballaststoffe (g)",
+    "save": "Mahlzeit speichern",
+    "cancel": "Abbrechen",
+    "manualEntry": "Manuell eingeben",
+    "retry": "Erneut versuchen",
+    "itemNamePlaceholder": "z. B. Hähnchensalat"
+  },
+  "settings": {
+    "title": "Einstellungen",
+    "personalInfo": "Persönliche Angaben",
+    "calorieGoal": "Tägliches Kalorienziel",
+    "aiProvider": "KI-Anbieter",
+    "provider": "Anbieter",
+    "model": "Modell",
+    "apiKey": "API-Schlüssel",
+    "changeKey": "Schlüssel ändern",
+    "resetOnboarding": "Einführung erneut starten",
+    "resetConfirmTitle": "Einführung erneut starten",
+    "resetConfirmMessage": "Dadurch werden deine persönlichen Daten und dein tägliches Kalorienziel zurückgesetzt. Dein täglicher Mahlzeitenverlauf und deine API-Schlüssel bleiben erhalten.",
+    "resetConfirmOk": "Zurücksetzen",
+    "deleteAllData": "Alle Daten löschen",
+    "deleteAllConfirmTitle": "Alle Daten löschen",
+    "deleteAllConfirmMessage": "Dadurch wird alles dauerhaft gelöscht: alle deine Mahlzeiten, persönlichen Daten, Einstellungen und API-Schlüssel. Dies kann nicht rückgängig gemacht werden.",
+    "deleteAllConfirmOk": "Alles löschen",
+    "save": "Speichern",
+    "saved": "Einstellungen gespeichert",
+    "language": "Sprache",
+    "units": "Einheiten",
+    "theme": "Design",
+    "themeLight": "Hell",
+    "themeDark": "Dunkel",
+    "exportData": "Daten exportieren",
+    "importData": "Daten importieren",
+    "exportSuccess": "Export erfolgreich",
+    "exportCount": "{{num}} Mahlzeiten exportiert",
+    "exportEmpty": "Keine Mahlzeiten zum Exportieren",
+    "importSuccess": "Import erfolgreich",
+    "importFileNotFound": "Keine Importdatei gefunden. Lege foodcountai_import.csv im Dokumentenordner der App ab.",
+    "importError": "Import fehlgeschlagen",
+    "deviceIdTitle": "Geräte-ID",
+    "deviceIdClose": "Schließen"
+  },
+  "ticTacToe": {
+    "title": "Tick-Tack-Toast",
+    "yourTurn": "Du bist dran",
+    "aiTurn": "KI denkt nach…",
+    "youWin": "Du gewinnst!",
+    "aiWins": "KI gewinnt",
+    "draw": "Unentschieden",
+    "playAgain": "Nochmal spielen",
+    "close": "Schließen"
+  },
+  "units": {
+    "metric": "Metrisch",
+    "imperial": "Imperial",
+    "kg": "kg",
+    "lbs": "lbs",
+    "cm": "cm",
+    "ft": "ft",
+    "in": "in"
+  },
+  "languages": {
+    "en": "English",
+    "ru": "Русский",
+    "fr": "Français",
+    "es": "Español",
+    "zh": "中文",
+    "ja": "日本語",
+    "de": "Deutsch",
+    "pt": "Português",
+    "ar": "العربية"
+  },
+  "editMeal": {
+    "title": "Mahlzeit bearbeiten",
+    "date": "Datum",
+    "time": "Uhrzeit",
+    "datePlaceholder": "JJJJ-MM-TT",
+    "timePlaceholder": "HH:MM",
+    "save": "Änderungen speichern"
+  },
+  "camera": {
+    "permissionRequired": "Kamerazugriff ist erforderlich",
+    "grantPermission": "Zugriff erlauben",
+    "noDevice": "Keine Kamera gefunden"
+  },
+  "mealPeriods": {
+    "morning": "Morgen",
+    "noon": "Mittag",
+    "afternoon": "Nachmittag",
+    "lateAfternoon": "Später Nachmittag",
+    "evening": "Abend",
+    "night": "Nacht"
+  },
+  "common": {
+    "back": "Zurück",
+    "ok": "Verstanden",
+    "error": "Etwas ist schiefgelaufen",
+    "tryAgain": "Erneut versuchen",
+    "unknownError": "Unbekannter Fehler",
+    "loading": "Wird geladen...",
+    "delete": "Löschen",
+    "deleteConfirm": "Diese Mahlzeit löschen?",
+    "deleteConfirmMessage": "Diese Aktion kann nicht rückgängig gemacht werden.",
+    "cancel": "Abbrechen",
+    "edit": "Bearbeiten",
+    "repeat": "Wiederholen",
+    "kcal": "kcal",
+    "g": "g",
+    "proteinShort": "E",
+    "carbsShort": "K",
+    "fatShort": "F",
+    "fiberShort": "Bs",
+    "disclaimer": "KI macht Fehler. Dasselbe Bild kann unterschiedliche Werte liefern, und die App ist nicht dafür ausgelegt, exakte Gramm- oder Kalorienangaben zu berechnen. Wenn du dir bei den Ergebnissen unsicher bist, korrigiere sie manuell. Dies ist keine medizinische Anwendung."
+  },
+  "modelSelector": {
+    "demoMode": "Demomodus ({{num}} kostenlose Anfragen). Danach müssen Sie einen anderen KI-Anbieter verwenden.",
+    "custom": "Benutzerdefiniert"
+  }
+}

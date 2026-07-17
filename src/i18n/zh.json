@@ -1,0 +1,287 @@
+{
+  "onboarding": {
+    "welcome": {
+      "title": "LazyCalAI",
+      "subtitle": "使用AI食物识别追踪您的卡路里。只需拍摄食物照片，让AI完成剩下的工作。",
+      "demoModeTitle": "关于演示模式",
+      "apiKeyNotice": "为了识别菜品，应用需要AI提供商的API密钥（OpenRouter的免费模型无需信用卡即可使用）。演示模式下仅可识别5次。",
+      "getStarted": "开始使用",
+      "privacyPolicy": "隐私政策",
+      "termsOfService": "服务条款"
+    },
+    "userInfo": {
+      "title": "告诉我们关于您",
+      "sex": "性别",
+      "male": "男",
+      "female": "女",
+      "weight": "体重",
+      "height": "身高",
+      "age": "年龄",
+      "calculate": "计算",
+      "next": "下一步"
+    },
+    "goal": {
+      "title": "您的目标是什么？",
+      "lose": "减重",
+      "maintain": "保持",
+      "gain": "增重",
+      "pace": "速度多快？",
+      "pace_casually": "轻松",
+      "pace_mild": "轻度",
+      "pace_moderate": "中度",
+      "pace_aggressive": "强度",
+      "perMonth": "{{value}} {{unit}} / 月",
+      "dailyCalories": "每日卡路里摄入",
+      "continue": "继续"
+    },
+    "result": {
+      "title": "您的结果",
+      "bmi": "BMI",
+      "obesityLevel": "类别",
+      "goal": "目标",
+      "goalSummary": "{{goal}} · {{value}} {{unit}} / 月",
+      "weightToLose": "需要减重",
+      "timeframe": "预计时间",
+      "weeks": "周",
+      "dailyCalories": "建议每日卡路里",
+      "adjustGoal": "调整目标",
+      "continue": "继续",
+      "level_underweight": "体重过轻",
+      "level_normal": "正常体重",
+      "level_overweight": "超重",
+      "level_obese_class_1": "肥胖I级",
+      "level_obese_class_2": "肥胖II级",
+      "level_obese_class_3": "肥胖III级"
+    },
+    "apiKey": {
+      "title": "AI设置",
+      "provider": "提供商",
+      "model": "模型",
+      "apiKey": "API密钥",
+      "apiKeyPlaceholder": "输入您的API密钥",
+      "finish": "完成设置",
+      "howToGet": "如何获取 API 密钥?",
+      "guide": {
+        "title": "获取你的 {{provider}} API 密钥",
+        "intro": "按照以下步骤创建 API 密钥，然后复制回应用中。",
+        "openLink": "打开 {{provider}} 控制台",
+        "openai": "1. 打开 platform.openai.com 并登录（或注册账号）。\n2. 在左侧菜单打开“API keys”页面。\n3. 点击“Create new secret key”，命名并确认。\n4. 立即复制密钥（以 sk- 开头）——之后将无法再次查看。\n5. 使用 API 需要 OpenAI 账户中有余额。",
+        "claude": "1. 打开 console.anthropic.com 并登录（或注册账号）。\n2. 在账户设置中打开“API Keys”。\n3. 点击“Create Key”，命名并确认。\n4. 复制密钥并粘贴回应用中。\n5. 发送请求需要 Anthropic 账户中有余额。",
+        "gemini": "1. 打开 aistudio.google.com 并使用 Google 账号登录。\n2. 点击左上角菜单中的“Get API key”。\n3. 点击“Create API key”并选择一个 Google Cloud 项目。\n4. 复制生成的密钥并粘贴回应用中。\n5. 免费额度较为充足，通常无需付费即可开始。",
+        "grok": "1. 打开 console.x.ai 并使用 X 账号登录。\n2. 打开“API Keys”部分。\n3. 点击“Create API Key”，命名并确认。\n4. 复制密钥并粘贴回应用中。\n5. xAI 需要预付余额后 API 才能使用。",
+        "qwen": "1. 打开 bailian.console.aliyun.com（阿里云百炼）并登录。\n2. 在账户菜单中打开“API-KEY”管理。\n3. 点击“创建 API Key”并确认。\n4. 复制密钥并粘贴回应用中。\n5. 请确认账户已开通通义千问（Qwen）模型。",
+        "openrouter": "1. 打开 openrouter.ai 并登录（或注册账号）。\n2. 在账户菜单中打开“Keys”。\n3. 点击“Create Key”，命名并确认。\n4. 复制密钥并粘贴回应用中。\n5. 为 OpenRouter 账户充值以使用付费模型。\n**5.1. 使用免费模型无需信用卡，可跳过此步骤。"
+      }
+    }
+  },
+  "home": {
+    "title": "LazyCalAI",
+    "today": "今天",
+    "consumed": "已摄入",
+    "remaining": "剩余",
+    "goal": "目标",
+    "noMeals": "今天还没有记录餐食。点击+添加。",
+    "addMeal": "添加餐食",
+    "pickFromGallery": "从相册选择",
+    "tips": {
+      "title": "小贴士",
+      "items": {
+        "accuracy": {
+          "title": "核对数值",
+          "body": "AI 并不总能准确判断克数和卡路里。请留意这些数值，必要时手动调整。"
+        },
+        "lighting": {
+          "title": "在良好光线下拍摄",
+          "body": "AI 能更好地识别清晰、光线充足的照片。请尽量避免模糊和浓重的阴影。"
+        },
+        "averaging": {
+          "title": "着眼于平均值",
+          "body": "本应用并非用于精确测量，而是帮助你在一周或一个月内取热量摄入的平均值，从而更准确地了解你的饮食情况。"
+        },
+        "packaging": {
+          "title": "拍摄食品包装",
+          "body": "有时拍摄包装更好（预包装食品、汉堡、一罐可乐或果汁），这样 AI 能更准确地了解你在吃什么。"
+        },
+        "scale": {
+          "title": "使用厨房秤",
+          "body": "为帮助 AI 判断克数，可以把盘子放在秤上，连同读数一起拍照（记得先给盘子去皮归零）。"
+        },
+        "models": {
+          "title": "选择能力强的模型",
+          "body": "有些 AI 模型的表现优于其他模型。若追求性价比，推荐使用 OpenAI/gpt-4o 或 Google/gemini-3.5-flash。"
+        }
+      }
+    }
+  },
+  "history": {
+    "title": "历史记录",
+    "noDays": "还没有记录餐食。",
+    "mealsCount": "{{count}} 餐",
+    "mealsCount_plural": "{{count}} 餐",
+    "dayDetail": "每日详情"
+  },
+  "tabs": {
+    "today": "今天",
+    "history": "历史",
+    "analytics": "分析",
+    "settings": "设置"
+  },
+  "months": {
+    "0": "一月",
+    "1": "二月",
+    "2": "三月",
+    "3": "四月",
+    "4": "五月",
+    "5": "六月",
+    "6": "七月",
+    "7": "八月",
+    "8": "九月",
+    "9": "十月",
+    "10": "十一月",
+    "11": "十二月"
+  },
+  "analytics": {
+    "title": "分析",
+    "week": "周",
+    "month": "月",
+    "totalCalories": "卡路里",
+    "totalProtein": "蛋白质",
+    "totalCarbs": "碳水化合物",
+    "totalFat": "脂肪",
+    "daysOverLimit": "{{total}} 天中有 {{count}} 天超限",
+    "calorieBudget": "卡路里预算",
+    "dailyCalories": "每日卡路里",
+    "weeklyCalories": "每周卡路里",
+    "noData": "此期间无数据",
+    "weekLabel": "第{{number}}周"
+  },
+  "addMeal": {
+    "title": "添加餐食",
+    "takePhoto": "拍摄食物照片",
+    "analyzing": "正在分析您的餐食...",
+    "editNutrition": "编辑营养信息",
+    "itemName": "名称",
+    "grams": "克",
+    "calories": "卡路里",
+    "protein": "蛋白质（克）",
+    "carbs": "碳水化合物（克）",
+    "fat": "脂肪（克）",
+    "fiber": "纤维（克）",
+    "save": "保存",
+    "cancel": "取消",
+    "manualEntry": "手动输入",
+    "retry": "重试",
+    "itemNamePlaceholder": "例如：鸡肉沙拉"
+  },
+  "settings": {
+    "title": "设置",
+    "personalInfo": "个人信息",
+    "calorieGoal": "每日卡路里目标",
+    "aiProvider": "AI提供商",
+    "provider": "提供商",
+    "model": "模型",
+    "apiKey": "API密钥",
+    "changeKey": "更换密钥",
+    "resetOnboarding": "重新进行引导",
+    "resetConfirmTitle": "重新进行引导",
+    "resetConfirmMessage": "这将重置您的个人数据和每日卡路里目标。每日餐食记录和API密钥不会受影响。",
+    "resetConfirmOk": "重置",
+    "deleteAllData": "删除所有数据",
+    "deleteAllConfirmTitle": "删除所有数据",
+    "deleteAllConfirmMessage": "这将永久删除所有内容：您的所有餐食、个人数据、设置和API密钥。此操作无法撤销。",
+    "deleteAllConfirmOk": "全部删除",
+    "save": "保存",
+    "saved": "设置已保存",
+    "language": "语言",
+    "units": "单位",
+    "theme": "主题",
+    "themeLight": "浅色",
+    "themeDark": "深色",
+    "exportData": "导出数据",
+    "importData": "导入数据",
+    "exportSuccess": "导出成功",
+    "exportCount": "已导出 {{num}} 条餐食",
+    "exportEmpty": "没有可导出的餐食",
+    "importSuccess": "导入成功",
+    "importFileNotFound": "未找到导入文件。请将foodcountai_import.csv放入应用文档文件夹。",
+    "importError": "导入失败",
+    "deviceIdTitle": "设备 ID",
+    "deviceIdClose": "关闭"
+  },
+  "ticTacToe": {
+    "title": "井字吐司",
+    "yourTurn": "轮到你了",
+    "aiTurn": "AI 思考中…",
+    "youWin": "你赢了！",
+    "aiWins": "AI 赢了",
+    "draw": "平局",
+    "playAgain": "再玩一次",
+    "close": "关闭"
+  },
+  "units": {
+    "metric": "公制",
+    "imperial": "英制",
+    "kg": "千克",
+    "lbs": "磅",
+    "cm": "厘米",
+    "ft": "英尺",
+    "in": "英寸"
+  },
+  "languages": {
+    "en": "English",
+    "ru": "Русский",
+    "fr": "Français",
+    "es": "Español",
+    "zh": "中文",
+    "ja": "日本語",
+    "de": "Deutsch",
+    "pt": "Português",
+    "ar": "العربية"
+  },
+  "editMeal": {
+    "title": "编辑餐食",
+    "date": "日期",
+    "time": "时间",
+    "datePlaceholder": "YYYY-MM-DD",
+    "timePlaceholder": "HH:MM",
+    "save": "保存更改"
+  },
+  "camera": {
+    "permissionRequired": "需要相机权限",
+    "grantPermission": "授予权限",
+    "noDevice": "未找到相机设备"
+  },
+  "mealPeriods": {
+    "morning": "早上",
+    "noon": "中午",
+    "afternoon": "下午",
+    "lateAfternoon": "傍晚",
+    "evening": "晚上",
+    "night": "深夜"
+  },
+  "common": {
+    "back": "返回",
+    "ok": "知道了",
+    "error": "出了点问题",
+    "tryAgain": "重试",
+    "unknownError": "未知错误",
+    "loading": "加载中...",
+    "delete": "删除",
+    "deleteConfirm": "删除这份餐食？",
+    "deleteConfirmMessage": "此操作无法撤销。",
+    "cancel": "取消",
+    "edit": "编辑",
+    "repeat": "重复",
+    "kcal": "千卡",
+    "g": "克",
+    "proteinShort": "蛋白质",
+    "carbsShort": "碳水",
+    "fatShort": "脂肪",
+    "fiberShort": "纤维",
+    "disclaimer": "AI 会出错。同一张图片可能得出不同的数值，本应用也并非为精确计算克数或卡路里而设计。如果你对结果不确定，请手动更正。这不是医疗应用程序。"
+  },
+  "modelSelector": {
+    "demoMode": "演示模式（{{num}} 次免费请求）。之后你必须使用其他 AI 提供商。",
+    "custom": "自定义"
+  }
+}

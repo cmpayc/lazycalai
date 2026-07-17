@@ -1,0 +1,287 @@
+{
+  "onboarding": {
+    "welcome": {
+      "title": "LazyCalAI",
+      "subtitle": "Track your calories with AI-powered food recognition. Just take a photo of your meal and let AI do the rest.",
+      "demoModeTitle": "About the demo mode",
+      "apiKeyNotice": "To recognize dishes, the app will require an API key for an AI provider (free models from OpenRouter can be used without a credit card). Only 5 recognitions are available in demo mode.",
+      "getStarted": "Get Started",
+      "privacyPolicy": "Privacy Policy",
+      "termsOfService": "Terms of Service"
+    },
+    "userInfo": {
+      "title": "Tell us about yourself",
+      "sex": "Sex",
+      "male": "Male",
+      "female": "Female",
+      "weight": "Weight",
+      "height": "Height",
+      "age": "Age",
+      "calculate": "Calculate",
+      "next": "Next"
+    },
+    "goal": {
+      "title": "What's your goal?",
+      "lose": "Lose weight",
+      "maintain": "Maintain",
+      "gain": "Gain weight",
+      "pace": "How fast?",
+      "pace_casually": "Casually",
+      "pace_mild": "Mild",
+      "pace_moderate": "Moderate",
+      "pace_aggressive": "Aggressive",
+      "perMonth": "{{value}} {{unit}} / month",
+      "dailyCalories": "Daily calorie intake",
+      "continue": "Continue"
+    },
+    "result": {
+      "title": "Your Results",
+      "bmi": "BMI",
+      "obesityLevel": "Category",
+      "goal": "Goal",
+      "goalSummary": "{{goal}} · {{value}} {{unit}} / month",
+      "weightToLose": "Weight to lose",
+      "timeframe": "Estimated timeframe",
+      "weeks": "weeks",
+      "dailyCalories": "Recommended daily calories",
+      "adjustGoal": "Adjust goal",
+      "continue": "Continue",
+      "level_underweight": "Underweight",
+      "level_normal": "Normal weight",
+      "level_overweight": "Overweight",
+      "level_obese_class_1": "Obesity Class I",
+      "level_obese_class_2": "Obesity Class II",
+      "level_obese_class_3": "Obesity Class III"
+    },
+    "apiKey": {
+      "title": "AI Provider Setup",
+      "provider": "Provider",
+      "model": "Model",
+      "apiKey": "API Key",
+      "apiKeyPlaceholder": "Enter your API key",
+      "finish": "Finish Setup",
+      "howToGet": "How to get an API key?",
+      "guide": {
+        "title": "Get your {{provider}} API key",
+        "intro": "Follow these steps to create an API key, then copy it back into the app.",
+        "openLink": "Open {{provider}} console",
+        "openai": "1. Go to platform.openai.com and sign in (or create an account).\n2. Open the “API keys” page from the left sidebar.\n3. Click “Create new secret key”, name it, and confirm.\n4. Copy the key (it starts with sk-) right away — you won't be able to see it again.\n5. Using the API requires billing credit on your OpenAI account.",
+        "claude": "1. Go to console.anthropic.com and sign in (or create an account).\n2. Open “API Keys” in your account settings.\n3. Click “Create Key”, name it, and confirm.\n4. Copy the key and paste it back into the app.\n5. You'll need billing credit on your Anthropic account to make requests.",
+        "gemini": "1. Go to aistudio.google.com and sign in with your Google account.\n2. Click “Get API key” in the top-left menu.\n3. Click “Create API key” and pick a Google Cloud project.\n4. Copy the generated key and paste it back into the app.\n5. The free tier is generous, so you can usually start without billing.",
+        "grok": "1. Go to console.x.ai and sign in with your X account.\n2. Open the “API Keys” section.\n3. Click “Create API Key”, name it, and confirm.\n4. Copy the key and paste it back into the app.\n5. xAI requires prepaid credits before the API will work.",
+        "qwen": "1. Go to bailian.console.aliyun.com (Alibaba Cloud Model Studio) and sign in.\n2. Open “API-KEY” management from the account menu.\n3. Click “Create API Key” and confirm.\n4. Copy the key and paste it back into the app.\n5. Make sure the Qwen (Tongyi) models are enabled for your account.",
+        "openrouter": "1. Go to openrouter.ai and sign in (or create an account).\n2. Open “Keys” from your account menu.\n3. Click “Create Key”, name it, and confirm.\n4. Copy the key and paste it back into the app.\n5. Add credits to your OpenRouter account to use paid models.\n**5.1. You don't need a credit card to use free models - you can skip this step."
+      }
+    }
+  },
+  "home": {
+    "title": "LazyCalAI",
+    "today": "Today",
+    "consumed": "Consumed",
+    "remaining": "Remaining",
+    "goal": "Goal",
+    "noMeals": "No meals logged today. Tap + to add one.",
+    "addMeal": "Add Meal",
+    "pickFromGallery": "Pick from gallery",
+    "tips": {
+      "title": "Tips",
+      "items": {
+        "accuracy": {
+          "title": "Double-check the numbers",
+          "body": "The AI doesn't always get grams and calories exactly right. Keep an eye on the values and adjust them when needed."
+        },
+        "lighting": {
+          "title": "Shoot in good light",
+          "body": "The AI recognizes sharp, well-lit photos much better. Try to avoid blur and heavy shadows."
+        },
+        "averaging": {
+          "title": "Think in averages",
+          "body": "The app isn't built for precise measurements. It's for averaging your intake over a week or month, which gives a more accurate picture of your diet."
+        },
+        "packaging": {
+          "title": "Photograph the packaging",
+          "body": "Sometimes it helps to photograph the package (processed food, a burger, a can of cola or juice) so the AI can better understand what you are eating."
+        },
+        "scale": {
+          "title": "Use a kitchen scale",
+          "body": "To help the AI estimate grams, place the plate on a scale and photograph it with the reading visible (remember to tare the plate's weight)."
+        },
+        "models": {
+          "title": "Pick a capable model",
+          "body": "Some AI models perform better than others. Use OpenAI/gpt-4o or Google/gemini-3.5-flash for the best value for the price."
+        }
+      }
+    }
+  },
+  "history": {
+    "title": "History",
+    "noDays": "No meals logged yet.",
+    "mealsCount": "{{count}} meal",
+    "mealsCount_plural": "{{count}} meals",
+    "dayDetail": "Day detail"
+  },
+  "tabs": {
+    "today": "Today",
+    "history": "History",
+    "analytics": "Analytics",
+    "settings": "Settings"
+  },
+  "months": {
+    "0": "January",
+    "1": "February",
+    "2": "March",
+    "3": "April",
+    "4": "May",
+    "5": "June",
+    "6": "July",
+    "7": "August",
+    "8": "September",
+    "9": "October",
+    "10": "November",
+    "11": "December"
+  },
+  "analytics": {
+    "title": "Analytics",
+    "week": "Week",
+    "month": "Month",
+    "totalCalories": "Calories",
+    "totalProtein": "Protein",
+    "totalCarbs": "Carbs",
+    "totalFat": "Fat",
+    "daysOverLimit": "{{count}} of {{total}} days over limit",
+    "calorieBudget": "Calorie budget",
+    "dailyCalories": "Daily calories",
+    "weeklyCalories": "Weekly calories",
+    "noData": "No data for this period",
+    "weekLabel": "W{{number}}"
+  },
+  "addMeal": {
+    "title": "Add Meal",
+    "takePhoto": "Take a photo of your food",
+    "analyzing": "Analyzing your meal...",
+    "editNutrition": "Edit Nutrition",
+    "itemName": "Name",
+    "grams": "Grams",
+    "calories": "Calories",
+    "protein": "Protein (g)",
+    "carbs": "Carbs (g)",
+    "fat": "Fat (g)",
+    "fiber": "Fiber (g)",
+    "save": "Save Meal",
+    "cancel": "Cancel",
+    "manualEntry": "Enter manually",
+    "retry": "Retry",
+    "itemNamePlaceholder": "e.g. Chicken salad"
+  },
+  "settings": {
+    "title": "Settings",
+    "personalInfo": "Personal Info",
+    "calorieGoal": "Daily Calorie Goal",
+    "aiProvider": "AI Provider",
+    "provider": "Provider",
+    "model": "Model",
+    "apiKey": "API Key",
+    "changeKey": "Change Key",
+    "resetOnboarding": "Reset Onboarding",
+    "resetConfirmTitle": "Reset Onboarding",
+    "resetConfirmMessage": "This will reset your personal data and daily calorie goal. Your daily meal history and API keys will not be affected.",
+    "resetConfirmOk": "Reset",
+    "deleteAllData": "Delete All Data",
+    "deleteAllConfirmTitle": "Delete All Data",
+    "deleteAllConfirmMessage": "This will permanently delete everything: all your meals, personal data, settings, and API keys. This cannot be undone.",
+    "deleteAllConfirmOk": "Delete Everything",
+    "save": "Save",
+    "saved": "Settings saved",
+    "language": "Language",
+    "units": "Units",
+    "theme": "Theme",
+    "themeLight": "Light",
+    "themeDark": "Dark",
+    "exportData": "Export Data",
+    "importData": "Import Data",
+    "exportSuccess": "Export successful",
+    "exportCount": "Exported {{num}} meals",
+    "exportEmpty": "No meals to export",
+    "importSuccess": "Import successful",
+    "importFileNotFound": "No import file found. Place foodcountai_import.csv in the app documents folder.",
+    "importError": "Import failed",
+    "deviceIdTitle": "Device ID",
+    "deviceIdClose": "Close"
+  },
+  "ticTacToe": {
+    "title": "Tic-Tac-Toast",
+    "yourTurn": "Your turn",
+    "aiTurn": "AI is thinking…",
+    "youWin": "You win!",
+    "aiWins": "AI wins",
+    "draw": "Draw",
+    "playAgain": "Play again",
+    "close": "Close"
+  },
+  "units": {
+    "metric": "Metric",
+    "imperial": "Imperial",
+    "kg": "kg",
+    "lbs": "lbs",
+    "cm": "cm",
+    "ft": "ft",
+    "in": "in"
+  },
+  "languages": {
+    "en": "English",
+    "ru": "Русский",
+    "fr": "Français",
+    "es": "Español",
+    "zh": "中文",
+    "ja": "日本語",
+    "de": "Deutsch",
+    "pt": "Português",
+    "ar": "العربية"
+  },
+  "editMeal": {
+    "title": "Edit Meal",
+    "date": "Date",
+    "time": "Time",
+    "datePlaceholder": "YYYY-MM-DD",
+    "timePlaceholder": "HH:MM",
+    "save": "Save Changes"
+  },
+  "camera": {
+    "permissionRequired": "Camera permission is required",
+    "grantPermission": "Grant Permission",
+    "noDevice": "No camera device found"
+  },
+  "mealPeriods": {
+    "morning": "Morning",
+    "noon": "Noon",
+    "afternoon": "Afternoon",
+    "lateAfternoon": "Late afternoon",
+    "evening": "Evening",
+    "night": "Night"
+  },
+  "common": {
+    "back": "Back",
+    "ok": "Got it",
+    "error": "Something went wrong",
+    "tryAgain": "Try Again",
+    "unknownError": "Unknown error",
+    "loading": "Loading...",
+    "delete": "Delete",
+    "deleteConfirm": "Delete this meal?",
+    "deleteConfirmMessage": "This action cannot be undone.",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "repeat": "Repeat",
+    "kcal": "kcal",
+    "g": "g",
+    "proteinShort": "P",
+    "carbsShort": "C",
+    "fatShort": "F",
+    "fiberShort": "Fb",
+    "disclaimer": "AI makes mistakes. The same image can yield different values, and the app isn't designed to calculate precise grams or calories. If you're unsure of the results, correct them manually. This is not a medical application."
+  },
+  "modelSelector": {
+    "demoMode": "Demo mode ({{num}} free requests). Then you must use a different AI provider.",
+    "custom": "Custom"
+  }
+}

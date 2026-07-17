@@ -1,0 +1,287 @@
+{
+  "onboarding": {
+    "welcome": {
+      "title": "LazyCalAI",
+      "subtitle": "AIによる食事認識でカロリーを記録。食事の写真を撮るだけで、あとはAIにお任せ。",
+      "demoModeTitle": "デモモードについて",
+      "apiKeyNotice": "料理を認識するには、AIプロバイダーのAPIキーが必要です（OpenRouterの無料モデルはクレジットカードなしで利用できます）。デモモードでは5回までしか認識できません。",
+      "getStarted": "はじめる",
+      "privacyPolicy": "プライバシーポリシー",
+      "termsOfService": "利用規約"
+    },
+    "userInfo": {
+      "title": "あなたについて教えてください",
+      "sex": "性別",
+      "male": "男性",
+      "female": "女性",
+      "weight": "体重",
+      "height": "身長",
+      "age": "年齢",
+      "calculate": "計算する",
+      "next": "次へ"
+    },
+    "goal": {
+      "title": "あなたの目標は？",
+      "lose": "減量する",
+      "maintain": "維持する",
+      "gain": "増量する",
+      "pace": "どのくらいのペース？",
+      "pace_casually": "のんびり",
+      "pace_mild": "ゆるやか",
+      "pace_moderate": "普通",
+      "pace_aggressive": "積極的",
+      "perMonth": "{{value}} {{unit}} / 月",
+      "dailyCalories": "1日のカロリー摂取量",
+      "continue": "続ける"
+    },
+    "result": {
+      "title": "計算結果",
+      "bmi": "BMI",
+      "obesityLevel": "分類",
+      "goal": "目標",
+      "goalSummary": "{{goal}} · {{value}} {{unit}} / 月",
+      "weightToLose": "減量目標",
+      "timeframe": "推定期間",
+      "weeks": "週間",
+      "dailyCalories": "推奨1日カロリー",
+      "adjustGoal": "目標を調整",
+      "continue": "続ける",
+      "level_underweight": "低体重",
+      "level_normal": "標準体重",
+      "level_overweight": "過体重",
+      "level_obese_class_1": "肥満I度",
+      "level_obese_class_2": "肥満II度",
+      "level_obese_class_3": "肥満III度"
+    },
+    "apiKey": {
+      "title": "AI設定",
+      "provider": "プロバイダー",
+      "model": "モデル",
+      "apiKey": "APIキー",
+      "apiKeyPlaceholder": "APIキーを入力",
+      "finish": "設定完了",
+      "howToGet": "APIキーの取得方法?",
+      "guide": {
+        "title": "{{provider}} の API キーを取得",
+        "intro": "次の手順で API キーを作成し、アプリに貼り付けてください。",
+        "openLink": "{{provider}} コンソールを開く",
+        "openai": "1. platform.openai.com にアクセスしてサインイン（またはアカウント作成）します。\n2. 左メニューから「API keys」ページを開きます。\n3. 「Create new secret key」をクリックし、名前を付けて確定します。\n4. キー（sk- で始まる）をすぐにコピーします。後で再表示はできません。\n5. API の利用には OpenAI アカウントの支払い残高が必要です。",
+        "claude": "1. console.anthropic.com にアクセスしてサインイン（またはアカウント作成）します。\n2. アカウント設定の「API Keys」を開きます。\n3. 「Create Key」をクリックし、名前を付けて確定します。\n4. キーをコピーしてアプリに貼り付けます。\n5. リクエストには Anthropic アカウントの支払い残高が必要です。",
+        "gemini": "1. aistudio.google.com にアクセスし、Google アカウントでサインインします。\n2. 左上のメニューから「Get API key」をクリックします。\n3. 「Create API key」をクリックし、Google Cloud プロジェクトを選びます。\n4. 生成されたキーをコピーしてアプリに貼り付けます。\n5. 無料枠が大きいため、通常は支払い設定なしで始められます。",
+        "grok": "1. console.x.ai にアクセスし、X アカウントでサインインします。\n2. 「API Keys」セクションを開きます。\n3. 「Create API Key」をクリックし、名前を付けて確定します。\n4. キーをコピーしてアプリに貼り付けます。\n5. xAI では API 利用前にプリペイド残高が必要です。",
+        "qwen": "1. bailian.console.aliyun.com（Alibaba Cloud Model Studio）にアクセスしてサインインします。\n2. アカウントメニューから「API-KEY」管理を開きます。\n3. 「Create API Key」をクリックして確定します。\n4. キーをコピーしてアプリに貼り付けます。\n5. アカウントで Qwen（通義）モデルが有効になっていることを確認してください。",
+        "openrouter": "1. openrouter.ai にアクセスしてサインイン（またはアカウント作成）します。\n2. アカウントメニューから「Keys」を開きます。\n3. 「Create Key」をクリックし、名前を付けて確定します。\n4. キーをコピーしてアプリに貼り付けます。\n5. 有料モデルを使うには OpenRouter アカウントに残高を追加してください。\n**5.1. 無料モデルを使う場合はクレジットカード不要です。この手順は省略できます。"
+      }
+    }
+  },
+  "home": {
+    "title": "LazyCalAI",
+    "today": "今日",
+    "consumed": "摂取済み",
+    "remaining": "残り",
+    "goal": "目標",
+    "noMeals": "今日はまだ食事が記録されていません。+をタップして追加。",
+    "addMeal": "食事を追加",
+    "pickFromGallery": "ギャラリーから選択",
+    "tips": {
+      "title": "ヒント",
+      "items": {
+        "accuracy": {
+          "title": "数値を確認しましょう",
+          "body": "AIはグラム数やカロリーを必ずしも正確に判定できません。値を確認し、必要に応じて調整してください。"
+        },
+        "lighting": {
+          "title": "明るい場所で撮影",
+          "body": "AIはピントの合った明るい写真をより正確に認識します。ぶれや強い影は避けましょう。"
+        },
+        "averaging": {
+          "title": "平均で考えましょう",
+          "body": "このアプリは正確な計測用ではありません。1週間や1か月単位で摂取カロリーを平均化し、食生活のより正確な傾向を把握するためのものです。"
+        },
+        "packaging": {
+          "title": "パッケージを撮影",
+          "body": "加工食品やハンバーガー、コーラやジュースの缶などは、パッケージを撮影するとAIが内容をより正確に理解できます。"
+        },
+        "scale": {
+          "title": "キッチンスケールを使う",
+          "body": "AIがグラム数を判定しやすいように、皿をはかりに乗せ、表示された数値と一緒に撮影してください（皿の重さは風袋引きを忘れずに）。"
+        },
+        "models": {
+          "title": "性能の高いモデルを選ぶ",
+          "body": "AIモデルによって性能に差があります。コストパフォーマンスを重視するなら OpenAI/gpt-4o または Google/gemini-3.5-flash がおすすめです。"
+        }
+      }
+    }
+  },
+  "history": {
+    "title": "履歴",
+    "noDays": "まだ食事が記録されていません。",
+    "mealsCount": "{{count}} 食",
+    "mealsCount_plural": "{{count}} 食",
+    "dayDetail": "日の詳細"
+  },
+  "tabs": {
+    "today": "今日",
+    "history": "履歴",
+    "analytics": "分析",
+    "settings": "設定"
+  },
+  "months": {
+    "0": "1月",
+    "1": "2月",
+    "2": "3月",
+    "3": "4月",
+    "4": "5月",
+    "5": "6月",
+    "6": "7月",
+    "7": "8月",
+    "8": "9月",
+    "9": "10月",
+    "10": "11月",
+    "11": "12月"
+  },
+  "analytics": {
+    "title": "分析",
+    "week": "週",
+    "month": "月",
+    "totalCalories": "カロリー",
+    "totalProtein": "タンパク質",
+    "totalCarbs": "炭水化物",
+    "totalFat": "脂質",
+    "daysOverLimit": "{{total}}日中{{count}}日が上限超過",
+    "calorieBudget": "カロリー予算",
+    "dailyCalories": "日別カロリー",
+    "weeklyCalories": "週別カロリー",
+    "noData": "この期間のデータはありません",
+    "weekLabel": "第{{number}}週"
+  },
+  "addMeal": {
+    "title": "食事を追加",
+    "takePhoto": "食事の写真を撮る",
+    "analyzing": "食事を分析中...",
+    "editNutrition": "栄養を編集",
+    "itemName": "名前",
+    "grams": "グラム",
+    "calories": "カロリー",
+    "protein": "タンパク質（g）",
+    "carbs": "炭水化物（g）",
+    "fat": "脂質（g）",
+    "fiber": "食物繊維（g）",
+    "save": "保存",
+    "cancel": "キャンセル",
+    "manualEntry": "手動入力",
+    "retry": "再試行",
+    "itemNamePlaceholder": "例：チキンサラダ"
+  },
+  "settings": {
+    "title": "設定",
+    "personalInfo": "個人情報",
+    "calorieGoal": "1日のカロリー目標",
+    "aiProvider": "AIプロバイダー",
+    "provider": "プロバイダー",
+    "model": "モデル",
+    "apiKey": "APIキー",
+    "changeKey": "キーを変更",
+    "resetOnboarding": "オンボーディングをやり直す",
+    "resetConfirmTitle": "オンボーディングをやり直す",
+    "resetConfirmMessage": "個人データと1日のカロリー目標がリセットされます。日々の食事履歴とAPIキーは影響を受けません。",
+    "resetConfirmOk": "リセット",
+    "deleteAllData": "すべてのデータを削除",
+    "deleteAllConfirmTitle": "すべてのデータを削除",
+    "deleteAllConfirmMessage": "すべてのデータ（食事、個人データ、設定、APIキー）が完全に削除されます。この操作は元に戻せません。",
+    "deleteAllConfirmOk": "すべて削除",
+    "save": "保存",
+    "saved": "設定を保存しました",
+    "language": "言語",
+    "units": "単位",
+    "theme": "テーマ",
+    "themeLight": "ライト",
+    "themeDark": "ダーク",
+    "exportData": "データをエクスポート",
+    "importData": "データをインポート",
+    "exportSuccess": "エクスポート成功",
+    "exportCount": "{{num}} 件の食事をエクスポートしました",
+    "exportEmpty": "エクスポートする食事がありません",
+    "importSuccess": "インポート成功",
+    "importFileNotFound": "インポートファイルが見つかりません。foodcountai_import.csvをアプリのドキュメントフォルダに配置してください。",
+    "importError": "インポート失敗",
+    "deviceIdTitle": "デバイスID",
+    "deviceIdClose": "閉じる"
+  },
+  "ticTacToe": {
+    "title": "○×トースト",
+    "yourTurn": "あなたの番",
+    "aiTurn": "AIが考え中…",
+    "youWin": "あなたの勝ち！",
+    "aiWins": "AIの勝ち",
+    "draw": "引き分け",
+    "playAgain": "もう一度遊ぶ",
+    "close": "閉じる"
+  },
+  "units": {
+    "metric": "メートル法",
+    "imperial": "ヤード・ポンド法",
+    "kg": "kg",
+    "lbs": "ポンド",
+    "cm": "cm",
+    "ft": "フィート",
+    "in": "インチ"
+  },
+  "languages": {
+    "en": "English",
+    "ru": "Русский",
+    "fr": "Français",
+    "es": "Español",
+    "zh": "中文",
+    "ja": "日本語",
+    "de": "Deutsch",
+    "pt": "Português",
+    "ar": "العربية"
+  },
+  "editMeal": {
+    "title": "食事を編集",
+    "date": "日付",
+    "time": "時間",
+    "datePlaceholder": "YYYY-MM-DD",
+    "timePlaceholder": "HH:MM",
+    "save": "変更を保存"
+  },
+  "camera": {
+    "permissionRequired": "カメラの許可が必要です",
+    "grantPermission": "許可する",
+    "noDevice": "カメラが見つかりません"
+  },
+  "mealPeriods": {
+    "morning": "朝",
+    "noon": "正午",
+    "afternoon": "午後",
+    "lateAfternoon": "夕方",
+    "evening": "夜",
+    "night": "深夜"
+  },
+  "common": {
+    "back": "戻る",
+    "ok": "了解",
+    "error": "問題が発生しました",
+    "tryAgain": "再試行",
+    "unknownError": "不明なエラー",
+    "loading": "読み込み中...",
+    "delete": "削除",
+    "deleteConfirm": "この食事を削除しますか？",
+    "deleteConfirmMessage": "この操作は元に戻せません。",
+    "cancel": "キャンセル",
+    "edit": "編集",
+    "repeat": "繰り返す",
+    "kcal": "kcal",
+    "g": "g",
+    "proteinShort": "P",
+    "carbsShort": "C",
+    "fatShort": "F",
+    "fiberShort": "Fb",
+    "disclaimer": "AIは間違えることがあります。同じ画像でも異なる値が出ることがあり、本アプリは正確なグラム数やカロリーを算出するようには設計されていません。結果に確信が持てない場合は手動で修正してください。これは医療アプリケーションではありません。"
+  },
+  "modelSelector": {
+    "demoMode": "デモモード（無料リクエスト{{num}}回）。その後は別のAIプロバイダーを使用する必要があります。",
+    "custom": "カスタム"
+  }
+}

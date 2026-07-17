@@ -1,0 +1,154 @@
+# gstack
+
+Behavioral guidelines to reduce common LLM coding mistakes. Merge with project-specific instructions as needed.
+
+**Tradeoff:** These guidelines bias toward caution over speed. For trivial tasks, use judgment.
+
+## Project
+
+React Native app (lazycalai) for AI-powered food calorie tracking. TypeScript, React 19 / RN 0.86.
+
+**Layout** (`src/`):
+- `api/` — multi-provider LLM clients (openai, claude, gemini, grok, openrouter, qwen). Selection goes through `providerFactory.ts`; shared contracts in `api/types.ts` and `types/`.
+- `db/` — WatermelonDB. `schema.ts` (tables: `meals`, `meal_items`), `models/`, `operations.ts`.
+- `store/` — zustand stores (ai, meal, settings, toast).
+- `screens/`, `navigation/` (React Navigation), `components/`, `hooks/`.
+- `theme/` — theming via context + hook.
+- `i18n/` — i18next, 9 locales. `en.json` is the source of truth.
+
+**Conventions / gotchas:**
+- New AI provider: add a client in `api/`, wire it into `providerFactory.ts`, extend `AIProviderType`. Don't call providers ad-hoc.
+- DB schema change: bump `version` in `db/schema.ts` AND add a migration. Never edit the schema without a migration.
+- New user-facing string: add the key to all 9 locale files in `i18n/`, not just `en.json`. Access via i18next, never hardcode.
+- Native dep change: run `npm run pod:install` before building iOS.
+
+**Run:** `npm start` (Metro), `npm run ios` / `npm run android`.
+
+## 1. Think Before Coding
+
+**Don't assume. Don't hide confusion. Surface tradeoffs.**
+
+Before implementing:
+- State your assumptions explicitly. If uncertain, ask.
+- If multiple interpretations exist, present them - don't pick silently.
+- If a simpler approach exists, say so. Push back when warranted.
+- If something is unclear, stop. Name what's confusing. Ask.
+
+## 2. Simplicity First
+
+**Minimum code that solves the problem. Nothing speculative.**
+
+- No features beyond what was asked.
+- No abstractions for single-use code.
+- No "flexibility" or "configurability" that wasn't requested.
+- No error handling for impossible scenarios.
+- If you write 200 lines and it could be 50, rewrite it.
+
+Ask yourself: "Would a senior engineer say this is overcomplicated?" If yes, simplify.
+
+## 3. Surgical Changes
+
+**Touch only what you must. Clean up only your own mess.**
+
+When editing existing code:
+- Don't "improve" adjacent code, comments, or formatting.
+- Don't refactor things that aren't broken.
+- Match existing style, even if you'd do it differently.
+- If you notice unrelated dead code, mention it - don't delete it.
+
+When your changes create orphans:
+- Remove imports/variables/functions that YOUR changes made unused.
+- Don't remove pre-existing dead code unless asked.
+
+The test: Every changed line should trace directly to the user's request.
+
+## 4. Goal-Driven Execution
+
+**Define success criteria. Loop until verified.**
+
+Transform tasks into verifiable goals:
+- "Add validation" → "Write tests for invalid inputs, then make them pass"
+- "Fix the bug" → "Write a test that reproduces it, then make it pass"
+- "Refactor X" → "Ensure tests pass before and after"
+
+For multi-step tasks, state a brief plan:
+```
+1. [Step] → verify: [check]
+2. [Step] → verify: [check]
+3. [Step] → verify: [check]
+```
+
+Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
+
+## 5. Harness
+
+"Done" means both checks pass with no errors:
+
+```
+npm run lint
+npx tsc --noEmit
+```
+
+## 6. Loops & Autonomy
+
+Sections 4 and 5 define the loop and how to verify it. These rules govern running it without me approving every turn.
+
+- "Done" is defined in section 5. If a task has no programmatic check, say so before starting rather than looping with no stop condition.
+- Prefer the built-in autonomy commands over asking me to type "continue":
+  - `/goal <verifiable end state>` for "keep working until it's correct" (test-fix-retest cycles, lint-clean, migrations with a clear stop condition).
+  - `/loop <interval, or until: condition>` for polling or repeating a check (watch CI, re-run a suite).
+  - `/batch <one mechanical change>` for a repetitive edit spread across many files. Requires git; it spawns parallel worktree agents and opens a PR per agent, so it also multiplies token usage.
+- The `/goal` completion check is read from your output by a separate evaluator model, not from the filesystem. State conditions you can demonstrate in the transcript (show the passing test run), not silent file assertions.
+- Always work on a git branch so changes can be reverted. Never start an autonomous loop without an iteration cap.
+- Loops are for code with programmatic verification. Do not loop on judgment-heavy work, design decisions, or long compute jobs (training runs, quantization sweeps). Those are a script or my call, not a loop.
+- If you are still stuck when the cap is reached, stop. Document what is blocking progress, what you tried, and suggested next steps. Do not thrash.
+
+## Text
+
+Rules for human-readable text you produce (PR descriptions, comments, docstrings, commit messages, docs):
+
+- No em-dashes or other long dashes. Use commas, periods, or parentheses instead.
+- Cut filler and hedging: "um", "basically", "essentially", "it's worth noting", "of course".
+- Vary sentence length. Do not pad a short, correct statement into a long fuzzy one, and do not chain choppy fragments either.
+- Avoid the usual LLM tells: no "it's not just X, it's Y", no "delve", no overwrought openers.
+- Reread what you wrote before you finish. Delete anything that does not earn its place.
+
+Use the `/browse` skill from gstack for all web browsing. Never use `mcp__claude-in-chrome__*` tools.
+
+Available gstack skills:
+
+- `/office-hours`
+- `/plan-ceo-review`
+- `/plan-eng-review`
+- `/plan-design-review`
+- `/design-consultation`
+- `/design-shotgun`
+- `/design-html`
+- `/review`
+- `/ship`
+- `/land-and-deploy`
+- `/canary`
+- `/benchmark`
+- `/browse`
+- `/connect-chrome`
+- `/qa`
+- `/qa-only`
+- `/design-review`
+- `/setup-browser-cookies`
+- `/setup-deploy`
+- `/setup-gbrain`
+- `/retro`
+- `/investigate`
+- `/document-release`
+- `/document-generate`
+- `/codex`
+- `/cso`
+- `/autoplan`
+- `/plan-devex-review`
+- `/devex-review`
+- `/careful`
+- `/freeze`
+- `/guard`
+- `/unfreeze`
+- `/gstack-upgrade`
+- `/learn`

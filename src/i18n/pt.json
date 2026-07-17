@@ -1,0 +1,287 @@
+{
+  "onboarding": {
+    "welcome": {
+      "title": "LazyCalAI",
+      "subtitle": "Conte suas calorias com reconhecimento de alimentos por IA. Basta tirar uma foto da sua refeição e deixar a IA fazer o resto.",
+      "demoModeTitle": "Sobre o modo demonstração",
+      "apiKeyNotice": "Para reconhecer pratos, o app precisa de uma chave de API de um provedor de IA (modelos gratuitos do OpenRouter podem ser usados sem cartão de crédito). No modo demo, apenas 5 reconhecimentos estão disponíveis.",
+      "getStarted": "Começar",
+      "privacyPolicy": "Política de Privacidade",
+      "termsOfService": "Termos de Serviço"
+    },
+    "userInfo": {
+      "title": "Conte-nos sobre você",
+      "sex": "Sexo",
+      "male": "Masculino",
+      "female": "Feminino",
+      "weight": "Peso",
+      "height": "Altura",
+      "age": "Idade",
+      "calculate": "Calcular",
+      "next": "Próximo"
+    },
+    "goal": {
+      "title": "Qual é o seu objetivo?",
+      "lose": "Perder peso",
+      "maintain": "Manter",
+      "gain": "Ganhar peso",
+      "pace": "Com que rapidez?",
+      "pace_casually": "Tranquilo",
+      "pace_mild": "Leve",
+      "pace_moderate": "Moderado",
+      "pace_aggressive": "Intenso",
+      "perMonth": "{{value}} {{unit}} / mês",
+      "dailyCalories": "Consumo diário de calorias",
+      "continue": "Continuar"
+    },
+    "result": {
+      "title": "Seus resultados",
+      "bmi": "IMC",
+      "obesityLevel": "Categoria",
+      "goal": "Objetivo",
+      "goalSummary": "{{goal}} · {{value}} {{unit}} / mês",
+      "weightToLose": "Peso a perder",
+      "timeframe": "Prazo estimado",
+      "weeks": "semanas",
+      "dailyCalories": "Calorias diárias recomendadas",
+      "adjustGoal": "Ajustar meta",
+      "continue": "Continuar",
+      "level_underweight": "Abaixo do peso",
+      "level_normal": "Peso normal",
+      "level_overweight": "Acima do peso",
+      "level_obese_class_1": "Obesidade Grau I",
+      "level_obese_class_2": "Obesidade Grau II",
+      "level_obese_class_3": "Obesidade Grau III"
+    },
+    "apiKey": {
+      "title": "Configuração do provedor de IA",
+      "provider": "Provedor",
+      "model": "Modelo",
+      "apiKey": "Chave de API",
+      "apiKeyPlaceholder": "Insira sua chave de API",
+      "finish": "Concluir configuração",
+      "howToGet": "Como obter uma chave de API?",
+      "guide": {
+        "title": "Obtenha sua chave de API do {{provider}}",
+        "intro": "Siga estas etapas para criar uma chave de API e depois copie-a de volta para o app.",
+        "openLink": "Abrir console do {{provider}}",
+        "openai": "1. Acesse platform.openai.com e faça login (ou crie uma conta).\n2. Abra a página “API keys” na barra lateral esquerda.\n3. Clique em “Create new secret key”, dê um nome e confirme.\n4. Copie a chave (ela começa com sk-) imediatamente — você não poderá vê-la novamente.\n5. O uso da API exige crédito de faturamento na sua conta OpenAI.",
+        "claude": "1. Acesse console.anthropic.com e faça login (ou crie uma conta).\n2. Abra “API Keys” nas configurações da sua conta.\n3. Clique em “Create Key”, dê um nome e confirme.\n4. Copie a chave e cole-a de volta no app.\n5. Você precisará de crédito de faturamento na sua conta Anthropic para fazer requisições.",
+        "gemini": "1. Acesse aistudio.google.com e faça login com sua conta Google.\n2. Clique em “Get API key” no menu superior esquerdo.\n3. Clique em “Create API key” e escolha um projeto do Google Cloud.\n4. Copie a chave gerada e cole-a de volta no app.\n5. O nível gratuito é generoso, então normalmente você pode começar sem faturamento.",
+        "grok": "1. Acesse console.x.ai e faça login com sua conta X.\n2. Abra a seção “API Keys”.\n3. Clique em “Create API Key”, dê um nome e confirme.\n4. Copie a chave e cole-a de volta no app.\n5. A xAI exige créditos pré-pagos antes que a API funcione.",
+        "qwen": "1. Acesse bailian.console.aliyun.com (Alibaba Cloud Model Studio) e faça login.\n2. Abra o gerenciamento de “API-KEY” no menu da conta.\n3. Clique em “Create API Key” e confirme.\n4. Copie a chave e cole-a de volta no app.\n5. Verifique se os modelos Qwen (Tongyi) estão ativados na sua conta.",
+        "openrouter": "1. Acesse openrouter.ai e faça login (ou crie uma conta).\n2. Abra “Keys” no menu da sua conta.\n3. Clique em “Create Key”, dê um nome e confirme.\n4. Copie a chave e cole-a de volta no app.\n5. Adicione créditos à sua conta OpenRouter para usar modelos pagos.\n**5.1. Você não precisa de cartão de crédito para usar modelos gratuitos - pode pular esta etapa."
+      }
+    }
+  },
+  "home": {
+    "title": "LazyCalAI",
+    "today": "Hoje",
+    "consumed": "Consumido",
+    "remaining": "Restante",
+    "goal": "Meta",
+    "noMeals": "Nenhuma refeição registrada hoje. Toque em + para adicionar uma.",
+    "addMeal": "Adicionar refeição",
+    "pickFromGallery": "Escolher da galeria",
+    "tips": {
+      "title": "Dicas",
+      "items": {
+        "accuracy": {
+          "title": "Confira os números",
+          "body": "A IA nem sempre acerta os gramas e as calorias com exatidão. Fique de olho nos valores e ajuste-os quando necessário."
+        },
+        "lighting": {
+          "title": "Fotografe com boa iluminação",
+          "body": "A IA reconhece muito melhor fotos nítidas e bem iluminadas. Evite desfoque e sombras fortes."
+        },
+        "averaging": {
+          "title": "Pense em médias",
+          "body": "O app não foi feito para medições precisas. Ele serve para calcular a média do seu consumo ao longo de uma semana ou mês, o que dá uma visão mais exata da sua dieta."
+        },
+        "packaging": {
+          "title": "Fotografe a embalagem",
+          "body": "Às vezes é melhor fotografar a embalagem (comida processada, um hambúrguer, uma lata de refrigerante ou suco) para que a IA entenda melhor o que você está comendo."
+        },
+        "scale": {
+          "title": "Use uma balança de cozinha",
+          "body": "Para ajudar a IA a estimar os gramas, coloque o prato em uma balança e fotografe-o com o valor visível (lembre-se de tarar o peso do prato)."
+        },
+        "models": {
+          "title": "Escolha um modelo capaz",
+          "body": "Alguns modelos de IA funcionam melhor que outros. Use OpenAI/gpt-4o ou Google/gemini-3.5-flash para o melhor custo-benefício."
+        }
+      }
+    }
+  },
+  "history": {
+    "title": "Histórico",
+    "noDays": "Nenhuma refeição registrada ainda.",
+    "mealsCount": "{{count}} refeição",
+    "mealsCount_plural": "{{count}} refeições",
+    "dayDetail": "Detalhes do dia"
+  },
+  "tabs": {
+    "today": "Hoje",
+    "history": "Histórico",
+    "analytics": "Análises",
+    "settings": "Configurações"
+  },
+  "months": {
+    "0": "Janeiro",
+    "1": "Fevereiro",
+    "2": "Março",
+    "3": "Abril",
+    "4": "Maio",
+    "5": "Junho",
+    "6": "Julho",
+    "7": "Agosto",
+    "8": "Setembro",
+    "9": "Outubro",
+    "10": "Novembro",
+    "11": "Dezembro"
+  },
+  "analytics": {
+    "title": "Análises",
+    "week": "Semana",
+    "month": "Mês",
+    "totalCalories": "Calorias",
+    "totalProtein": "Proteína",
+    "totalCarbs": "Carboidratos",
+    "totalFat": "Gordura",
+    "daysOverLimit": "{{count}} de {{total}} dias acima do limite",
+    "calorieBudget": "Orçamento de calorias",
+    "dailyCalories": "Calorias diárias",
+    "weeklyCalories": "Calorias semanais",
+    "noData": "Sem dados para este período",
+    "weekLabel": "S{{number}}"
+  },
+  "addMeal": {
+    "title": "Adicionar refeição",
+    "takePhoto": "Tire uma foto da sua comida",
+    "analyzing": "Analisando sua refeição...",
+    "editNutrition": "Editar nutrição",
+    "itemName": "Nome",
+    "grams": "Gramas",
+    "calories": "Calorias",
+    "protein": "Proteína (g)",
+    "carbs": "Carboidratos (g)",
+    "fat": "Gordura (g)",
+    "fiber": "Fibra (g)",
+    "save": "Salvar refeição",
+    "cancel": "Cancelar",
+    "manualEntry": "Inserir manualmente",
+    "retry": "Tentar novamente",
+    "itemNamePlaceholder": "ex.: Salada de frango"
+  },
+  "settings": {
+    "title": "Configurações",
+    "personalInfo": "Dados pessoais",
+    "calorieGoal": "Meta diária de calorias",
+    "aiProvider": "Provedor de IA",
+    "provider": "Provedor",
+    "model": "Modelo",
+    "apiKey": "Chave de API",
+    "changeKey": "Alterar chave",
+    "resetOnboarding": "Refazer a introdução",
+    "resetConfirmTitle": "Refazer a introdução",
+    "resetConfirmMessage": "Isso redefinirá seus dados pessoais e sua meta diária de calorias. Seu histórico diário de refeições e suas chaves de API não serão afetados.",
+    "resetConfirmOk": "Redefinir",
+    "deleteAllData": "Excluir todos os dados",
+    "deleteAllConfirmTitle": "Excluir todos os dados",
+    "deleteAllConfirmMessage": "Isso excluirá permanentemente tudo: todas as suas refeições, dados pessoais, configurações e chaves de API. Esta ação não pode ser desfeita.",
+    "deleteAllConfirmOk": "Excluir tudo",
+    "save": "Salvar",
+    "saved": "Configurações salvas",
+    "language": "Idioma",
+    "units": "Unidades",
+    "theme": "Tema",
+    "themeLight": "Claro",
+    "themeDark": "Escuro",
+    "exportData": "Exportar dados",
+    "importData": "Importar dados",
+    "exportSuccess": "Exportação concluída",
+    "exportCount": "{{num}} refeições exportadas",
+    "exportEmpty": "Nenhuma refeição para exportar",
+    "importSuccess": "Importação concluída",
+    "importFileNotFound": "Nenhum arquivo de importação encontrado. Coloque foodcountai_import.csv na pasta de documentos do app.",
+    "importError": "Falha na importação",
+    "deviceIdTitle": "ID do dispositivo",
+    "deviceIdClose": "Fechar"
+  },
+  "ticTacToe": {
+    "title": "Jogo da Torrada",
+    "yourTurn": "Sua vez",
+    "aiTurn": "A IA está pensando…",
+    "youWin": "Você venceu!",
+    "aiWins": "A IA venceu",
+    "draw": "Empate",
+    "playAgain": "Jogar de novo",
+    "close": "Fechar"
+  },
+  "units": {
+    "metric": "Métrico",
+    "imperial": "Imperial",
+    "kg": "kg",
+    "lbs": "lbs",
+    "cm": "cm",
+    "ft": "ft",
+    "in": "in"
+  },
+  "languages": {
+    "en": "English",
+    "ru": "Русский",
+    "fr": "Français",
+    "es": "Español",
+    "zh": "中文",
+    "ja": "日本語",
+    "de": "Deutsch",
+    "pt": "Português",
+    "ar": "العربية"
+  },
+  "editMeal": {
+    "title": "Editar refeição",
+    "date": "Data",
+    "time": "Hora",
+    "datePlaceholder": "AAAA-MM-DD",
+    "timePlaceholder": "HH:MM",
+    "save": "Salvar alterações"
+  },
+  "camera": {
+    "permissionRequired": "É necessária permissão da câmera",
+    "grantPermission": "Conceder permissão",
+    "noDevice": "Nenhuma câmera encontrada"
+  },
+  "mealPeriods": {
+    "morning": "Manhã",
+    "noon": "Meio-dia",
+    "afternoon": "Tarde",
+    "lateAfternoon": "Fim da tarde",
+    "evening": "Noite",
+    "night": "Madrugada"
+  },
+  "common": {
+    "back": "Voltar",
+    "ok": "Entendi",
+    "error": "Algo deu errado",
+    "tryAgain": "Tentar novamente",
+    "unknownError": "Erro desconhecido",
+    "loading": "Carregando...",
+    "delete": "Excluir",
+    "deleteConfirm": "Excluir esta refeição?",
+    "deleteConfirmMessage": "Esta ação não pode ser desfeita.",
+    "cancel": "Cancelar",
+    "edit": "Editar",
+    "repeat": "Repetir",
+    "kcal": "kcal",
+    "g": "g",
+    "proteinShort": "P",
+    "carbsShort": "C",
+    "fatShort": "G",
+    "fiberShort": "Fb",
+    "disclaimer": "A IA comete erros. A mesma imagem pode gerar valores diferentes, e o aplicativo não foi projetado para calcular gramas ou calorias precisos. Se você não tiver certeza dos resultados, corrija-os manualmente. Este não é um aplicativo médico."
+  },
+  "modelSelector": {
+    "demoMode": "Modo demo ({{num}} solicitações gratuitas). Depois você precisa usar outro provedor de IA.",
+    "custom": "Personalizado"
+  }
+}
