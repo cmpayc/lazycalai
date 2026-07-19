@@ -88,6 +88,8 @@ export default function EditMealScreen() {
       setDate(loaded.date);
       const d = new Date(loaded.createdAt);
       setTime(`${pad(d.getHours())}:${pad(d.getMinutes())}`);
+      setPickerTime(d);
+      setPickerDate(parseDate(loaded.date));
       setLoading(false);
     })();
     return () => {
