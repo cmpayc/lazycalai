@@ -13,6 +13,7 @@ import {
   Modal,
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
+import type { TFunction } from 'i18next';
 import {
   pick,
   types,
@@ -35,15 +36,26 @@ import {
   AIProviderType,
   ThemeMode,
   Units,
+  WeightGoal,
   PROVIDER_DEFAULT_MODEL,
 } from '@types';
 import { SUPPORTED_LANGUAGES } from '@i18n';
-import { kgToLbs, lbsToKg, cmToFeetInches, feetInchesToCm } from '@utils/units';
+import {
+  kgToLbs,
+  lbsToKg,
+  cmToFeetInches,
+  feetInchesToCm,
+  displayPace,
+} from '@utils/units';
 import { getDeviceId } from '@utils/deviceId';
 import ModelSelector from '@components/ModelSelector';
 import { useToastStore } from '@store/toastStore';
 import { exportMeals, importMeals } from '@utils/exportImport';
-import { calculateBMI, getObesityLevel } from '@utils/calories';
+import {
+  ACTIVITY_LEVELS,
+  calculateBMI,
+  getObesityLevel,
+} from '@utils/calories';
 import { PROVIDERS } from '@api/shared';
 import Disclaimer from '@components/Disclaimer';
 import LegalRow from '@components/LegalRow';
@@ -61,6 +73,9 @@ export default function SettingsScreen() {
     weightKg,
     heightCm,
     age,
+    weightGoal,
+    goalPaceKgPerMonth,
+    activityFactor,
     dailyCalorieGoal,
     aiProvider,
     model,
@@ -365,7 +380,15 @@ export default function SettingsScreen() {
             onChange={setLocalAge}
           />
 
-          <ObesityInfo weightKg={derivedKg} heightCm={derivedCm} t={t} />
+          <ObesityInfo
+            weightKg={derivedKg}
+            heightCm={derivedCm}
+            weightGoal={weightGoal}
+            goalPaceKgPerMonth={goalPaceKgPerMonth}
+            activityFactor={activityFactor}
+            units={units}
+            t={t}
+          />
 
           <TouchableOpacity style={styles.saveBtn} onPress={handleSavePersonal}>
             <Text style={styles.saveBtnText}>{t('settings.save')}</Text>
@@ -646,11 +669,19 @@ function Field({
 function ObesityInfo({
   weightKg,
   heightCm,
+  weightGoal,
+  goalPaceKgPerMonth,
+  activityFactor,
+  units,
   t,
 }: {
   weightKg: number;
   heightCm: number;
-  t: (key: string) => string;
+  weightGoal: WeightGoal;
+  goalPaceKgPerMonth: number;
+  activityFactor: number;
+  units: Units;
+  t: TFunction;
 }) {
   const obesityStyles = useTheme(themeStyles);
   const { theme: obesityTheme } = useThemeContext();
@@ -661,6 +692,9 @@ function ObesityInfo({
 
   const bmi = calculateBMI(weightKg, heightCm);
   const level = getObesityLevel(bmi);
+  const activityLevel =
+    ACTIVITY_LEVELS.find((l) => l.factor === activityFactor) ??
+    ACTIVITY_LEVELS[0];
 
   const bmiColor =
     bmi < 18.5
@@ -687,6 +721,38 @@ function ObesityInfo({
         </Text>
         <Text style={[obesityStyles.obesityValue, { color: bmiColor }]}>
           {t(`onboarding.result.level_${level}`)}
+        </Text>
+      </View>
+      <View style={obesityStyles.obesityRow}>
+        <Text style={obesityStyles.obesityLabel}>
+          {t('onboarding.result.goal')}
+        </Text>
+        <Text
+          style={[
+            obesityStyles.obesityValue,
+            { color: obesityTheme.color.main },
+          ]}
+        >
+          {weightGoal === 'maintain'
+            ? t('onboarding.goal.maintain')
+            : t('onboarding.result.goalSummary', {
+                goal: t(`onboarding.goal.${weightGoal}`),
+                value: displayPace(goalPaceKgPerMonth, units),
+                unit: t(units === 'imperial' ? 'units.lbs' : 'units.kg'),
+              })}
+        </Text>
+      </View>
+      <View style={obesityStyles.obesityRow}>
+        <Text style={obesityStyles.obesityLabel}>
+          {t('onboarding.result.activity')}
+        </Text>
+        <Text
+          style={[
+            obesityStyles.obesityValue,
+            { color: obesityTheme.color.main },
+          ]}
+        >
+          {t(`onboarding.activity.level_${activityLevel.key}`)}
         </Text>
       </View>
     </View>

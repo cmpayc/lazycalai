@@ -31,7 +31,20 @@
       "pace_moderate": "普通",
       "pace_aggressive": "積極的",
       "perMonth": "{{value}} {{unit}} / 月",
-      "dailyCalories": "1日のカロリー摂取量",
+      "continue": "続ける"
+    },
+    "activity": {
+      "title": "運動量はどのくらいですか？",
+      "level_sedentary": "座り仕事中心",
+      "level_sedentary_desc": "運動はほとんどしない",
+      "level_light": "軽い運動",
+      "level_light_desc": "週1〜3回の軽い運動",
+      "level_moderate": "中程度の運動",
+      "level_moderate_desc": "週3〜5回の中程度の運動",
+      "level_active": "活発",
+      "level_active_desc": "週6〜7回の激しい運動",
+      "level_veryActive": "非常に活発",
+      "level_veryActive_desc": "激しい運動と肉体労働",
       "continue": "続ける"
     },
     "result": {
@@ -39,6 +52,7 @@
       "bmi": "BMI",
       "obesityLevel": "分類",
       "goal": "目標",
+      "activity": "運動量",
       "goalSummary": "{{goal}} · {{value}} {{unit}} / 月",
       "weightToLose": "減量目標",
       "timeframe": "推定期間",
@@ -266,6 +280,8 @@
     "tryAgain": "再試行",
     "unknownError": "不明なエラー",
     "loading": "読み込み中...",
+    "dailyCalories": "1日のカロリー摂取量",
+    "dailyCaloriesMinWarning": "これは最低限安全な摂取量（{{min}} kcal）です。より緩やかなペースを検討してください。",
     "delete": "削除",
     "deleteConfirm": "この食事を削除しますか？",
     "deleteConfirmMessage": "この操作は元に戻せません。",

@@ -31,7 +31,20 @@
       "pace_moderate": "Moderate",
       "pace_aggressive": "Aggressive",
       "perMonth": "{{value}} {{unit}} / month",
-      "dailyCalories": "Daily calorie intake",
+      "continue": "Continue"
+    },
+    "activity": {
+      "title": "How active are you?",
+      "level_sedentary": "Sedentary",
+      "level_sedentary_desc": "Little or no exercise",
+      "level_light": "Lightly active",
+      "level_light_desc": "Light exercise 1-3 days/week",
+      "level_moderate": "Moderately active",
+      "level_moderate_desc": "Moderate exercise 3-5 days/week",
+      "level_active": "Very active",
+      "level_active_desc": "Hard exercise 6-7 days/week",
+      "level_veryActive": "Extra active",
+      "level_veryActive_desc": "Hard exercise & a physical job",
       "continue": "Continue"
     },
     "result": {
@@ -39,6 +52,7 @@
       "bmi": "BMI",
       "obesityLevel": "Category",
       "goal": "Goal",
+      "activity": "Activity",
       "goalSummary": "{{goal}} · {{value}} {{unit}} / month",
       "weightToLose": "Weight to lose",
       "timeframe": "Estimated timeframe",
@@ -266,6 +280,8 @@
     "tryAgain": "Try Again",
     "unknownError": "Unknown error",
     "loading": "Loading...",
+    "dailyCalories": "Daily calorie intake",
+    "dailyCaloriesMinWarning": "This is the minimum safe intake ({{min}} kcal). Consider a gentler pace.",
     "delete": "Delete",
     "deleteConfirm": "Delete this meal?",
     "deleteConfirmMessage": "This action cannot be undone.",

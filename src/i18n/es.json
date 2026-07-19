@@ -31,7 +31,20 @@
       "pace_moderate": "Moderado",
       "pace_aggressive": "Intenso",
       "perMonth": "{{value}} {{unit}} / mes",
-      "dailyCalories": "Consumo diario de calorías",
+      "continue": "Continuar"
+    },
+    "activity": {
+      "title": "¿Qué tan activo eres?",
+      "level_sedentary": "Sedentario",
+      "level_sedentary_desc": "Poco o nada de ejercicio",
+      "level_light": "Ligeramente activo",
+      "level_light_desc": "Ejercicio ligero 1-3 días/semana",
+      "level_moderate": "Moderadamente activo",
+      "level_moderate_desc": "Ejercicio moderado 3-5 días/semana",
+      "level_active": "Muy activo",
+      "level_active_desc": "Ejercicio intenso 6-7 días/semana",
+      "level_veryActive": "Extremadamente activo",
+      "level_veryActive_desc": "Ejercicio intenso y trabajo físico",
       "continue": "Continuar"
     },
     "result": {
@@ -39,6 +52,7 @@
       "bmi": "IMC",
       "obesityLevel": "Categoría",
       "goal": "Objetivo",
+      "activity": "Actividad",
       "goalSummary": "{{goal}} · {{value}} {{unit}} / mes",
       "weightToLose": "Peso a perder",
       "timeframe": "Tiempo estimado",
@@ -266,6 +280,8 @@
     "tryAgain": "Intentar de nuevo",
     "unknownError": "Error desconocido",
     "loading": "Cargando...",
+    "dailyCalories": "Consumo diario de calorías",
+    "dailyCaloriesMinWarning": "Esta es la ingesta mínima segura ({{min}} kcal). Considera un ritmo más suave.",
     "delete": "Eliminar",
     "deleteConfirm": "¿Eliminar esta comida?",
     "deleteConfirmMessage": "Esta acción no se puede deshacer.",

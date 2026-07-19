@@ -31,7 +31,20 @@
       "pace_moderate": "Умеренно",
       "pace_aggressive": "Интенсивно",
       "perMonth": "{{value}} {{unit}} / месяц",
-      "dailyCalories": "Дневная норма калорий",
+      "continue": "Продолжить"
+    },
+    "activity": {
+      "title": "Насколько вы активны?",
+      "level_sedentary": "Сидячий образ жизни",
+      "level_sedentary_desc": "Мало или совсем нет тренировок",
+      "level_light": "Лёгкая активность",
+      "level_light_desc": "Лёгкие тренировки 1-3 дня в неделю",
+      "level_moderate": "Умеренная активность",
+      "level_moderate_desc": "Умеренные тренировки 3-5 дней в неделю",
+      "level_active": "Высокая активность",
+      "level_active_desc": "Интенсивные тренировки 6-7 дней в неделю",
+      "level_veryActive": "Очень высокая активность",
+      "level_veryActive_desc": "Тяжёлые тренировки и физическая работа",
       "continue": "Продолжить"
     },
     "result": {
@@ -39,6 +52,7 @@
       "bmi": "ИМТ",
       "obesityLevel": "Категория",
       "goal": "Цель",
+      "activity": "Активность",
       "goalSummary": "{{goal}} · {{value}} {{unit}} / месяц",
       "weightToLose": "Нужно сбросить",
       "timeframe": "Примерный срок",
@@ -266,6 +280,8 @@
     "tryAgain": "Попробовать снова",
     "unknownError": "Неизвестная ошибка",
     "loading": "Загрузка...",
+    "dailyCalories": "Суточная норма калорий",
+    "dailyCaloriesMinWarning": "Это минимально безопасная норма ({{min}} ккал). Выберите более щадящий темп.",
     "delete": "Удалить",
     "deleteConfirm": "Удалить этот приём?",
     "deleteConfirmMessage": "Это действие нельзя отменить.",

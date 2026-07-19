@@ -1,13 +1,11 @@
-import { ObesityResult, Sex, WeightGoal } from '@types';
+import { ActivityLevel, ObesityResult, Sex, WeightGoal } from '@types';
 
 /** Energy in one kilogram of body mass (kcal). */
 const CALORIES_PER_KG = 7700;
 /** Average days per month, used to spread a monthly pace across daily intake. */
 const DAYS_PER_MONTH = 30.44;
-/** Sedentary activity multiplier applied to BMR to get maintenance calories. */
-const ACTIVITY_FACTOR = 1.2;
 /** Safety floor: never recommend eating below this. */
-const MIN_DAILY_CALORIES = 1200;
+export const MIN_DAILY_CALORIES = 1200;
 
 export interface GoalPace {
   key: 'casually' | 'mild' | 'moderate' | 'aggressive';
@@ -21,6 +19,24 @@ export const GOAL_PACES: GoalPace[] = [
   { key: 'moderate', kgPerMonth: 2 },
   { key: 'aggressive', kgPerMonth: 4 },
 ];
+
+export interface ActivityOption {
+  key: ActivityLevel;
+  /** Multiplier applied to BMR to get maintenance calories (TDEE). */
+  factor: number;
+}
+
+/** Standard Mifflin-St Jeor activity multipliers, sedentary to extra active. */
+export const ACTIVITY_LEVELS: ActivityOption[] = [
+  { key: 'sedentary', factor: 1.2 },
+  { key: 'light', factor: 1.375 },
+  { key: 'moderate', factor: 1.55 },
+  { key: 'active', factor: 1.725 },
+  { key: 'veryActive', factor: 1.9 },
+];
+
+/** Default activity multiplier (sedentary) used before the user picks one. */
+export const DEFAULT_ACTIVITY_FACTOR = ACTIVITY_LEVELS[1].factor;
 
 export function calculateBMI(weightKg: number, heightCm: number): number {
   const heightM = heightCm / 100;
@@ -62,9 +78,9 @@ function calculateBMR(
 /**
  * Daily calorie goal for a given weight target.
  *
- * Starts from maintenance (BMR x sedentary activity factor), then applies a
- * deficit (lose) or surplus (gain) sized to the chosen monthly pace. A monthly
- * pace of `kgPerMonth` maps to a daily delta of kgPerMonth * 7700 / 30.44 kcal.
+ * Starts from maintenance (BMR x activity factor), then applies a deficit
+ * (lose) or surplus (gain) sized to the chosen monthly pace. A monthly pace of
+ * `kgPerMonth` maps to a daily delta of kgPerMonth * 7700 / 30.44 kcal.
  * `kgPerMonth` is ignored when goal is 'maintain'.
  */
 export function calculateDailyCalorieGoal(
@@ -74,9 +90,10 @@ export function calculateDailyCalorieGoal(
   sex: Sex,
   goal: WeightGoal,
   kgPerMonth: number,
+  activityFactor: number,
 ): number {
   const maintenance =
-    calculateBMR(weightKg, heightCm, age, sex) * ACTIVITY_FACTOR;
+    calculateBMR(weightKg, heightCm, age, sex) * activityFactor;
   if (goal === 'maintain') return Math.round(maintenance);
 
   const dailyDelta = (kgPerMonth * CALORIES_PER_KG) / DAYS_PER_MONTH;
