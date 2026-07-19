@@ -1,5 +1,7 @@
 export type Sex = 'male' | 'female';
 export type WeightGoal = 'lose' | 'maintain' | 'gain';
+export type ActivityLevel =
+  'sedentary' | 'light' | 'moderate' | 'active' | 'veryActive';
 export type AIProviderType =
   'openai' | 'claude' | 'gemini' | 'openrouter' | 'qwen' | 'grok' | 'demo';
 
@@ -53,6 +55,7 @@ export interface UserSettings {
   age: number;
   weightGoal: WeightGoal;
   goalPaceKgPerMonth: number;
+  activityFactor: number;
   dailyCalorieGoal: number;
   onboardingComplete: boolean;
   aiProvider: AIProviderType;

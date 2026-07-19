@@ -3,6 +3,7 @@ import { MMKV } from 'react-native-mmkv';
 
 import { getDeviceLanguage, changeLanguage } from '@i18n';
 import { getDeviceUnits } from '@utils/units';
+import { DEFAULT_ACTIVITY_FACTOR } from '@utils/calories';
 import {
   UserSettings,
   AIProviderType,
@@ -24,6 +25,7 @@ const defaultSettings: UserSettings = {
   age: 30,
   weightGoal: 'lose',
   goalPaceKgPerMonth: 2,
+  activityFactor: DEFAULT_ACTIVITY_FACTOR,
   dailyCalorieGoal: 2000,
   onboardingComplete: false,
   aiProvider: 'openai',

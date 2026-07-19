@@ -31,7 +31,20 @@
       "pace_moderate": "中度",
       "pace_aggressive": "强度",
       "perMonth": "{{value}} {{unit}} / 月",
-      "dailyCalories": "每日卡路里摄入",
+      "continue": "继续"
+    },
+    "activity": {
+      "title": "您的活动量如何？",
+      "level_sedentary": "久坐",
+      "level_sedentary_desc": "很少或没有运动",
+      "level_light": "轻度活动",
+      "level_light_desc": "每周轻度运动 1-3 天",
+      "level_moderate": "中度活动",
+      "level_moderate_desc": "每周中度运动 3-5 天",
+      "level_active": "高度活动",
+      "level_active_desc": "每周高强度运动 6-7 天",
+      "level_veryActive": "极高活动量",
+      "level_veryActive_desc": "高强度运动及体力工作",
       "continue": "继续"
     },
     "result": {
@@ -39,6 +52,7 @@
       "bmi": "BMI",
       "obesityLevel": "类别",
       "goal": "目标",
+      "activity": "活动量",
       "goalSummary": "{{goal}} · {{value}} {{unit}} / 月",
       "weightToLose": "需要减重",
       "timeframe": "预计时间",
@@ -266,6 +280,8 @@
     "tryAgain": "重试",
     "unknownError": "未知错误",
     "loading": "加载中...",
+    "dailyCalories": "每日卡路里摄入量",
+    "dailyCaloriesMinWarning": "这是最低安全摄入量（{{min}} 千卡）。建议放慢速度。",
     "delete": "删除",
     "deleteConfirm": "删除这份餐食？",
     "deleteConfirmMessage": "此操作无法撤销。",

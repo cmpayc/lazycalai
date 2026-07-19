@@ -19,7 +19,7 @@ import { useThemeContext } from '@theme/theme.context';
 import type { OnboardingStackParamList } from '@navigation/OnboardingStack';
 import { useSettingsStore } from '@store/settingsStore';
 import OnboardingBackButton from '@components/OnboardingBackButton';
-import { calculateObesityResult } from '@utils/calories';
+import { ACTIVITY_LEVELS, calculateObesityResult } from '@utils/calories';
 import { displayPace } from '@utils/units';
 
 type Nav = StackNavigationProp<OnboardingStackParamList, 'Result'>;
@@ -32,6 +32,7 @@ export default function OnboardingResult() {
     heightCm,
     weightGoal,
     goalPaceKgPerMonth,
+    activityFactor,
     dailyCalorieGoal,
     units,
     updateSettings,
@@ -40,6 +41,9 @@ export default function OnboardingResult() {
   const { theme } = useThemeContext();
 
   const initialResult = calculateObesityResult(weightKg, heightCm);
+  const activityLevel =
+    ACTIVITY_LEVELS.find((l) => l.factor === activityFactor) ??
+    ACTIVITY_LEVELS[0];
 
   const [calorieGoal, setCalorieGoal] = useState(String(dailyCalorieGoal));
 
@@ -91,6 +95,12 @@ export default function OnboardingResult() {
                     value: displayPace(goalPaceKgPerMonth, units),
                     unit: t(units === 'imperial' ? 'units.lbs' : 'units.kg'),
                   })}
+            </Text>
+          </View>
+          <View style={styles.row}>
+            <Text style={styles.label}>{t('onboarding.result.activity')}</Text>
+            <Text style={styles.value}>
+              {t(`onboarding.activity.level_${activityLevel.key}`)}
             </Text>
           </View>
         </View>

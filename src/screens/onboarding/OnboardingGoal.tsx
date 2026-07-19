@@ -9,6 +9,7 @@ import { useTheme } from '@theme/theme.hook';
 import type { OnboardingStackParamList } from '@navigation/OnboardingStack';
 import { useSettingsStore } from '@store/settingsStore';
 import OnboardingBackButton from '@components/OnboardingBackButton';
+import DailyCalorieCard from '@components/DailyCalorieCard';
 import { calculateDailyCalorieGoal, GOAL_PACES } from '@utils/calories';
 import { displayPace } from '@utils/units';
 import { WeightGoal } from '@types';
@@ -20,8 +21,15 @@ const GOALS: WeightGoal[] = ['lose', 'maintain', 'gain'];
 export default function OnboardingGoal() {
   const { t } = useTranslation();
   const navigation = useNavigation<Nav>();
-  const { sex, weightKg, heightCm, age, units, updateSettings } =
-    useSettingsStore();
+  const {
+    sex,
+    weightKg,
+    heightCm,
+    age,
+    activityFactor,
+    units,
+    updateSettings,
+  } = useSettingsStore();
   const styles = useTheme(themeStyles);
   const paceUnit = t(units === 'imperial' ? 'units.lbs' : 'units.kg');
 
@@ -39,8 +47,9 @@ export default function OnboardingGoal() {
         sex,
         goal,
         paceKgPerMonth,
+        activityFactor,
       ),
-    [weightKg, heightCm, age, sex, goal, paceKgPerMonth],
+    [weightKg, heightCm, age, sex, goal, paceKgPerMonth, activityFactor],
   );
 
   const handleContinue = () => {
@@ -49,7 +58,7 @@ export default function OnboardingGoal() {
       goalPaceKgPerMonth: goal === 'maintain' ? 0 : paceKgPerMonth,
       dailyCalorieGoal: dailyCalories,
     });
-    navigation.navigate('Result');
+    navigation.navigate('Activity');
   };
 
   return (
@@ -120,12 +129,7 @@ export default function OnboardingGoal() {
         </>
       )}
 
-      <View style={styles.calorieCard}>
-        <Text style={styles.calorieLabel}>
-          {t('onboarding.goal.dailyCalories')}
-        </Text>
-        <Text style={styles.calorieValue}>{dailyCalories}</Text>
-      </View>
+      <DailyCalorieCard calories={dailyCalories} />
 
       <TouchableOpacity style={styles.button} onPress={handleContinue}>
         <Text style={styles.buttonText}>{t('onboarding.goal.continue')}</Text>
@@ -207,22 +211,6 @@ const themeStyles = (theme: ITheme) => {
       color: theme.color.subText,
     },
     paceTextActive: { color: theme.color.white },
-    calorieCard: {
-      backgroundColor: theme.color.tertiaryDarker,
-      borderRadius: 12,
-      padding: 24,
-      alignItems: 'center',
-      marginTop: 32,
-    },
-    calorieLabel: {
-      ...theme.fonts.regular3,
-      color: theme.color.subText,
-      marginBottom: 8,
-    },
-    calorieValue: {
-      ...theme.fonts.bold6,
-      color: theme.color.primary,
-    },
     button: {
       backgroundColor: theme.color.primary,
       paddingVertical: 16,

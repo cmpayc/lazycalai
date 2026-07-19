@@ -31,7 +31,20 @@
       "pace_moderate": "متوسط",
       "pace_aggressive": "مكثّف",
       "perMonth": "{{value}} {{unit}} / شهر",
-      "dailyCalories": "السعرات الحرارية اليومية",
+      "continue": "متابعة"
+    },
+    "activity": {
+      "title": "ما مدى نشاطك؟",
+      "level_sedentary": "قليل الحركة",
+      "level_sedentary_desc": "تمارين قليلة أو معدومة",
+      "level_light": "نشاط خفيف",
+      "level_light_desc": "تمارين خفيفة 1-3 أيام/الأسبوع",
+      "level_moderate": "نشاط معتدل",
+      "level_moderate_desc": "تمارين معتدلة 3-5 أيام/الأسبوع",
+      "level_active": "نشيط جدًا",
+      "level_active_desc": "تمارين شاقة 6-7 أيام/الأسبوع",
+      "level_veryActive": "نشيط للغاية",
+      "level_veryActive_desc": "تمارين شاقة وعمل بدني",
       "continue": "متابعة"
     },
     "result": {
@@ -39,6 +52,7 @@
       "bmi": "مؤشر كتلة الجسم",
       "obesityLevel": "الفئة",
       "goal": "الهدف",
+      "activity": "النشاط",
       "goalSummary": "{{goal}} · {{value}} {{unit}} / شهر",
       "weightToLose": "الوزن المراد خسارته",
       "timeframe": "المدة المقدّرة",
@@ -266,6 +280,8 @@
     "tryAgain": "حاول مرة أخرى",
     "unknownError": "خطأ غير معروف",
     "loading": "جارٍ التحميل...",
+    "dailyCalories": "السعرات الحرارية اليومية",
+    "dailyCaloriesMinWarning": "هذا هو الحد الأدنى الآمن للسعرات ({{min}} سعرة). فكّر في وتيرة أبطأ.",
     "delete": "حذف",
     "deleteConfirm": "حذف هذه الوجبة؟",
     "deleteConfirmMessage": "لا يمكن التراجع عن هذا الإجراء.",

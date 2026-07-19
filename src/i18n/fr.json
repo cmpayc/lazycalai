@@ -31,7 +31,20 @@
       "pace_moderate": "Modéré",
       "pace_aggressive": "Intensif",
       "perMonth": "{{value}} {{unit}} / mois",
-      "dailyCalories": "Apport calorique quotidien",
+      "continue": "Continuer"
+    },
+    "activity": {
+      "title": "Quel est votre niveau d'activité ?",
+      "level_sedentary": "Sédentaire",
+      "level_sedentary_desc": "Peu ou pas d'exercice",
+      "level_light": "Légèrement actif",
+      "level_light_desc": "Exercice léger 1 à 3 jours/semaine",
+      "level_moderate": "Modérément actif",
+      "level_moderate_desc": "Exercice modéré 3 à 5 jours/semaine",
+      "level_active": "Très actif",
+      "level_active_desc": "Exercice intense 6 à 7 jours/semaine",
+      "level_veryActive": "Extrêmement actif",
+      "level_veryActive_desc": "Exercice intense et travail physique",
       "continue": "Continuer"
     },
     "result": {
@@ -39,6 +52,7 @@
       "bmi": "IMC",
       "obesityLevel": "Catégorie",
       "goal": "Objectif",
+      "activity": "Activité",
       "goalSummary": "{{goal}} · {{value}} {{unit}} / mois",
       "weightToLose": "Poids à perdre",
       "timeframe": "Délai estimé",
@@ -266,6 +280,8 @@
     "tryAgain": "Réessayer",
     "unknownError": "Erreur inconnue",
     "loading": "Chargement...",
+    "dailyCalories": "Apport calorique quotidien",
+    "dailyCaloriesMinWarning": "C’est l’apport minimal sûr ({{min}} kcal). Envisagez un rythme plus doux.",
     "delete": "Supprimer",
     "deleteConfirm": "Supprimer ce repas ?",
     "deleteConfirmMessage": "Cette action est irréversible.",

@@ -31,7 +31,20 @@
       "pace_moderate": "Moderat",
       "pace_aggressive": "Intensiv",
       "perMonth": "{{value}} {{unit}} / Monat",
-      "dailyCalories": "Tägliche Kalorienzufuhr",
+      "continue": "Weiter"
+    },
+    "activity": {
+      "title": "Wie aktiv sind Sie?",
+      "level_sedentary": "Sitzend",
+      "level_sedentary_desc": "Wenig oder keine Bewegung",
+      "level_light": "Leicht aktiv",
+      "level_light_desc": "Leichte Bewegung 1-3 Tage/Woche",
+      "level_moderate": "Mäßig aktiv",
+      "level_moderate_desc": "Mäßige Bewegung 3-5 Tage/Woche",
+      "level_active": "Sehr aktiv",
+      "level_active_desc": "Intensive Bewegung 6-7 Tage/Woche",
+      "level_veryActive": "Extrem aktiv",
+      "level_veryActive_desc": "Intensive Bewegung und körperliche Arbeit",
       "continue": "Weiter"
     },
     "result": {
@@ -39,6 +52,7 @@
       "bmi": "BMI",
       "obesityLevel": "Kategorie",
       "goal": "Ziel",
+      "activity": "Aktivität",
       "goalSummary": "{{goal}} · {{value}} {{unit}} / Monat",
       "weightToLose": "Abzunehmendes Gewicht",
       "timeframe": "Geschätzter Zeitraum",
@@ -266,6 +280,8 @@
     "tryAgain": "Erneut versuchen",
     "unknownError": "Unbekannter Fehler",
     "loading": "Wird geladen...",
+    "dailyCalories": "Tägliche Kalorienzufuhr",
+    "dailyCaloriesMinWarning": "Dies ist die minimale sichere Zufuhr ({{min}} kcal). Wählen Sie ein sanfteres Tempo.",
     "delete": "Löschen",
     "deleteConfirm": "Diese Mahlzeit löschen?",
     "deleteConfirmMessage": "Diese Aktion kann nicht rückgängig gemacht werden.",
