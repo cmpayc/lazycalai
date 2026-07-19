@@ -93,9 +93,9 @@ function isFileCopyable(path: string): boolean {
 
 function resolveFilePath(path: string): string {
   if (path.startsWith('file://')) {
-    return path.slice(7); // strip file:// prefix
+    return path.slice(7).replace(/%20/g, ' '); // strip file:// prefix
   }
-  return path;
+  return path.replace(/%20/g, ' ');
 }
 
 // ---------------------------------------------------------------------------
