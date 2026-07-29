@@ -2,18 +2,21 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
+import { Sex } from '@types';
 import { ITheme } from '@theme/theme.interface';
 import { useTheme } from '@theme/theme.hook';
-import { MIN_DAILY_CALORIES } from '@utils/calories';
+import { getMinDailyCalories } from '@utils/calories';
 
 interface Props {
   calories: number;
+  sex: Sex;
 }
 
-export default function DailyCalorieCard({ calories }: Props) {
+export default function DailyCalorieCard({ calories, sex }: Props) {
   const { t } = useTranslation();
   const styles = useTheme(themeStyles);
-  const atMinimum = calories <= MIN_DAILY_CALORIES;
+  const min = getMinDailyCalories(sex);
+  const atMinimum = calories <= min;
 
   return (
     <View style={styles.card}>
@@ -21,7 +24,7 @@ export default function DailyCalorieCard({ calories }: Props) {
       <Text style={styles.value}>{calories}</Text>
       {atMinimum && (
         <Text style={styles.warning}>
-          {t('common.dailyCaloriesMinWarning', { min: MIN_DAILY_CALORIES })}
+          {t('common.dailyCaloriesMinWarning', { min })}
         </Text>
       )}
     </View>

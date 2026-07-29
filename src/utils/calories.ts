@@ -4,8 +4,16 @@ import { ActivityLevel, ObesityResult, Sex, WeightGoal } from '@types';
 const CALORIES_PER_KG = 7700;
 /** Average days per month, used to spread a monthly pace across daily intake. */
 const DAYS_PER_MONTH = 30.44;
-/** Safety floor: never recommend eating below this. */
-export const MIN_DAILY_CALORIES = 1200;
+/** Safety floor: never recommend eating below this, per sex (kcal/day). */
+export const MIN_DAILY_CALORIES: Record<Sex, number> = {
+  female: 1200,
+  male: 1500,
+};
+
+/** Minimum safe daily intake for the given sex. */
+export function getMinDailyCalories(sex: Sex): number {
+  return MIN_DAILY_CALORIES[sex];
+}
 
 export interface GoalPace {
   key: 'casually' | 'mild' | 'moderate' | 'aggressive';
@@ -99,7 +107,7 @@ export function calculateDailyCalorieGoal(
   const dailyDelta = (kgPerMonth * CALORIES_PER_KG) / DAYS_PER_MONTH;
   const target =
     goal === 'lose' ? maintenance - dailyDelta : maintenance + dailyDelta;
-  return Math.max(MIN_DAILY_CALORIES, Math.round(target));
+  return Math.max(getMinDailyCalories(sex), Math.round(target));
 }
 
 export function calculateObesityResult(
