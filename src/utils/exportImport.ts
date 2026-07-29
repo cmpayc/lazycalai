@@ -4,6 +4,7 @@ import Share from 'react-native-share';
 import { zip, unzip } from 'react-native-zip-archive';
 
 import { getAllMeals, importMeal, ImportMealInput } from '@db/operations';
+import { mealsDir, resolveMealPhotoPath } from '@utils/mealPhoto';
 import i18n from '@i18n';
 
 const EXPORT_VERSION = 2;
@@ -83,12 +84,6 @@ function photosDir(): string {
 function photoExt(filePath: string): string {
   const m = filePath.match(/\.(jpe?g|png|heic|heif|webp)$/i);
   return m ? `.${m[1].toLowerCase()}` : '.jpg';
-}
-
-function isFileCopyable(path: string): boolean {
-  // Only absolute file paths or file:// URIs are copyable via RNFSTurbo.
-  // content:// URIs and other schemes are not accessible through the file API.
-  return path.startsWith('/') || path.startsWith('file://');
 }
 
 function resolveFilePath(path: string): string {
@@ -283,13 +278,12 @@ export async function exportMeals(): Promise<{
     RNFSTurbo.writeFile(`${tmp}/${CSV_FILE}`, csv, 'utf8');
 
     // Copy photos: <meal_id>.<ext>
-    // Only file:// or absolute paths are copyable — content:// URIs are skipped.
     meals.forEach((meal) => {
-      if (!meal.photoPath || !isFileCopyable(meal.photoPath)) {
+      if (!meal.photoPath) {
         return;
       }
       try {
-        const src = resolveFilePath(meal.photoPath);
+        const src = resolveMealPhotoPath(meal.photoPath);
         if (!RNFSTurbo.exists(src)) {
           return;
         }
@@ -316,7 +310,7 @@ export async function exportMeals(): Promise<{
       message: exportedMessage,
       url: `data:application/zip;base64,${RNFSTurbo.readFile(Platform.OS === 'android' ? `file://${zipPath}` : zipPath, 'base64')}`,
       type: 'application/zip',
-      filename: EXPORT_ZIP,
+      filename: Platform.OS === 'ios' ? `${EXPORT_ZIP}.zip` : EXPORT_ZIP,
       useInternalStorage: true,
       failOnCancel: false,
     });
@@ -397,8 +391,9 @@ export async function importMeals(sourcePath?: string): Promise<{
     // Locate the photos directory inside the extracted tree
     const photosSrc = findDir(tmp, PHOTOS_DIR);
 
-    // Ensure destination photos directory exists
-    const photosDest = `${RNFSTurbo.DocumentDirectoryPath}/${PHOTOS_DIR}`;
+    // Ensure destination photos directory exists. Imported photos go into the
+    // same meals dir new photos use, so resolveMealPhotoPath finds them.
+    const photosDest = mealsDir();
     ensureDir(photosDest);
 
     let imported = 0;
@@ -413,7 +408,8 @@ export async function importMeals(sourcePath?: string): Promise<{
         try {
           if (RNFSTurbo.exists(srcPhoto)) {
             RNFSTurbo.copyFile(srcPhoto, destPhoto);
-            meal.photoPath = destPhoto;
+            // meal.photoPath already holds the bare file name — keep it as the
+            // stored value; the absolute path is rebuilt at read time.
           } else {
             meal.photoPath = '';
           }

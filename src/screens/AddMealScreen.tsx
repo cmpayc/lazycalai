@@ -15,6 +15,7 @@ import RNFSTurbo from 'react-native-fs-turbo';
 
 import type { MainStackParamList } from '@navigation/MainStack';
 import { compressImage } from '@utils/compressImage';
+import { mealsDir } from '@utils/mealPhoto';
 import CameraView from '@components/CameraView';
 import NutritionForm, { NutritionFormData } from '@components/NutritionForm';
 import { useAnalyzeFood } from '@hooks/useAnalyzeFood';
@@ -99,17 +100,20 @@ export default function AddMealScreen() {
 
   const handleSave = useCallback(
     async (data: NutritionFormData) => {
-      let newPhotoPath = '';
+      // Store only the file name; the absolute path is rebuilt at read time so
+      // it survives reinstall / restore-from-backup (see @utils/mealPhoto).
+      let photoFileName = '';
       if (photoPath) {
-        const fileName = photoPath.split('/').pop();
-        newPhotoPath = `${RNFSTurbo.DocumentDirectoryPath}/meals/${fileName}`;
-        if (!RNFSTurbo.exists(`${RNFSTurbo.DocumentDirectoryPath}/meals`)) {
-          RNFSTurbo.mkdir(`${RNFSTurbo.DocumentDirectoryPath}/meals`);
+        const fileName = photoPath.split('/').pop() ?? '';
+        const dir = mealsDir();
+        if (!RNFSTurbo.exists(dir)) {
+          RNFSTurbo.mkdir(dir);
         }
-        RNFSTurbo.moveFile(photoPath, newPhotoPath);
+        RNFSTurbo.moveFile(photoPath, `${dir}/${fileName}`);
+        photoFileName = fileName;
       }
       await createMeal(
-        newPhotoPath,
+        photoFileName,
         [{ name: data.name, nutrition: data.nutrition }],
         dailyCalorieGoal,
       );
