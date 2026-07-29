@@ -19,6 +19,7 @@ import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import type { MainStackParamList } from '@navigation/MainStack';
 import { MealData } from '@types';
 import { getMealById } from '@db/operations';
+import { mealPhotoUri } from '@utils/mealPhoto';
 import { useDB } from '@hooks/useDB';
 import { useToastStore } from '@store/toastStore';
 import { useSettingsStore } from '@store/settingsStore';
@@ -209,7 +210,7 @@ export default function EditMealScreen() {
     <View style={styles.container}>
       {meal.photoPath ? (
         <Image
-          source={{ uri: `file://${meal.photoPath}` }}
+          source={{ uri: mealPhotoUri(meal.photoPath) }}
           style={styles.photo}
         />
       ) : null}

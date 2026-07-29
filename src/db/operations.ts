@@ -2,9 +2,11 @@
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable no-param-reassign */
 import { Q } from '@nozbe/watermelondb';
+import RNFSTurbo from 'react-native-fs-turbo';
 
 import { NutritionInfo, MealData } from '@types';
 import { today } from '@utils/date';
+import { resolveMealPhotoPath } from '@utils/mealPhoto';
 import { getDatabase } from './index';
 import Meal from './models/Meal';
 import MealItem from './models/MealItem';
@@ -232,6 +234,7 @@ export async function updateMeal(
 
 export async function deleteMeal(id: string): Promise<void> {
   const db = getDatabase();
+  let photoPath = '';
   await db.write(async () => {
     const items = await db
       .get<MealItem>('meal_items')
@@ -241,8 +244,15 @@ export async function deleteMeal(id: string): Promise<void> {
       await item.destroyPermanently();
     }
     const meal = await db.get<Meal>('meals').find(id);
+    photoPath = meal.photoPath;
     await meal.destroyPermanently();
   });
+
+  // Remove the orphaned photo file once its meal row is gone.
+  const file = resolveMealPhotoPath(photoPath);
+  if (file && RNFSTurbo.exists(file)) {
+    RNFSTurbo.unlink(file, false);
+  }
 }
 
 export async function getTotalCaloriesForDate(date: string): Promise<number> {

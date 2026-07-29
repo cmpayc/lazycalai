@@ -6,6 +6,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   Alert,
+  Modal,
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
@@ -14,6 +15,7 @@ import RNFSTurbo from 'react-native-fs-turbo';
 import uuid from 'react-native-uuid';
 
 import { MealData, MealItemData } from '@types';
+import { mealPhotoUri, resolveMealPhotoPath } from '@utils/mealPhoto';
 import type { MainStackParamList } from '@navigation/MainStack';
 import { ITheme } from '@theme/theme.interface';
 import { useTheme } from '@theme/theme.hook';
@@ -29,17 +31,19 @@ export default function MealCard({ meal, onDelete }: Props) {
   const { t } = useTranslation();
   const navigation = useNavigation<Nav>();
   const [expanded, setExpanded] = useState(false);
+  const [imageViewerVisible, setImageViewerVisible] = useState(false);
   const styles = useTheme(themeStyles);
 
   const handleRepeat = (item: MealItemData) => {
     let photoPath: string | undefined;
-    if (meal.photoPath && RNFSTurbo.exists(meal.photoPath)) {
+    const src = resolveMealPhotoPath(meal.photoPath);
+    if (src && RNFSTurbo.exists(src)) {
       const dir = `${RNFSTurbo.CachesDirectoryPath}/meals`;
       if (!RNFSTurbo.exists(dir)) {
         RNFSTurbo.mkdir(dir);
       }
       photoPath = `${dir}/${uuid.v4()}.jpg`;
-      RNFSTurbo.copyFile(meal.photoPath, photoPath);
+      RNFSTurbo.copyFile(src, photoPath);
     }
     navigation.navigate('AddMeal', {
       photoPath,
@@ -76,10 +80,15 @@ export default function MealCard({ meal, onDelete }: Props) {
     >
       <View style={styles.header}>
         {meal.photoPath ? (
-          <Image
-            source={{ uri: `file://${meal.photoPath}` }}
-            style={styles.photo}
-          />
+          <TouchableOpacity
+            onPress={() => setImageViewerVisible(true)}
+            activeOpacity={0.8}
+          >
+            <Image
+              source={{ uri: mealPhotoUri(meal.photoPath) }}
+              style={styles.photo}
+            />
+          </TouchableOpacity>
         ) : (
           <View style={styles.photoPlaceholder}>
             <Text style={styles.placeholderIcon}>🍽</Text>
@@ -130,6 +139,36 @@ export default function MealCard({ meal, onDelete }: Props) {
             </View>
           ))}
         </View>
+      )}
+
+      {meal.photoPath && (
+        <Modal
+          visible={imageViewerVisible}
+          transparent
+          animationType="fade"
+          onRequestClose={() => setImageViewerVisible(false)}
+        >
+          <TouchableOpacity
+            style={styles.viewerBackdrop}
+            activeOpacity={1}
+            onPress={() => setImageViewerVisible(false)}
+          >
+            <Image
+              source={{ uri: mealPhotoUri(meal.photoPath) }}
+              style={styles.viewerImage}
+              resizeMode="contain"
+            />
+            <TouchableOpacity
+              style={styles.viewerClose}
+              onPress={() => setImageViewerVisible(false)}
+              hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
+              accessibilityRole="button"
+              accessibilityLabel={t('common.close')}
+            >
+              <Text style={styles.viewerCloseText}>✕</Text>
+            </TouchableOpacity>
+          </TouchableOpacity>
+        </Modal>
       )}
     </TouchableOpacity>
   );
@@ -229,6 +268,32 @@ const themeStyles = (theme: ITheme) => {
     repeatText: {
       fontSize: 13,
       color: theme.color.primary,
+    },
+    viewerBackdrop: {
+      flex: 1,
+      backgroundColor: theme.color.black,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    viewerImage: {
+      width: '100%',
+      height: '100%',
+    },
+    viewerClose: {
+      position: 'absolute',
+      top: 48,
+      right: 20,
+      width: 36,
+      height: 36,
+      borderRadius: 18,
+      backgroundColor: 'rgba(0, 0, 0, 0.4)',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    viewerCloseText: {
+      fontSize: 20,
+      lineHeight: 24,
+      color: theme.color.white,
     },
   });
   return styles;
