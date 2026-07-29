@@ -102,7 +102,7 @@ export default function OnboardingActivity() {
           })}
         </View>
 
-        <DailyCalorieCard calories={dailyCalories} />
+        <DailyCalorieCard calories={dailyCalories} sex={sex} />
 
         <TouchableOpacity style={styles.button} onPress={handleContinue}>
           <Text style={styles.buttonText}>

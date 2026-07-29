@@ -129,7 +129,7 @@ export default function OnboardingGoal() {
         </>
       )}
 
-      <DailyCalorieCard calories={dailyCalories} />
+      <DailyCalorieCard calories={dailyCalories} sex={sex} />
 
       <TouchableOpacity style={styles.button} onPress={handleContinue}>
         <Text style={styles.buttonText}>{t('onboarding.goal.continue')}</Text>
