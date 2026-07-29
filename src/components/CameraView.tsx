@@ -37,32 +37,22 @@ export default function CameraView({
     }
   }, [hasPermission, requestPermission]);
 
-  if (!hasPermission) {
+  if (!hasPermission || !device) {
     return (
       <View style={styles.container}>
-        <Text style={styles.message}>{t('camera.permissionRequired')}</Text>
-        <TouchableOpacity
-          style={styles.permissionBtn}
-          onPress={requestPermission}
-        >
-          <Text style={styles.permissionBtnText}>
-            {t('camera.grantPermission')}
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.backBtn} onPress={onCancel}>
-          <Text style={styles.backBtnText}>{t('common.back')}</Text>
-        </TouchableOpacity>
-      </View>
-    );
-  }
-
-  if (!device) {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.message}>{t('camera.noDevice')}</Text>
-        <TouchableOpacity style={styles.backBtn} onPress={onCancel}>
-          <Text style={styles.backBtnText}>{t('common.back')}</Text>
-        </TouchableOpacity>
+        <Text style={styles.message}>
+          {t(!hasPermission ? 'camera.permissionRequired' : 'camera.noDevice')}
+        </Text>
+        {!hasPermission && (
+          <TouchableOpacity
+            style={styles.permissionBtn}
+            onPress={requestPermission}
+          >
+            <Text style={styles.permissionBtnText}>
+              {t('camera.grantPermission')}
+            </Text>
+          </TouchableOpacity>
+        )}
         <View style={styles.controls}>
           <TouchableOpacity style={styles.sideBtn} onPress={onGalleryPress}>
             <Text style={styles.sideBtnText}>🖼</Text>
