@@ -4,7 +4,7 @@
       "title": "LazyCalAI",
       "subtitle": "Track your calories with AI-powered food recognition. Just take a photo of your meal and let AI do the rest.",
       "demoModeTitle": "About the demo mode",
-      "apiKeyNotice": "To recognize dishes, the app will require an API key for an AI provider (free models from OpenRouter can be used without a credit card). Only 5 recognitions are available in demo mode.",
+      "apiKeyNotice": "To recognize dishes, the app will require an API key for an AI provider. Several of them are free: some OpenRouter models need no credit card, Gemini has a free tier, and OpenAI gives a limited number of free tokens if you share your data. Only 5 recognitions are available in demo mode.",
       "getStarted": "Get Started",
       "privacyPolicy": "Privacy Policy",
       "termsOfService": "Terms of Service"
@@ -83,9 +83,9 @@
         "title": "Get your {{provider}} API key",
         "intro": "Follow these steps to create an API key, then copy it back into the app.",
         "openLink": "Open {{provider}} console",
-        "openai": "1. Go to platform.openai.com and sign in (or create an account).\n2. Open the “API keys” page from the left sidebar.\n3. Click “Create new secret key”, name it, and confirm.\n4. Copy the key (it starts with sk-) right away — you won't be able to see it again.\n5. Using the API requires billing credit on your OpenAI account.",
+        "openai": "1. Go to platform.openai.com and sign in (or create an account).\n2. Open the “API keys” page from the left sidebar.\n3. Click “Create new secret key”, name it, and confirm.\n4. Copy the key (it starts with sk-) right away — you won't be able to see it again.\n5. Using the API requires billing credit on your OpenAI account.\n**6. You can also get a limited amount of free tokens per day by sharing your data with OpenAI. Enable it in Profile Settings → Data Controls → Sharing → “Share inputs and outputs with OpenAI”.",
         "claude": "1. Go to console.anthropic.com and sign in (or create an account).\n2. Open “API Keys” in your account settings.\n3. Click “Create Key”, name it, and confirm.\n4. Copy the key and paste it back into the app.\n5. You'll need billing credit on your Anthropic account to make requests.",
-        "gemini": "1. Go to aistudio.google.com and sign in with your Google account.\n2. Click “Get API key” in the top-left menu.\n3. Click “Create API key” and pick a Google Cloud project.\n4. Copy the generated key and paste it back into the app.\n5. The free tier is generous, so you can usually start without billing.",
+        "gemini": "1. Go to aistudio.google.com and sign in with your Google account.\n2. Click “Get API key” in the top-left menu.\n3. Click “Create API key” and pick a Google Cloud project.\n4. Copy the generated key and paste it back into the app.\n**5. The free tier is generous, so you can usually start without billing.",
         "grok": "1. Go to console.x.ai and sign in with your X account.\n2. Open the “API Keys” section.\n3. Click “Create API Key”, name it, and confirm.\n4. Copy the key and paste it back into the app.\n5. xAI requires prepaid credits before the API will work.",
         "qwen": "1. Go to bailian.console.aliyun.com (Alibaba Cloud Model Studio) and sign in.\n2. Open “API-KEY” management from the account menu.\n3. Click “Create API Key” and confirm.\n4. Copy the key and paste it back into the app.\n5. Make sure the Qwen (Tongyi) models are enabled for your account.",
         "openrouter": "1. Go to openrouter.ai and sign in (or create an account).\n2. Open “Keys” from your account menu.\n3. Click “Create Key”, name it, and confirm.\n4. Copy the key and paste it back into the app.\n5. Add credits to your OpenRouter account to use paid models.\n**5.1. You don't need a credit card to use free models - you can skip this step."
@@ -123,6 +123,10 @@
         "scale": {
           "title": "Use a kitchen scale",
           "body": "To help the AI estimate grams, place the plate on a scale and photograph it with the reading visible (remember to tare the plate's weight)."
+        },
+        "freeTiers": {
+          "title": "Some providers are free",
+          "body": "Several AI providers give free access, at least in limited amounts (Gemini, OpenAI, OpenRouter). Tap “How to get an API key” in Settings to see what each one offers."
         },
         "models": {
           "title": "Pick a capable model",

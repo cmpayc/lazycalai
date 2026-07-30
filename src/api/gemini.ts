@@ -14,7 +14,7 @@ export class GeminiProvider implements AIProvider {
 
   constructor(config: ProviderConfig) {
     this.apiKey = config.apiKey;
-    this.model = config.model ?? 'gemini-3.1-flash-image-preview';
+    this.model = config.model ?? 'gemini-3.5-flash';
     this.language = config.language;
   }
 

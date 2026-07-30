@@ -4,7 +4,7 @@
       "title": "LazyCalAI",
       "subtitle": "使用AI食物识别追踪您的卡路里。只需拍摄食物照片，让AI完成剩下的工作。",
       "demoModeTitle": "关于演示模式",
-      "apiKeyNotice": "为了识别菜品，应用需要AI提供商的API密钥（OpenRouter的免费模型无需信用卡即可使用）。演示模式下仅可识别5次。",
+      "apiKeyNotice": "为了识别菜品，应用需要AI提供商的API密钥。其中有几家可以免费使用：OpenRouter 的部分模型无需信用卡，Gemini 有免费额度，OpenAI 在你同意共享数据后会提供少量免费额度。演示模式下仅可识别5次。",
       "getStarted": "开始使用",
       "privacyPolicy": "隐私政策",
       "termsOfService": "服务条款"
@@ -83,9 +83,9 @@
         "title": "获取你的 {{provider}} API 密钥",
         "intro": "按照以下步骤创建 API 密钥，然后复制回应用中。",
         "openLink": "打开 {{provider}} 控制台",
-        "openai": "1. 打开 platform.openai.com 并登录（或注册账号）。\n2. 在左侧菜单打开“API keys”页面。\n3. 点击“Create new secret key”，命名并确认。\n4. 立即复制密钥（以 sk- 开头）——之后将无法再次查看。\n5. 使用 API 需要 OpenAI 账户中有余额。",
+        "openai": "1. 打开 platform.openai.com 并登录（或注册账号）。\n2. 在左侧菜单打开“API keys”页面。\n3. 点击“Create new secret key”，命名并确认。\n4. 立即复制密钥（以 sk- 开头）——之后将无法再次查看。\n5. 使用 API 需要 OpenAI 账户中有余额。\n**6. 如果同意与 OpenAI 共享数据，每天还可以获得少量免费额度。在 Profile Settings → Data Controls → Sharing → “Share inputs and outputs with OpenAI”中开启。",
         "claude": "1. 打开 console.anthropic.com 并登录（或注册账号）。\n2. 在账户设置中打开“API Keys”。\n3. 点击“Create Key”，命名并确认。\n4. 复制密钥并粘贴回应用中。\n5. 发送请求需要 Anthropic 账户中有余额。",
-        "gemini": "1. 打开 aistudio.google.com 并使用 Google 账号登录。\n2. 点击左上角菜单中的“Get API key”。\n3. 点击“Create API key”并选择一个 Google Cloud 项目。\n4. 复制生成的密钥并粘贴回应用中。\n5. 免费额度较为充足，通常无需付费即可开始。",
+        "gemini": "1. 打开 aistudio.google.com 并使用 Google 账号登录。\n2. 点击左上角菜单中的“Get API key”。\n3. 点击“Create API key”并选择一个 Google Cloud 项目。\n4. 复制生成的密钥并粘贴回应用中。\n**5. 免费额度较为充足，通常无需付费即可开始。",
         "grok": "1. 打开 console.x.ai 并使用 X 账号登录。\n2. 打开“API Keys”部分。\n3. 点击“Create API Key”，命名并确认。\n4. 复制密钥并粘贴回应用中。\n5. xAI 需要预付余额后 API 才能使用。",
         "qwen": "1. 打开 bailian.console.aliyun.com（阿里云百炼）并登录。\n2. 在账户菜单中打开“API-KEY”管理。\n3. 点击“创建 API Key”并确认。\n4. 复制密钥并粘贴回应用中。\n5. 请确认账户已开通通义千问（Qwen）模型。",
         "openrouter": "1. 打开 openrouter.ai 并登录（或注册账号）。\n2. 在账户菜单中打开“Keys”。\n3. 点击“Create Key”，命名并确认。\n4. 复制密钥并粘贴回应用中。\n5. 为 OpenRouter 账户充值以使用付费模型。\n**5.1. 使用免费模型无需信用卡，可跳过此步骤。"
@@ -123,6 +123,10 @@
         "scale": {
           "title": "使用厨房秤",
           "body": "为帮助 AI 判断克数，可以把盘子放在秤上，连同读数一起拍照（记得先给盘子去皮归零）。"
+        },
+        "freeTiers": {
+          "title": "有些提供商可以免费使用",
+          "body": "部分 AI 提供商提供免费额度，至少有限量免费（如 Gemini、OpenAI、OpenRouter）。在设置中点击“如何获取 API 密钥?”即可查看各家的具体情况。"
         },
         "models": {
           "title": "选择能力强的模型",

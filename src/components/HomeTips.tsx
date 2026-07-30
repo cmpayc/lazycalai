@@ -22,6 +22,7 @@ const TIP_KEYS = [
   'averaging',
   'packaging',
   'scale',
+  'freeTiers',
   'models',
 ] as const;
 
@@ -31,6 +32,7 @@ const TIP_EMOJI: Record<(typeof TIP_KEYS)[number], string> = {
   averaging: '📊',
   packaging: '📦',
   scale: '⚖️',
+  freeTiers: '🎁',
   models: '🤖',
 };
 

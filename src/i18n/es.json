@@ -4,7 +4,7 @@
       "title": "LazyCalAI",
       "subtitle": "Registra tus calorías con reconocimiento de alimentos por IA. Toma una foto de tu comida y deja que la IA haga el resto.",
       "demoModeTitle": "Acerca del modo demo",
-      "apiKeyNotice": "Para reconocer los platos, la app necesitará una clave de API de un proveedor de IA (los modelos gratuitos de OpenRouter se pueden usar sin tarjeta de crédito). En el modo demo solo hay 5 reconocimientos disponibles.",
+      "apiKeyNotice": "Para reconocer los platos, la app necesitará una clave de API de un proveedor de IA. Varios son gratuitos: algunos modelos de OpenRouter no requieren tarjeta de crédito, Gemini tiene un plan gratuito y OpenAI da una cantidad limitada de tokens gratis si compartes tus datos. En el modo demo solo hay 5 reconocimientos disponibles.",
       "getStarted": "Comenzar",
       "privacyPolicy": "Política de Privacidad",
       "termsOfService": "Términos de Servicio"
@@ -83,9 +83,9 @@
         "title": "Obtén tu clave API de {{provider}}",
         "intro": "Sigue estos pasos para crear una clave API y luego cópiala en la aplicación.",
         "openLink": "Abrir la consola de {{provider}}",
-        "openai": "1. Ve a platform.openai.com e inicia sesión (o crea una cuenta).\n2. Abre la página «API keys» en el menú de la izquierda.\n3. Haz clic en «Create new secret key», ponle un nombre y confirma.\n4. Copia la clave (empieza por sk-) de inmediato: no podrás volver a verla.\n5. Usar la API requiere crédito de facturación en tu cuenta de OpenAI.",
+        "openai": "1. Ve a platform.openai.com e inicia sesión (o crea una cuenta).\n2. Abre la página «API keys» en el menú de la izquierda.\n3. Haz clic en «Create new secret key», ponle un nombre y confirma.\n4. Copia la clave (empieza por sk-) de inmediato: no podrás volver a verla.\n5. Usar la API requiere crédito de facturación en tu cuenta de OpenAI.\n**6. También puedes obtener una cantidad limitada de tokens gratis al día si compartes tus datos con OpenAI. Actívalo en Profile Settings → Data Controls → Sharing → «Share inputs and outputs with OpenAI».",
         "claude": "1. Ve a console.anthropic.com e inicia sesión (o crea una cuenta).\n2. Abre «API Keys» en la configuración de la cuenta.\n3. Haz clic en «Create Key», ponle un nombre y confirma.\n4. Copia la clave y pégala en la aplicación.\n5. Necesitas crédito de facturación en tu cuenta de Anthropic para hacer solicitudes.",
-        "gemini": "1. Ve a aistudio.google.com e inicia sesión con tu cuenta de Google.\n2. Haz clic en «Get API key» en el menú de arriba a la izquierda.\n3. Haz clic en «Create API key» y elige un proyecto de Google Cloud.\n4. Copia la clave y pégala en la aplicación.\n5. El nivel gratuito es generoso, normalmente puedes empezar sin facturación.",
+        "gemini": "1. Ve a aistudio.google.com e inicia sesión con tu cuenta de Google.\n2. Haz clic en «Get API key» en el menú de arriba a la izquierda.\n3. Haz clic en «Create API key» y elige un proyecto de Google Cloud.\n4. Copia la clave y pégala en la aplicación.\n**5. El nivel gratuito es generoso, normalmente puedes empezar sin facturación.",
         "grok": "1. Ve a console.x.ai e inicia sesión con tu cuenta de X.\n2. Abre la sección «API Keys».\n3. Haz clic en «Create API Key», ponle un nombre y confirma.\n4. Copia la clave y pégala en la aplicación.\n5. xAI requiere créditos prepagados antes de que la API funcione.",
         "qwen": "1. Ve a bailian.console.aliyun.com (Alibaba Cloud Model Studio) e inicia sesión.\n2. Abre la gestión de «API-KEY» en el menú de la cuenta.\n3. Haz clic en «Create API Key» y confirma.\n4. Copia la clave y pégala en la aplicación.\n5. Asegúrate de que los modelos Qwen (Tongyi) estén habilitados en tu cuenta.",
         "openrouter": "1. Ve a openrouter.ai e inicia sesión (o crea una cuenta).\n2. Abre «Keys» en el menú de la cuenta.\n3. Haz clic en «Create Key», ponle un nombre y confirma.\n4. Copia la clave y pégala en la aplicación.\n5. Añade créditos a tu cuenta de OpenRouter para usar modelos de pago.\n**5.1. No necesitas tarjeta de crédito para usar modelos gratuitos: puedes omitir este paso."
@@ -123,6 +123,10 @@
         "scale": {
           "title": "Usa una báscula de cocina",
           "body": "Para ayudar a la IA a estimar los gramos, coloca el plato en una báscula y fotografíalo con la lectura visible (recuerda tarar el peso del plato)."
+        },
+        "freeTiers": {
+          "title": "Algunos proveedores son gratis",
+          "body": "Varios proveedores de IA ofrecen acceso gratuito, al menos en cantidades limitadas (Gemini, OpenAI, OpenRouter). Pulsa «¿Cómo obtener una clave API?» en Ajustes para ver qué ofrece cada uno."
         },
         "models": {
           "title": "Elige un modelo capaz",

@@ -4,7 +4,7 @@
       "title": "LazyCalAI",
       "subtitle": "AIによる食事認識でカロリーを記録。食事の写真を撮るだけで、あとはAIにお任せ。",
       "demoModeTitle": "デモモードについて",
-      "apiKeyNotice": "料理を認識するには、AIプロバイダーのAPIキーが必要です（OpenRouterの無料モデルはクレジットカードなしで利用できます）。デモモードでは5回までしか認識できません。",
+      "apiKeyNotice": "料理を認識するには、AIプロバイダーのAPIキーが必要です。無料で使えるプロバイダーもあります。OpenRouterの一部のモデルはクレジットカードなしで利用でき、Geminiには無料枠があり、OpenAIはデータを共有すると限られた量のトークンを無料で提供します。デモモードでは5回までしか認識できません。",
       "getStarted": "はじめる",
       "privacyPolicy": "プライバシーポリシー",
       "termsOfService": "利用規約"
@@ -83,9 +83,9 @@
         "title": "{{provider}} の API キーを取得",
         "intro": "次の手順で API キーを作成し、アプリに貼り付けてください。",
         "openLink": "{{provider}} コンソールを開く",
-        "openai": "1. platform.openai.com にアクセスしてサインイン（またはアカウント作成）します。\n2. 左メニューから「API keys」ページを開きます。\n3. 「Create new secret key」をクリックし、名前を付けて確定します。\n4. キー（sk- で始まる）をすぐにコピーします。後で再表示はできません。\n5. API の利用には OpenAI アカウントの支払い残高が必要です。",
+        "openai": "1. platform.openai.com にアクセスしてサインイン（またはアカウント作成）します。\n2. 左メニューから「API keys」ページを開きます。\n3. 「Create new secret key」をクリックし、名前を付けて確定します。\n4. キー（sk- で始まる）をすぐにコピーします。後で再表示はできません。\n5. API の利用には OpenAI アカウントの支払い残高が必要です。\n**6. データを OpenAI と共有すると、1 日あたり限られた量のトークンを無料で利用できます。Profile Settings → Data Controls → Sharing → 「Share inputs and outputs with OpenAI」で有効にしてください。",
         "claude": "1. console.anthropic.com にアクセスしてサインイン（またはアカウント作成）します。\n2. アカウント設定の「API Keys」を開きます。\n3. 「Create Key」をクリックし、名前を付けて確定します。\n4. キーをコピーしてアプリに貼り付けます。\n5. リクエストには Anthropic アカウントの支払い残高が必要です。",
-        "gemini": "1. aistudio.google.com にアクセスし、Google アカウントでサインインします。\n2. 左上のメニューから「Get API key」をクリックします。\n3. 「Create API key」をクリックし、Google Cloud プロジェクトを選びます。\n4. 生成されたキーをコピーしてアプリに貼り付けます。\n5. 無料枠が大きいため、通常は支払い設定なしで始められます。",
+        "gemini": "1. aistudio.google.com にアクセスし、Google アカウントでサインインします。\n2. 左上のメニューから「Get API key」をクリックします。\n3. 「Create API key」をクリックし、Google Cloud プロジェクトを選びます。\n4. 生成されたキーをコピーしてアプリに貼り付けます。\n**5. 無料枠が大きいため、通常は支払い設定なしで始められます。",
         "grok": "1. console.x.ai にアクセスし、X アカウントでサインインします。\n2. 「API Keys」セクションを開きます。\n3. 「Create API Key」をクリックし、名前を付けて確定します。\n4. キーをコピーしてアプリに貼り付けます。\n5. xAI では API 利用前にプリペイド残高が必要です。",
         "qwen": "1. bailian.console.aliyun.com（Alibaba Cloud Model Studio）にアクセスしてサインインします。\n2. アカウントメニューから「API-KEY」管理を開きます。\n3. 「Create API Key」をクリックして確定します。\n4. キーをコピーしてアプリに貼り付けます。\n5. アカウントで Qwen（通義）モデルが有効になっていることを確認してください。",
         "openrouter": "1. openrouter.ai にアクセスしてサインイン（またはアカウント作成）します。\n2. アカウントメニューから「Keys」を開きます。\n3. 「Create Key」をクリックし、名前を付けて確定します。\n4. キーをコピーしてアプリに貼り付けます。\n5. 有料モデルを使うには OpenRouter アカウントに残高を追加してください。\n**5.1. 無料モデルを使う場合はクレジットカード不要です。この手順は省略できます。"
@@ -123,6 +123,10 @@
         "scale": {
           "title": "キッチンスケールを使う",
           "body": "AIがグラム数を判定しやすいように、皿をはかりに乗せ、表示された数値と一緒に撮影してください（皿の重さは風袋引きを忘れずに）。"
+        },
+        "freeTiers": {
+          "title": "無料で使えるプロバイダーもあります",
+          "body": "一部の AI プロバイダーは、量に制限はあっても無料で利用できます（Gemini、OpenAI、OpenRouter など）。設定の「API キーの取得方法」をタップすると、各プロバイダーの条件を確認できます。"
         },
         "models": {
           "title": "性能の高いモデルを選ぶ",
