@@ -36,7 +36,7 @@ export const PROVIDER_MODELS: Record<AIProviderType, string[]> = {
 export const PROVIDER_DEFAULT_MODEL: Record<AIProviderType, string> = {
   openai: 'gpt-4o',
   claude: 'claude-sonnet-5',
-  gemini: 'gemini-3.1-flash-image-preview',
+  gemini: 'gemini-3.5-flash',
   openrouter: 'nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free',
   qwen: 'qwen3.6-flash',
   grok: 'grok-4.3',

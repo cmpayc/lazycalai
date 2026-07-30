@@ -4,7 +4,7 @@
       "title": "LazyCalAI",
       "subtitle": "Zähle deine Kalorien mit KI-gestützter Lebensmittelerkennung. Fotografiere einfach deine Mahlzeit und überlasse den Rest der KI.",
       "demoModeTitle": "Über den Demomodus",
-      "apiKeyNotice": "Zur Erkennung von Gerichten benötigt die App einen API-Schlüssel für einen KI-Anbieter (kostenlose Modelle von OpenRouter können ohne Kreditkarte genutzt werden). Im Demomodus sind nur 5 Erkennungen verfügbar.",
+      "apiKeyNotice": "Zur Erkennung von Gerichten benötigt die App einen API-Schlüssel für einen KI-Anbieter. Mehrere davon sind kostenlos: einige Modelle von OpenRouter brauchen keine Kreditkarte, Gemini hat ein Gratis-Kontingent, und OpenAI gibt eine begrenzte Menge kostenloser Tokens, wenn du deine Daten teilst. Im Demomodus sind nur 5 Erkennungen verfügbar.",
       "getStarted": "Los geht's",
       "privacyPolicy": "Datenschutz",
       "termsOfService": "Nutzungsbedingungen"
@@ -83,9 +83,9 @@
         "title": "Hol dir deinen {{provider}} API-Schlüssel",
         "intro": "Folge diesen Schritten, um einen API-Schlüssel zu erstellen, und kopiere ihn dann zurück in die App.",
         "openLink": "{{provider}}-Konsole öffnen",
-        "openai": "1. Gehe zu platform.openai.com und melde dich an (oder erstelle ein Konto).\n2. Öffne die Seite „API keys“ in der linken Seitenleiste.\n3. Klicke auf „Create new secret key“, benenne ihn und bestätige.\n4. Kopiere den Schlüssel (er beginnt mit sk-) sofort — du kannst ihn später nicht mehr sehen.\n5. Für die Nutzung der API ist ein Guthaben auf deinem OpenAI-Konto erforderlich.",
+        "openai": "1. Gehe zu platform.openai.com und melde dich an (oder erstelle ein Konto).\n2. Öffne die Seite „API keys“ in der linken Seitenleiste.\n3. Klicke auf „Create new secret key“, benenne ihn und bestätige.\n4. Kopiere den Schlüssel (er beginnt mit sk-) sofort — du kannst ihn später nicht mehr sehen.\n5. Für die Nutzung der API ist ein Guthaben auf deinem OpenAI-Konto erforderlich.\n**6. Du kannst auch eine begrenzte Menge kostenloser Tokens pro Tag erhalten, wenn du deine Daten mit OpenAI teilst. Aktiviere das unter Profile Settings → Data Controls → Sharing → „Share inputs and outputs with OpenAI“.",
         "claude": "1. Gehe zu console.anthropic.com und melde dich an (oder erstelle ein Konto).\n2. Öffne „API Keys“ in deinen Kontoeinstellungen.\n3. Klicke auf „Create Key“, benenne ihn und bestätige.\n4. Kopiere den Schlüssel und füge ihn zurück in die App ein.\n5. Für Anfragen benötigst du ein Guthaben auf deinem Anthropic-Konto.",
-        "gemini": "1. Gehe zu aistudio.google.com und melde dich mit deinem Google-Konto an.\n2. Klicke oben links im Menü auf „Get API key“.\n3. Klicke auf „Create API key“ und wähle ein Google-Cloud-Projekt.\n4. Kopiere den generierten Schlüssel und füge ihn zurück in die App ein.\n5. Der kostenlose Tarif ist großzügig, du kannst also meist ohne Abrechnung starten.",
+        "gemini": "1. Gehe zu aistudio.google.com und melde dich mit deinem Google-Konto an.\n2. Klicke oben links im Menü auf „Get API key“.\n3. Klicke auf „Create API key“ und wähle ein Google-Cloud-Projekt.\n4. Kopiere den generierten Schlüssel und füge ihn zurück in die App ein.\n**5. Der kostenlose Tarif ist großzügig, du kannst also meist ohne Abrechnung starten.",
         "grok": "1. Gehe zu console.x.ai und melde dich mit deinem X-Konto an.\n2. Öffne den Bereich „API Keys“.\n3. Klicke auf „Create API Key“, benenne ihn und bestätige.\n4. Kopiere den Schlüssel und füge ihn zurück in die App ein.\n5. xAI erfordert ein Prepaid-Guthaben, bevor die API funktioniert.",
         "qwen": "1. Gehe zu bailian.console.aliyun.com (Alibaba Cloud Model Studio) und melde dich an.\n2. Öffne die „API-KEY“-Verwaltung im Kontomenü.\n3. Klicke auf „Create API Key“ und bestätige.\n4. Kopiere den Schlüssel und füge ihn zurück in die App ein.\n5. Stelle sicher, dass die Qwen-(Tongyi-)Modelle für dein Konto aktiviert sind.",
         "openrouter": "1. Gehe zu openrouter.ai und melde dich an (oder erstelle ein Konto).\n2. Öffne „Keys“ in deinem Kontomenü.\n3. Klicke auf „Create Key“, benenne ihn und bestätige.\n4. Kopiere den Schlüssel und füge ihn zurück in die App ein.\n5. Lade Guthaben auf dein OpenRouter-Konto, um kostenpflichtige Modelle zu nutzen.\n**5.1. Für kostenlose Modelle brauchst du keine Kreditkarte - diesen Schritt kannst du überspringen."
@@ -123,6 +123,10 @@
         "scale": {
           "title": "Küchenwaage verwenden",
           "body": "Damit die KI die Gramm besser bestimmen kann, stelle den Teller auf eine Waage und fotografiere ihn samt Anzeige (denke daran, das Tellergewicht zu tarieren)."
+        },
+        "freeTiers": {
+          "title": "Manche Anbieter sind kostenlos",
+          "body": "Einige KI-Anbieter bieten kostenlosen Zugang, zumindest in begrenztem Umfang (Gemini, OpenAI, OpenRouter). Tippe in den Einstellungen auf „Wie bekomme ich einen API-Schlüssel?“, um die Bedingungen der einzelnen Anbieter zu sehen."
         },
         "models": {
           "title": "Wähle ein leistungsfähiges Modell",

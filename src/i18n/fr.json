@@ -4,7 +4,7 @@
       "title": "LazyCalAI",
       "subtitle": "Suivez vos calories avec la reconnaissance alimentaire par IA. Prenez une photo de votre repas et laissez l'IA faire le reste.",
       "demoModeTitle": "À propos du mode démo",
-      "apiKeyNotice": "Pour reconnaître les plats, l'application aura besoin d'une clé API d'un fournisseur d'IA (les modèles gratuits d'OpenRouter peuvent être utilisés sans carte bancaire). En mode démo, seules 5 reconnaissances sont disponibles.",
+      "apiKeyNotice": "Pour reconnaître les plats, l'application aura besoin d'une clé API d'un fournisseur d'IA. Plusieurs sont gratuits : certains modèles d'OpenRouter ne demandent pas de carte bancaire, Gemini propose une offre gratuite, et OpenAI offre un nombre limité de tokens gratuits si vous partagez vos données. En mode démo, seules 5 reconnaissances sont disponibles.",
       "getStarted": "Commencer",
       "privacyPolicy": "Politique de confidentialité",
       "termsOfService": "Conditions d'utilisation"
@@ -83,9 +83,9 @@
         "title": "Obtenez votre clé API {{provider}}",
         "intro": "Suivez ces étapes pour créer une clé API, puis copiez-la dans l'application.",
         "openLink": "Ouvrir la console {{provider}}",
-        "openai": "1. Allez sur platform.openai.com et connectez-vous (ou créez un compte).\n2. Ouvrez la page « API keys » dans le menu de gauche.\n3. Cliquez sur « Create new secret key », nommez-la et confirmez.\n4. Copiez la clé (elle commence par sk-) immédiatement — vous ne pourrez plus la revoir.\n5. L'utilisation de l'API nécessite un crédit de facturation sur votre compte OpenAI.",
+        "openai": "1. Allez sur platform.openai.com et connectez-vous (ou créez un compte).\n2. Ouvrez la page « API keys » dans le menu de gauche.\n3. Cliquez sur « Create new secret key », nommez-la et confirmez.\n4. Copiez la clé (elle commence par sk-) immédiatement — vous ne pourrez plus la revoir.\n5. L'utilisation de l'API nécessite un crédit de facturation sur votre compte OpenAI.\n**6. Vous pouvez aussi obtenir une quantité limitée de tokens gratuits par jour en partageant vos données avec OpenAI. Activez-le dans Profile Settings → Data Controls → Sharing → « Share inputs and outputs with OpenAI ».",
         "claude": "1. Allez sur console.anthropic.com et connectez-vous (ou créez un compte).\n2. Ouvrez « API Keys » dans les paramètres du compte.\n3. Cliquez sur « Create Key », nommez-la et confirmez.\n4. Copiez la clé et collez-la dans l'application.\n5. Un crédit de facturation sur votre compte Anthropic est nécessaire pour les requêtes.",
-        "gemini": "1. Allez sur aistudio.google.com et connectez-vous avec votre compte Google.\n2. Cliquez sur « Get API key » dans le menu en haut à gauche.\n3. Cliquez sur « Create API key » et choisissez un projet Google Cloud.\n4. Copiez la clé et collez-la dans l'application.\n5. Le niveau gratuit est généreux, vous pouvez généralement commencer sans facturation.",
+        "gemini": "1. Allez sur aistudio.google.com et connectez-vous avec votre compte Google.\n2. Cliquez sur « Get API key » dans le menu en haut à gauche.\n3. Cliquez sur « Create API key » et choisissez un projet Google Cloud.\n4. Copiez la clé et collez-la dans l'application.\n**5. Le niveau gratuit est généreux, vous pouvez généralement commencer sans facturation.",
         "grok": "1. Allez sur console.x.ai et connectez-vous avec votre compte X.\n2. Ouvrez la section « API Keys ».\n3. Cliquez sur « Create API Key », nommez-la et confirmez.\n4. Copiez la clé et collez-la dans l'application.\n5. xAI nécessite des crédits prépayés avant que l'API fonctionne.",
         "qwen": "1. Allez sur bailian.console.aliyun.com (Alibaba Cloud Model Studio) et connectez-vous.\n2. Ouvrez la gestion « API-KEY » dans le menu du compte.\n3. Cliquez sur « Create API Key » et confirmez.\n4. Copiez la clé et collez-la dans l'application.\n5. Vérifiez que les modèles Qwen (Tongyi) sont activés pour votre compte.",
         "openrouter": "1. Allez sur openrouter.ai et connectez-vous (ou créez un compte).\n2. Ouvrez « Keys » dans le menu du compte.\n3. Cliquez sur « Create Key », nommez-la et confirmez.\n4. Copiez la clé et collez-la dans l'application.\n5. Ajoutez des crédits à votre compte OpenRouter pour les modèles payants.\n**5.1. Aucune carte bancaire n'est requise pour les modèles gratuits : vous pouvez ignorer cette étape."
@@ -123,6 +123,10 @@
         "scale": {
           "title": "Utilisez une balance de cuisine",
           "body": "Pour aider l'IA à estimer les grammes, posez l'assiette sur une balance et photographiez-la avec la valeur affichée (pensez à tarer le poids de l'assiette)."
+        },
+        "freeTiers": {
+          "title": "Certains fournisseurs sont gratuits",
+          "body": "Plusieurs fournisseurs d'IA offrent un accès gratuit, au moins en quantité limitée (Gemini, OpenAI, OpenRouter). Touchez « Comment obtenir une clé API ? » dans les réglages pour voir ce que chacun propose."
         },
         "models": {
           "title": "Choisissez un modèle performant",
