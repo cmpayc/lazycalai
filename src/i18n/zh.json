@@ -65,7 +65,11 @@
       "level_overweight": "超重",
       "level_obese_class_1": "肥胖I级",
       "level_obese_class_2": "肥胖II级",
-      "level_obese_class_3": "肥胖III级"
+      "level_obese_class_3": "肥胖III级",
+      "sourcesTitle": "来源",
+      "sourceBmi": "BMI 分类：世界卫生组织（WHO）",
+      "sourceCalories": "热量估算：Mifflin-St Jeor 公式（Am J Clin Nutr, 1990）",
+      "bmiAgeNote": "BMI 分类适用于成人。对于 5-19 岁，世界卫生组织采用按年龄和性别划分的生长曲线。"
     },
     "apiKey": {
       "title": "AI设置",
@@ -294,7 +298,7 @@
     "carbsShort": "碳水",
     "fatShort": "脂肪",
     "fiberShort": "纤维",
-    "disclaimer": "AI 会出错。同一张图片可能得出不同的数值，本应用也并非为精确计算克数或卡路里而设计。如果你对结果不确定，请手动更正。这不是医疗应用程序。"
+    "disclaimer": "AI 会出错。同一张图片可能得出不同的数值，本应用也并非为精确计算克数或卡路里而设计。如果你对结果不确定，请手动更正。这不是医疗应用程序。在调整饮食之前，请咨询医生或注册营养师。"
   },
   "modelSelector": {
     "demoMode": "演示模式（{{num}} 次免费请求）。之后你必须使用其他 AI 提供商。",

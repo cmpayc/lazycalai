@@ -65,7 +65,11 @@
       "level_overweight": "Surpoids",
       "level_obese_class_1": "Obésité classe I",
       "level_obese_class_2": "Obésité classe II",
-      "level_obese_class_3": "Obésité classe III"
+      "level_obese_class_3": "Obésité classe III",
+      "sourcesTitle": "Sources",
+      "sourceBmi": "Catégories d'IMC : Organisation mondiale de la santé (OMS)",
+      "sourceCalories": "Estimation des calories : équation de Mifflin-St Jeor (Am J Clin Nutr, 1990)",
+      "bmiAgeNote": "Les catégories d'IMC s'appliquent aux adultes. Pour les 5-19 ans, l'OMS utilise des courbes de croissance selon l'âge et le sexe."
     },
     "apiKey": {
       "title": "Configuration IA",
@@ -294,7 +298,7 @@
     "carbsShort": "G",
     "fatShort": "L",
     "fiberShort": "F",
-    "disclaimer": "L'IA fait des erreurs. Une même image peut donner des valeurs différentes, et l'application n'est pas conçue pour calculer des grammes ou des calories précis. Si vous n'êtes pas sûr des résultats, corrigez-les manuellement. Cette application n'est pas un dispositif médical."
+    "disclaimer": "L'IA fait des erreurs. Une même image peut donner des valeurs différentes, et l'application n'est pas conçue pour calculer des grammes ou des calories précis. Si vous n'êtes pas sûr des résultats, corrigez-les manuellement. Cette application n'est pas un dispositif médical. Consultez un médecin ou un diététicien avant de modifier votre alimentation."
   },
   "modelSelector": {
     "demoMode": "Mode démo ({{num}} requêtes gratuites). Ensuite, vous devez utiliser un autre fournisseur d'IA.",

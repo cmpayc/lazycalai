@@ -65,7 +65,11 @@
       "level_overweight": "Übergewicht",
       "level_obese_class_1": "Adipositas Grad I",
       "level_obese_class_2": "Adipositas Grad II",
-      "level_obese_class_3": "Adipositas Grad III"
+      "level_obese_class_3": "Adipositas Grad III",
+      "sourcesTitle": "Quellen",
+      "sourceBmi": "BMI-Kategorien: Weltgesundheitsorganisation (WHO)",
+      "sourceCalories": "Kalorienschätzung: Mifflin-St-Jeor-Gleichung (Am J Clin Nutr, 1990)",
+      "bmiAgeNote": "BMI-Kategorien gelten für Erwachsene. Für 5-19 Jahre verwendet die WHO alters- und geschlechtsspezifische Wachstumskurven."
     },
     "apiKey": {
       "title": "KI-Anbieter einrichten",
@@ -294,7 +298,7 @@
     "carbsShort": "K",
     "fatShort": "F",
     "fiberShort": "Bs",
-    "disclaimer": "KI macht Fehler. Dasselbe Bild kann unterschiedliche Werte liefern, und die App ist nicht dafür ausgelegt, exakte Gramm- oder Kalorienangaben zu berechnen. Wenn du dir bei den Ergebnissen unsicher bist, korrigiere sie manuell. Dies ist keine medizinische Anwendung."
+    "disclaimer": "KI macht Fehler. Dasselbe Bild kann unterschiedliche Werte liefern, und die App ist nicht dafür ausgelegt, exakte Gramm- oder Kalorienangaben zu berechnen. Wenn du dir bei den Ergebnissen unsicher bist, korrigiere sie manuell. Dies ist keine medizinische Anwendung. Konsultieren Sie einen Arzt oder eine Ernährungsberaterin, bevor Sie Ihre Ernährung ändern."
   },
   "modelSelector": {
     "demoMode": "Demomodus ({{num}} kostenlose Anfragen). Danach müssen Sie einen anderen KI-Anbieter verwenden.",

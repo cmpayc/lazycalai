@@ -53,6 +53,7 @@ import { useToastStore } from '@store/toastStore';
 import { exportMeals, importMeals } from '@utils/exportImport';
 import {
   ACTIVITY_LEVELS,
+  ADULT_BMI_MIN_AGE,
   calculateBMI,
   getObesityLevel,
 } from '@utils/calories';
@@ -61,6 +62,7 @@ import Disclaimer from '@components/Disclaimer';
 import LegalRow from '@components/LegalRow';
 import AIGuide from '@components/AIGuide';
 import TicTacToe from '@components/TicTacToe';
+import MedicalSources from '@components/MedicalSources';
 
 export default function SettingsScreen() {
   const { t } = useTranslation();
@@ -383,6 +385,7 @@ export default function SettingsScreen() {
           <ObesityInfo
             weightKg={derivedKg}
             heightCm={derivedCm}
+            age={parseInt(localAge, 10) || age}
             weightGoal={weightGoal}
             goalPaceKgPerMonth={goalPaceKgPerMonth}
             activityFactor={activityFactor}
@@ -669,6 +672,7 @@ function Field({
 function ObesityInfo({
   weightKg,
   heightCm,
+  age,
   weightGoal,
   goalPaceKgPerMonth,
   activityFactor,
@@ -677,6 +681,7 @@ function ObesityInfo({
 }: {
   weightKg: number;
   heightCm: number;
+  age: number;
   weightGoal: WeightGoal;
   goalPaceKgPerMonth: number;
   activityFactor: number;
@@ -692,12 +697,14 @@ function ObesityInfo({
 
   const bmi = calculateBMI(weightKg, heightCm);
   const level = getObesityLevel(bmi);
+  const showBmi = age >= ADULT_BMI_MIN_AGE;
   const activityLevel =
     ACTIVITY_LEVELS.find((l) => l.factor === activityFactor) ??
     ACTIVITY_LEVELS[0];
 
-  const bmiColor =
-    bmi < 18.5
+  const bmiColor = !showBmi
+    ? obesityTheme.color.primary
+    : bmi < 18.5
       ? obesityTheme.color.info
       : bmi < 25
         ? obesityTheme.color.primary
@@ -706,56 +713,67 @@ function ObesityInfo({
           : obesityTheme.color.errorColor;
 
   return (
-    <View style={obesityStyles.obesityCard}>
-      <View style={obesityStyles.obesityRow}>
-        <Text style={obesityStyles.obesityLabel}>
-          {t('onboarding.result.bmi')}
-        </Text>
-        <Text style={[obesityStyles.obesityValue, { color: bmiColor }]}>
-          {bmi}
-        </Text>
+    <>
+      <View style={obesityStyles.obesityCard}>
+        {showBmi ? (
+          <>
+            <View style={obesityStyles.obesityRow}>
+              <Text style={obesityStyles.obesityLabel}>
+                {t('onboarding.result.bmi')}
+              </Text>
+              <Text style={[obesityStyles.obesityValue, { color: bmiColor }]}>
+                {bmi}
+              </Text>
+            </View>
+            <View style={obesityStyles.obesityRow}>
+              <Text style={obesityStyles.obesityLabel}>
+                {t('onboarding.result.obesityLevel')}
+              </Text>
+              <Text style={[obesityStyles.obesityValue, { color: bmiColor }]}>
+                {t(`onboarding.result.level_${level}`)}
+              </Text>
+            </View>
+          </>
+        ) : (
+          <Text style={obesityStyles.obesityNote}>
+            {t('onboarding.result.bmiAgeNote')}
+          </Text>
+        )}
+        <View style={obesityStyles.obesityRow}>
+          <Text style={obesityStyles.obesityLabel}>
+            {t('onboarding.result.goal')}
+          </Text>
+          <Text
+            style={[
+              obesityStyles.obesityValue,
+              { color: obesityTheme.color.main },
+            ]}
+          >
+            {weightGoal === 'maintain'
+              ? t('onboarding.goal.maintain')
+              : t('onboarding.result.goalSummary', {
+                  goal: t(`onboarding.goal.${weightGoal}`),
+                  value: displayPace(goalPaceKgPerMonth, units),
+                  unit: t(units === 'imperial' ? 'units.lbs' : 'units.kg'),
+                })}
+          </Text>
+        </View>
+        <View style={obesityStyles.obesityRow}>
+          <Text style={obesityStyles.obesityLabel}>
+            {t('onboarding.result.activity')}
+          </Text>
+          <Text
+            style={[
+              obesityStyles.obesityValue,
+              { color: obesityTheme.color.main },
+            ]}
+          >
+            {t(`onboarding.activity.level_${activityLevel.key}`)}
+          </Text>
+        </View>
       </View>
-      <View style={obesityStyles.obesityRow}>
-        <Text style={obesityStyles.obesityLabel}>
-          {t('onboarding.result.obesityLevel')}
-        </Text>
-        <Text style={[obesityStyles.obesityValue, { color: bmiColor }]}>
-          {t(`onboarding.result.level_${level}`)}
-        </Text>
-      </View>
-      <View style={obesityStyles.obesityRow}>
-        <Text style={obesityStyles.obesityLabel}>
-          {t('onboarding.result.goal')}
-        </Text>
-        <Text
-          style={[
-            obesityStyles.obesityValue,
-            { color: obesityTheme.color.main },
-          ]}
-        >
-          {weightGoal === 'maintain'
-            ? t('onboarding.goal.maintain')
-            : t('onboarding.result.goalSummary', {
-                goal: t(`onboarding.goal.${weightGoal}`),
-                value: displayPace(goalPaceKgPerMonth, units),
-                unit: t(units === 'imperial' ? 'units.lbs' : 'units.kg'),
-              })}
-        </Text>
-      </View>
-      <View style={obesityStyles.obesityRow}>
-        <Text style={obesityStyles.obesityLabel}>
-          {t('onboarding.result.activity')}
-        </Text>
-        <Text
-          style={[
-            obesityStyles.obesityValue,
-            { color: obesityTheme.color.main },
-          ]}
-        >
-          {t(`onboarding.activity.level_${activityLevel.key}`)}
-        </Text>
-      </View>
-    </View>
+      <MedicalSources showBmi={showBmi} />
+    </>
   );
 }
 
@@ -909,6 +927,11 @@ const themeStyles = (theme: ITheme) => {
     },
     obesityValue: {
       ...theme.fonts.medium2,
+    },
+    obesityNote: {
+      ...theme.fonts.regular2,
+      color: theme.color.subText,
+      paddingVertical: 8,
     },
     exportImportRow: {
       flexDirection: 'row',

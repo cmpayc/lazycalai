@@ -65,7 +65,11 @@
       "level_overweight": "過体重",
       "level_obese_class_1": "肥満I度",
       "level_obese_class_2": "肥満II度",
-      "level_obese_class_3": "肥満III度"
+      "level_obese_class_3": "肥満III度",
+      "sourcesTitle": "出典",
+      "sourceBmi": "BMI分類：世界保健機関（WHO）",
+      "sourceCalories": "カロリー推定：Mifflin-St Jeor式（Am J Clin Nutr, 1990）",
+      "bmiAgeNote": "BMI分類は成人向けです。5〜19歳については、WHOは年齢・性別ごとの成長曲線を使用します。"
     },
     "apiKey": {
       "title": "AI設定",
@@ -294,7 +298,7 @@
     "carbsShort": "C",
     "fatShort": "F",
     "fiberShort": "Fb",
-    "disclaimer": "AIは間違えることがあります。同じ画像でも異なる値が出ることがあり、本アプリは正確なグラム数やカロリーを算出するようには設計されていません。結果に確信が持てない場合は手動で修正してください。これは医療アプリケーションではありません。"
+    "disclaimer": "AIは間違えることがあります。同じ画像でも異なる値が出ることがあり、本アプリは正確なグラム数やカロリーを算出するようには設計されていません。結果に確信が持てない場合は手動で修正してください。これは医療アプリケーションではありません。食事を変更する前に、医師または管理栄養士にご相談ください。"
   },
   "modelSelector": {
     "demoMode": "デモモード（無料リクエスト{{num}}回）。その後は別のAIプロバイダーを使用する必要があります。",

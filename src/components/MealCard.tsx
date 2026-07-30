@@ -78,98 +78,100 @@ export default function MealCard({ meal, onDelete }: Props) {
       onPress={() => setExpanded(!expanded)}
       activeOpacity={0.7}
     >
-      <View style={styles.header}>
-        {meal.photoPath ? (
+      <View style={styles.flexOverflow}>
+        <View style={styles.header}>
+          {meal.photoPath ? (
+            <TouchableOpacity
+              onPress={() => setImageViewerVisible(true)}
+              activeOpacity={0.8}
+            >
+              <Image
+                source={{ uri: mealPhotoUri(meal.photoPath) }}
+                style={styles.photo}
+              />
+            </TouchableOpacity>
+          ) : (
+            <View style={styles.photoPlaceholder}>
+              <Text style={styles.placeholderIcon}>🍽</Text>
+            </View>
+          )}
+          <View style={styles.headerInfo}>
+            <Text style={styles.calories}>
+              {meal.totalCalories} {t('common.kcal')}
+            </Text>
+            <Text style={styles.macros}>
+              {t('common.proteinShort')}: {meal.totalProtein}
+              {t('common.g')} · {t('common.fatShort')}: {meal.totalFat}
+              {t('common.g')} · {t('common.carbsShort')}: {meal.totalCarbs}
+              {t('common.g')}
+            </Text>
+          </View>
           <TouchableOpacity
-            onPress={() => setImageViewerVisible(true)}
-            activeOpacity={0.8}
+            onPress={() => navigation.navigate('EditMeal', { mealId: meal.id })}
+            style={styles.editBtn}
           >
-            <Image
-              source={{ uri: mealPhotoUri(meal.photoPath) }}
-              style={styles.photo}
-            />
+            <Text style={styles.editText}>{t('common.edit')}</Text>
           </TouchableOpacity>
-        ) : (
-          <View style={styles.photoPlaceholder}>
-            <Text style={styles.placeholderIcon}>🍽</Text>
+          <TouchableOpacity onPress={handleDelete} style={styles.deleteBtn}>
+            <Text style={styles.deleteText}>{t('common.delete')}</Text>
+          </TouchableOpacity>
+        </View>
+
+        {expanded && meal.items.length > 0 && (
+          <View style={styles.items}>
+            {meal.items.map((item) => (
+              <View key={item.id} style={styles.itemRow}>
+                <Text style={styles.itemName}>{item.name}</Text>
+                <View style={styles.itemFooter}>
+                  <Text style={styles.itemCal}>
+                    {item.calories} {t('common.kcal')} | {item.protein}
+                    {t('common.proteinShort')} | {item.fat}
+                    {t('common.fatShort')} | {item.carbs}
+                    {t('common.carbsShort')}| {item.grams}
+                    {t('common.g')}
+                  </Text>
+                  <TouchableOpacity
+                    onPress={() => handleRepeat(item)}
+                    style={styles.repeatBtn}
+                  >
+                    <Text style={styles.repeatText}>{t('common.repeat')}</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+            ))}
           </View>
         )}
-        <View style={styles.headerInfo}>
-          <Text style={styles.calories}>
-            {meal.totalCalories} {t('common.kcal')}
-          </Text>
-          <Text style={styles.macros}>
-            {t('common.proteinShort')}: {meal.totalProtein}
-            {t('common.g')} · {t('common.fatShort')}: {meal.totalFat}
-            {t('common.g')} · {t('common.carbsShort')}: {meal.totalCarbs}
-            {t('common.g')}
-          </Text>
-        </View>
-        <TouchableOpacity
-          onPress={() => navigation.navigate('EditMeal', { mealId: meal.id })}
-          style={styles.editBtn}
-        >
-          <Text style={styles.editText}>{t('common.edit')}</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={handleDelete} style={styles.deleteBtn}>
-          <Text style={styles.deleteText}>{t('common.delete')}</Text>
-        </TouchableOpacity>
-      </View>
 
-      {expanded && meal.items.length > 0 && (
-        <View style={styles.items}>
-          {meal.items.map((item) => (
-            <View key={item.id} style={styles.itemRow}>
-              <Text style={styles.itemName}>{item.name}</Text>
-              <View style={styles.itemFooter}>
-                <Text style={styles.itemCal}>
-                  {item.calories} {t('common.kcal')} | {item.protein}
-                  {t('common.proteinShort')} | {item.fat}
-                  {t('common.fatShort')} | {item.carbs}
-                  {t('common.carbsShort')}| {item.grams}
-                  {t('common.g')}
-                </Text>
-                <TouchableOpacity
-                  onPress={() => handleRepeat(item)}
-                  style={styles.repeatBtn}
-                >
-                  <Text style={styles.repeatText}>{t('common.repeat')}</Text>
-                </TouchableOpacity>
-              </View>
-            </View>
-          ))}
-        </View>
-      )}
-
-      {meal.photoPath && (
-        <Modal
-          visible={imageViewerVisible}
-          transparent
-          animationType="fade"
-          onRequestClose={() => setImageViewerVisible(false)}
-        >
-          <TouchableOpacity
-            style={styles.viewerBackdrop}
-            activeOpacity={1}
-            onPress={() => setImageViewerVisible(false)}
+        {meal.photoPath && (
+          <Modal
+            visible={imageViewerVisible}
+            transparent
+            animationType="fade"
+            onRequestClose={() => setImageViewerVisible(false)}
           >
-            <Image
-              source={{ uri: mealPhotoUri(meal.photoPath) }}
-              style={styles.viewerImage}
-              resizeMode="contain"
-            />
             <TouchableOpacity
-              style={styles.viewerClose}
+              style={styles.viewerBackdrop}
+              activeOpacity={1}
               onPress={() => setImageViewerVisible(false)}
-              hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
-              accessibilityRole="button"
-              accessibilityLabel={t('common.close')}
             >
-              <Text style={styles.viewerCloseText}>✕</Text>
+              <Image
+                source={{ uri: mealPhotoUri(meal.photoPath) }}
+                style={styles.viewerImage}
+                resizeMode="contain"
+              />
+              <TouchableOpacity
+                style={styles.viewerClose}
+                onPress={() => setImageViewerVisible(false)}
+                hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
+                accessibilityRole="button"
+                accessibilityLabel={t('common.close')}
+              >
+                <Text style={styles.viewerCloseText}>✕</Text>
+              </TouchableOpacity>
             </TouchableOpacity>
-          </TouchableOpacity>
-        </Modal>
-      )}
+          </Modal>
+        )}
+      </View>
     </TouchableOpacity>
   );
 }
@@ -186,6 +188,9 @@ const themeStyles = (theme: ITheme) => {
       shadowOpacity: 0.05,
       shadowRadius: 4,
       elevation: 2,
+    },
+    flexOverflow: {
+      flex: 1,
       overflow: 'hidden',
     },
     header: {

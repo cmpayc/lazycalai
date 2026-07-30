@@ -19,7 +19,12 @@ import { useThemeContext } from '@theme/theme.context';
 import type { OnboardingStackParamList } from '@navigation/OnboardingStack';
 import { useSettingsStore } from '@store/settingsStore';
 import OnboardingBackButton from '@components/OnboardingBackButton';
-import { ACTIVITY_LEVELS, calculateObesityResult } from '@utils/calories';
+import MedicalSources from '@components/MedicalSources';
+import {
+  ACTIVITY_LEVELS,
+  ADULT_BMI_MIN_AGE,
+  calculateObesityResult,
+} from '@utils/calories';
 import { displayPace } from '@utils/units';
 
 type Nav = StackNavigationProp<OnboardingStackParamList, 'Result'>;
@@ -30,6 +35,7 @@ export default function OnboardingResult() {
   const {
     weightKg,
     heightCm,
+    age,
     weightGoal,
     goalPaceKgPerMonth,
     activityFactor,
@@ -55,8 +61,11 @@ export default function OnboardingResult() {
     navigation.navigate('ApiKey');
   };
 
-  const bmiColor =
-    initialResult.bmi < 18.5
+  const showBmi = age >= ADULT_BMI_MIN_AGE;
+
+  const bmiColor = !showBmi
+    ? theme.color.primary
+    : initialResult.bmi < 18.5
       ? theme.color.info
       : initialResult.bmi < 25
         ? theme.color.primary
@@ -71,20 +80,26 @@ export default function OnboardingResult() {
         <Text style={styles.title}>{t('onboarding.result.title')}</Text>
 
         <View style={[styles.card, { borderLeftColor: bmiColor }]}>
-          <View style={styles.row}>
-            <Text style={styles.label}>{t('onboarding.result.bmi')}</Text>
-            <Text style={[styles.value, { color: bmiColor }]}>
-              {initialResult.bmi}
-            </Text>
-          </View>
-          <View style={styles.row}>
-            <Text style={styles.label}>
-              {t('onboarding.result.obesityLevel')}
-            </Text>
-            <Text style={[styles.value, { color: bmiColor }]}>
-              {t(`onboarding.result.level_${initialResult.level}`)}
-            </Text>
-          </View>
+          {showBmi ? (
+            <>
+              <View style={styles.row}>
+                <Text style={styles.label}>{t('onboarding.result.bmi')}</Text>
+                <Text style={[styles.value, { color: bmiColor }]}>
+                  {initialResult.bmi}
+                </Text>
+              </View>
+              <View style={styles.row}>
+                <Text style={styles.label}>
+                  {t('onboarding.result.obesityLevel')}
+                </Text>
+                <Text style={[styles.value, { color: bmiColor }]}>
+                  {t(`onboarding.result.level_${initialResult.level}`)}
+                </Text>
+              </View>
+            </>
+          ) : (
+            <Text style={styles.note}>{t('onboarding.result.bmiAgeNote')}</Text>
+          )}
           <View style={styles.row}>
             <Text style={styles.label}>{t('onboarding.result.goal')}</Text>
             <Text style={styles.value}>
@@ -104,6 +119,8 @@ export default function OnboardingResult() {
             </Text>
           </View>
         </View>
+
+        <MedicalSources showBmi={showBmi} />
 
         <Text style={styles.sectionTitle}>
           {t('onboarding.result.dailyCalories')}
@@ -161,6 +178,11 @@ const themeStyles = (theme: ITheme) => {
     label: {
       ...theme.fonts.regular3,
       color: theme.color.subText,
+    },
+    note: {
+      ...theme.fonts.regular3,
+      color: theme.color.subText,
+      paddingVertical: 8,
     },
     value: {
       ...theme.fonts.medium3,
