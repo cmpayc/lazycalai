@@ -15,6 +15,13 @@ export function getMinDailyCalories(sex: Sex): number {
   return MIN_DAILY_CALORIES[sex];
 }
 
+/**
+ * Youngest age for which the fixed adult BMI cut-offs apply. WHO uses
+ * age- and sex-specific BMI-for-age growth references for ages 5-19, so the
+ * BMI category is only shown at 20+.
+ */
+export const ADULT_BMI_MIN_AGE = 20;
+
 export interface GoalPace {
   key: 'casually' | 'mild' | 'moderate' | 'aggressive';
   kgPerMonth: number;

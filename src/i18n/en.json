@@ -65,7 +65,11 @@
       "level_overweight": "Overweight",
       "level_obese_class_1": "Obesity Class I",
       "level_obese_class_2": "Obesity Class II",
-      "level_obese_class_3": "Obesity Class III"
+      "level_obese_class_3": "Obesity Class III",
+      "sourcesTitle": "Sources",
+      "sourceBmi": "BMI categories: World Health Organization (WHO)",
+      "sourceCalories": "Calorie estimate: Mifflin-St Jeor equation (Am J Clin Nutr, 1990)",
+      "bmiAgeNote": "BMI categories apply to adults. For ages 5-19, WHO uses age- and sex-specific growth charts."
     },
     "apiKey": {
       "title": "AI Provider Setup",
@@ -294,7 +298,7 @@
     "carbsShort": "C",
     "fatShort": "F",
     "fiberShort": "Fb",
-    "disclaimer": "AI makes mistakes. The same image can yield different values, and the app isn't designed to calculate precise grams or calories. If you're unsure of the results, correct them manually. This is not a medical application."
+    "disclaimer": "AI makes mistakes. The same image can yield different values, and the app isn't designed to calculate precise grams or calories. If you're unsure of the results, correct them manually. This is not a medical application. Consult a doctor or registered dietitian before making changes to your diet."
   },
   "modelSelector": {
     "demoMode": "Demo mode ({{num}} free requests). Then you must use a different AI provider.",
