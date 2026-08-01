@@ -106,15 +106,19 @@ export default function MealCard({ meal, onDelete }: Props) {
               {t('common.g')}
             </Text>
           </View>
-          <TouchableOpacity
-            onPress={() => navigation.navigate('EditMeal', { mealId: meal.id })}
-            style={styles.editBtn}
-          >
-            <Text style={styles.editText}>{t('common.edit')}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={handleDelete} style={styles.deleteBtn}>
-            <Text style={styles.deleteText}>{t('common.delete')}</Text>
-          </TouchableOpacity>
+          <View style={styles.mealButtons}>
+            <TouchableOpacity
+              onPress={() =>
+                navigation.navigate('EditMeal', { mealId: meal.id })
+              }
+              style={styles.editBtn}
+            >
+              <Text style={styles.editText}>{t('common.edit')}</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={handleDelete} style={styles.deleteBtn}>
+              <Text style={styles.deleteText}>{t('common.delete')}</Text>
+            </TouchableOpacity>
+          </View>
         </View>
 
         {expanded && meal.items.length > 0 && (
@@ -227,6 +231,13 @@ const themeStyles = (theme: ITheme) => {
       color: theme.color.placeholder,
       marginTop: 2,
     },
+    mealButtons: {
+      flexDirection: 'row',
+      maxWidth: '45%',
+      flexWrap: 'wrap',
+      alignItems: 'flex-end',
+      justifyContent: 'flex-end',
+    },
     editBtn: {
       padding: 8,
     },
@@ -236,6 +247,7 @@ const themeStyles = (theme: ITheme) => {
     },
     deleteBtn: {
       padding: 8,
+      paddingRight: 0,
     },
     deleteText: {
       fontSize: 13,

@@ -63,7 +63,9 @@ export default function CalorieRing({ consumed, goal, size = 200 }: Props) {
         <Text style={[styles.consumed, { color }]}>{consumed}</Text>
         <Text style={styles.unit}>{t('common.kcal')}</Text>
         <Text style={styles.label}>
-          {remaining} {t('common.kcal')} {t('home.remaining')}
+          {remaining} {t('common.kcal')}
+          {'\n'}
+          {t('home.remaining')}
         </Text>
       </View>
     </View>
@@ -94,6 +96,8 @@ const themeStyles = (theme: ITheme) => {
       fontSize: 13,
       color: theme.color.placeholder,
       marginTop: 4,
+      width: '90%',
+      textAlign: 'center',
     },
   });
   return styles;

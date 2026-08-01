@@ -205,10 +205,12 @@ const themeStyles = (theme: ITheme) => {
     paceText: {
       ...theme.fonts.bold3,
       color: theme.color.main,
+      textAlign: 'center',
     },
     paceSubText: {
       ...theme.fonts.regular2,
       color: theme.color.subText,
+      textAlign: 'center',
     },
     paceTextActive: { color: theme.color.white },
     button: {
