@@ -7,6 +7,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   KeyboardAvoidingView,
+  ScrollView,
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
@@ -112,111 +113,119 @@ export default function OnboardingApiKey() {
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding">
       <OnboardingBackButton />
-      <Text style={styles.title}>{t('onboarding.apiKey.title')}</Text>
+      <ScrollView style={styles.flex}>
+        <View style={styles.content}>
+          <Text style={styles.title}>{t('onboarding.apiKey.title')}</Text>
 
-      {isLocked ? (
-        <View style={styles.notice}>
-          <Text style={styles.noticeTitle}>
-            {t('onboarding.apiKey.freeTierTitle')}
-          </Text>
-          <Text style={styles.noticeText}>
-            {t('onboarding.apiKey.freeTierBody')}
-          </Text>
-          <Text style={styles.noticeStrong}>
-            {t('onboarding.apiKey.freeTierPaidBlocked')}
-          </Text>
-        </View>
-      ) : (
-        <>
-          <Text style={styles.label}>{t('onboarding.apiKey.provider')}</Text>
-          <View style={styles.providersRows}>
-            {providers.map((group, idx) => (
-              // eslint-disable-next-line react/no-array-index-key
-              <View style={styles.providerRow} key={idx}>
-                {group.map((p) => (
-                  <TouchableOpacity
-                    key={p.key}
-                    style={[
-                      styles.providerBtn,
-                      provider === p.key && styles.providerBtnActive,
-                    ]}
-                    onPress={() => handleProviderChange(p.key)}
-                  >
-                    <Text
-                      style={[
-                        styles.providerBtnText,
-                        provider === p.key && styles.providerBtnTextActive,
-                      ]}
-                    >
-                      {p.label}
-                    </Text>
-                  </TouchableOpacity>
+          {isLocked ? (
+            <View style={styles.notice}>
+              <Text style={styles.noticeTitle}>
+                {t('onboarding.apiKey.freeTierTitle')}
+              </Text>
+              <Text style={styles.noticeText}>
+                {t('onboarding.apiKey.freeTierBody')}
+              </Text>
+              <Text style={styles.noticeStrong}>
+                {t('onboarding.apiKey.freeTierPaidBlocked')}
+              </Text>
+            </View>
+          ) : (
+            <>
+              <Text style={styles.label}>
+                {t('onboarding.apiKey.provider')}
+              </Text>
+              <View style={styles.providersRows}>
+                {providers.map((group, idx) => (
+                  // eslint-disable-next-line react/no-array-index-key
+                  <View style={styles.providerRow} key={idx}>
+                    {group.map((p) => (
+                      <TouchableOpacity
+                        key={p.key}
+                        style={[
+                          styles.providerBtn,
+                          provider === p.key && styles.providerBtnActive,
+                        ]}
+                        onPress={() => handleProviderChange(p.key)}
+                      >
+                        <Text
+                          style={[
+                            styles.providerBtnText,
+                            provider === p.key && styles.providerBtnTextActive,
+                          ]}
+                          numberOfLines={1}
+                        >
+                          {p.label}
+                        </Text>
+                      </TouchableOpacity>
+                    ))}
+                  </View>
                 ))}
               </View>
-            ))}
-          </View>
 
-          <Text style={styles.label}>{t('onboarding.apiKey.model')}</Text>
-          <ModelSelector
-            provider={provider}
-            value={model}
-            demoAttempts={demoAttempts}
-            onChange={setModel}
-          />
-        </>
-      )}
-
-      {provider !== 'demo' && (
-        <>
-          <View style={styles.labelRow}>
-            <Text style={styles.labelInline}>
-              {isLocked
-                ? t('onboarding.apiKey.freeKeyLabel')
-                : t('onboarding.apiKey.apiKey')}
-            </Text>
-            <AIGuide provider={provider} />
-          </View>
-          <TextInput
-            style={styles.input}
-            value={apiKey}
-            onChangeText={setApiKey}
-            placeholder={
-              isLocked
-                ? t('onboarding.apiKey.freeKeyPlaceholder')
-                : t('onboarding.apiKey.apiKeyPlaceholder')
-            }
-            placeholderTextColor={theme.color.placeholder}
-            autoCapitalize="none"
-            autoCorrect={false}
-            secureTextEntry
-          />
-          {isLocked && (
-            <Text style={styles.hint}>
-              {apiKey.trim()
-                ? t('onboarding.apiKey.freeTierHint')
-                : t('onboarding.apiKey.noKeyNotice')}
-            </Text>
+              <Text style={styles.label}>{t('onboarding.apiKey.model')}</Text>
+              <ModelSelector
+                provider={provider}
+                value={model}
+                demoAttempts={demoAttempts}
+                onChange={setModel}
+              />
+            </>
           )}
-        </>
-      )}
 
-      <TouchableOpacity
-        style={[
-          styles.button,
-          !isLocked &&
-            provider !== 'demo' &&
-            !apiKey.trim() &&
-            styles.buttonDisabled,
-        ]}
-        onPress={handleFinish}
-        disabled={!isLocked && provider !== 'demo' && !apiKey.trim()}
-      >
-        <Text style={styles.buttonText}>
-          {isLocked && !apiKey.trim()
-            ? t('onboarding.apiKey.skipConfirm')
-            : t('onboarding.apiKey.finish')}
-        </Text>
-      </TouchableOpacity>
+          {provider !== 'demo' && (
+            <>
+              <View style={styles.labelRow}>
+                <Text style={styles.labelInline}>
+                  {isLocked
+                    ? t('onboarding.apiKey.freeKeyLabel')
+                    : t('onboarding.apiKey.apiKey')}
+                </Text>
+                <AIGuide provider={provider} />
+              </View>
+              <TextInput
+                style={styles.input}
+                value={apiKey}
+                onChangeText={setApiKey}
+                placeholder={
+                  isLocked
+                    ? t('onboarding.apiKey.freeKeyPlaceholder')
+                    : t('onboarding.apiKey.apiKeyPlaceholder')
+                }
+                placeholderTextColor={theme.color.placeholder}
+                autoCapitalize="none"
+                autoCorrect={false}
+                secureTextEntry
+              />
+              {isLocked && (
+                <Text style={styles.hint}>
+                  {apiKey.trim()
+                    ? t('onboarding.apiKey.freeTierHint')
+                    : t('onboarding.apiKey.noKeyNotice')}
+                </Text>
+              )}
+            </>
+          )}
+        </View>
+      </ScrollView>
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity
+          style={[
+            styles.button,
+            !isLocked &&
+              provider !== 'demo' &&
+              !apiKey.trim() &&
+              styles.buttonDisabled,
+          ]}
+          onPress={handleFinish}
+          disabled={!isLocked && provider !== 'demo' && !apiKey.trim()}
+        >
+          <Text style={styles.buttonText}>
+            {isLocked && !apiKey.trim()
+              ? t('onboarding.apiKey.skipConfirm')
+              : t('onboarding.apiKey.finish')}
+          </Text>
+        </TouchableOpacity>
+      </View>
     </KeyboardAvoidingView>
   );
 }
@@ -225,9 +234,16 @@ const themeStyles = (theme: ITheme) => {
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      paddingHorizontal: 32,
-      justifyContent: 'center',
       backgroundColor: theme.color.white,
+    },
+    flex: {
+      flex: 1,
+      paddingHorizontal: 32,
+    },
+    content: {
+      flex: 1,
+      paddingTop: 100,
+      paddingBottom: 130,
     },
     title: {
       ...theme.fonts.bold6,
@@ -311,12 +327,19 @@ const themeStyles = (theme: ITheme) => {
       ...theme.fonts.regular3,
       color: theme.color.main,
     },
+    buttonContainer: {
+      position: 'absolute',
+      bottom: 0,
+      width: '100%',
+      paddingHorizontal: 32,
+      backgroundColor: theme.color.white,
+    },
     button: {
       backgroundColor: theme.color.primary,
       paddingVertical: 16,
       borderRadius: 12,
       alignItems: 'center',
-      marginTop: 32,
+      marginBottom: 48,
     },
     buttonDisabled: {
       opacity: 0.5,

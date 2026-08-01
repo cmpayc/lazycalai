@@ -470,6 +470,7 @@ export default function SettingsScreen() {
                             localProvider === p.key &&
                               styles.providerBtnTextActive,
                           ]}
+                          numberOfLines={1}
                         >
                           {p.label}
                         </Text>
@@ -940,6 +941,7 @@ const themeStyles = (theme: ITheme) => {
     providerBtnText: {
       ...theme.fonts.regular3,
       color: theme.color.subText,
+      textAlign: 'center',
     },
     providerBtnTextActive: {
       color: theme.color.white,
@@ -1027,6 +1029,7 @@ const themeStyles = (theme: ITheme) => {
     exportBtnText: {
       color: theme.color.white,
       ...theme.fonts.medium3,
+      textAlign: 'center',
     },
     importBtn: {
       flex: 1,
@@ -1040,6 +1043,7 @@ const themeStyles = (theme: ITheme) => {
     importBtnText: {
       color: theme.color.white,
       ...theme.fonts.medium3,
+      textAlign: 'center',
     },
     btnDisabled: {
       opacity: 0.6,
