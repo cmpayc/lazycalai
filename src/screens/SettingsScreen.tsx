@@ -21,7 +21,6 @@ import {
   isErrorWithCode,
   errorCodes,
 } from '@react-native-documents/picker';
-import Config from 'react-native-config';
 import DeviceInfo from 'react-native-device-info';
 
 import { useNavigation } from '@react-navigation/native';
@@ -58,11 +57,15 @@ import {
   getObesityLevel,
 } from '@utils/calories';
 import { PROVIDERS } from '@api/shared';
+import { LOCKED_PROVIDER } from '@api/providerPolicy';
+import { DEMO_API_URL } from '@api/demoConfig';
 import Disclaimer from '@components/Disclaimer';
 import LegalRow from '@components/LegalRow';
 import AIGuide from '@components/AIGuide';
 import TicTacToe from '@components/TicTacToe';
 import MedicalSources from '@components/MedicalSources';
+
+const isLocked = LOCKED_PROVIDER !== null;
 
 export default function SettingsScreen() {
   const { t } = useTranslation();
@@ -148,7 +151,7 @@ export default function SettingsScreen() {
     const allProviders: (typeof PROVIDERS)[] = [];
     for (let i = 0; i < PROVIDERS.length; i += 3) {
       let addProviders = PROVIDERS.slice(i, i + 3);
-      if (!Config.DEMO_API_URL) {
+      if (!DEMO_API_URL) {
         addProviders = addProviders.filter((p) => p.key !== 'demo');
       }
       allProviders.push(addProviders);
@@ -197,15 +200,35 @@ export default function SettingsScreen() {
     }
   };
 
+  const saveProvider = (key: string) => {
+    updateSettings({
+      aiProvider: localProvider,
+      model: localModel,
+      apiKey: key,
+    });
+    showToast(t('settings.saved'));
+  };
+
   const handleSaveProvider = () => {
-    if (localKey.trim()) {
-      updateSettings({
-        aiProvider: localProvider,
-        model: localModel,
-        apiKey: localKey.trim(),
-      });
-      showToast(t('settings.saved'));
+    const key = localKey.trim();
+    if (key) {
+      saveProvider(key);
+      return;
     }
+    // Clearing the key is a supported choice where the key is the only way to
+    // reach the AI, so confirm that manual entry is all that is left.
+    if (!isLocked) return;
+    Alert.alert(
+      t('onboarding.apiKey.skipTitle'),
+      t('onboarding.apiKey.skipMessage'),
+      [
+        { text: t('common.cancel'), style: 'cancel' },
+        {
+          text: t('onboarding.apiKey.skipConfirm'),
+          onPress: () => saveProvider(''),
+        },
+      ],
+    );
   };
 
   const handleProviderChange = (p: AIProviderType) => {
@@ -413,46 +436,65 @@ export default function SettingsScreen() {
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>{t('settings.aiProvider')}</Text>
 
-          <Text style={styles.fieldLabel}>{t('settings.provider')}</Text>
-          <View style={styles.providersRows}>
-            {providers.map((group, idx) => (
-              // eslint-disable-next-line react/no-array-index-key
-              <View style={styles.providerRow} key={idx}>
-                {group.map((p) => (
-                  <TouchableOpacity
-                    key={p.key}
-                    style={[
-                      styles.providerBtn,
-                      localProvider === p.key && styles.providerBtnActive,
-                    ]}
-                    onPress={() => handleProviderChange(p.key)}
-                  >
-                    <Text
-                      style={[
-                        styles.providerBtnText,
-                        localProvider === p.key && styles.providerBtnTextActive,
-                      ]}
-                    >
-                      {p.label}
-                    </Text>
-                  </TouchableOpacity>
+          {isLocked ? (
+            <View style={styles.notice}>
+              <Text style={styles.noticeTitle}>
+                {t('onboarding.apiKey.freeTierTitle')}
+              </Text>
+              <Text style={styles.noticeText}>
+                {t('onboarding.apiKey.freeTierBody')}
+              </Text>
+              <Text style={styles.noticeStrong}>
+                {t('onboarding.apiKey.freeTierPaidBlocked')}
+              </Text>
+            </View>
+          ) : (
+            <>
+              <Text style={styles.fieldLabel}>{t('settings.provider')}</Text>
+              <View style={styles.providersRows}>
+                {providers.map((group, idx) => (
+                  // eslint-disable-next-line react/no-array-index-key
+                  <View style={styles.providerRow} key={idx}>
+                    {group.map((p) => (
+                      <TouchableOpacity
+                        key={p.key}
+                        style={[
+                          styles.providerBtn,
+                          localProvider === p.key && styles.providerBtnActive,
+                        ]}
+                        onPress={() => handleProviderChange(p.key)}
+                      >
+                        <Text
+                          style={[
+                            styles.providerBtnText,
+                            localProvider === p.key &&
+                              styles.providerBtnTextActive,
+                          ]}
+                        >
+                          {p.label}
+                        </Text>
+                      </TouchableOpacity>
+                    ))}
+                  </View>
                 ))}
               </View>
-            ))}
-          </View>
 
-          <Text style={styles.modelLabel}>{t('settings.model')}</Text>
-          <ModelSelector
-            provider={localProvider}
-            value={localModel}
-            demoAttempts={demoAttempts}
-            onChange={setLocalModel}
-          />
+              <Text style={styles.modelLabel}>{t('settings.model')}</Text>
+              <ModelSelector
+                provider={localProvider}
+                value={localModel}
+                demoAttempts={demoAttempts}
+                onChange={setLocalModel}
+              />
+            </>
+          )}
           {localProvider !== 'demo' && (
             <View style={styles.field}>
               <View style={styles.labelRow}>
                 <Text style={styles.fieldLabel}>
-                  {t('onboarding.apiKey.apiKey')}
+                  {isLocked
+                    ? t('onboarding.apiKey.freeKeyLabel')
+                    : t('onboarding.apiKey.apiKey')}
                 </Text>
                 <AIGuide provider={localProvider} />
               </View>
@@ -463,8 +505,20 @@ export default function SettingsScreen() {
                 autoCapitalize="none"
                 autoCorrect={false}
                 secureTextEntry
+                placeholder={
+                  isLocked
+                    ? t('onboarding.apiKey.freeKeyPlaceholder')
+                    : undefined
+                }
                 placeholderTextColor={theme.color.placeholder}
               />
+              {isLocked && (
+                <Text style={styles.hint}>
+                  {localKey.trim()
+                    ? t('onboarding.apiKey.freeTierHint')
+                    : t('onboarding.apiKey.noKeyNotice')}
+                </Text>
+              )}
             </View>
           )}
           <TouchableOpacity style={styles.saveBtn} onPress={handleSaveProvider}>
@@ -804,6 +858,30 @@ const themeStyles = (theme: ITheme) => {
       marginBottom: 16,
       borderRadius: 12,
       padding: 16,
+    },
+    notice: {
+      borderWidth: 1,
+      borderColor: theme.color.warningColor,
+      borderRadius: 12,
+      padding: 16,
+      gap: 8,
+    },
+    noticeTitle: {
+      ...theme.fonts.bold3,
+      color: theme.color.main,
+    },
+    noticeText: {
+      ...theme.fonts.regular3,
+      color: theme.color.subText,
+    },
+    noticeStrong: {
+      ...theme.fonts.bold2,
+      color: theme.color.warningColor,
+    },
+    hint: {
+      ...theme.fonts.regular2,
+      color: theme.color.subText,
+      marginTop: 8,
     },
     sectionTitle: {
       ...theme.fonts.bold3,

@@ -7,12 +7,11 @@ import {
   Image,
   Modal,
   Pressable,
+  ScrollView,
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import Config from 'react-native-config';
-
 import { ITheme } from '@theme/theme.interface';
 import { useTheme } from '@theme/theme.hook';
 import { useSettingsStore } from '@store/settingsStore';
@@ -23,6 +22,7 @@ import Disclaimer from '@components/Disclaimer';
 import LogoLight from '@assets/LogoLight.png';
 import LogoDark from '@assets/LogoDark.png';
 import LegalRow from '@components/LegalRow';
+import { DEMO_API_URL } from '@api/demoConfig';
 
 type Nav = StackNavigationProp<OnboardingStackParamList, 'Welcome'>;
 
@@ -39,74 +39,81 @@ export default function OnboardingWelcome() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.content}>
-        <Image
-          source={themeMode === 'dark' ? LogoDark : LogoLight}
-          style={styles.logo}
-          resizeMode="contain"
-        />
-        <Text style={styles.subtitle}>{t('onboarding.welcome.subtitle')}</Text>
-        {!!Config.DEMO_API_URL && (
-          <TouchableOpacity
-            style={styles.demoNotice}
-            onPress={() => setShowDemoNotice(true)}
-            hitSlop={10}
-          >
-            <Text style={styles.demoLink}>
-              {t('onboarding.welcome.demoModeTitle')}
-            </Text>
-          </TouchableOpacity>
-        )}
-        <View style={styles.languageRow}>
-          {SUPPORTED_LANGUAGES.map((lang) => (
+      <ScrollView style={styles.flex}>
+        <View style={styles.content}>
+          <Image
+            source={themeMode === 'dark' ? LogoDark : LogoLight}
+            style={styles.logo}
+            resizeMode="contain"
+          />
+          <Text style={styles.subtitle}>
+            {t('onboarding.welcome.subtitle')}
+          </Text>
+          {!!DEMO_API_URL && (
             <TouchableOpacity
-              key={lang}
-              style={[
-                styles.langBtn,
-                language === lang && styles.langBtnActive,
-              ]}
-              onPress={() => setLanguage(lang)}
+              style={styles.demoNotice}
+              onPress={() => setShowDemoNotice(true)}
+              hitSlop={10}
             >
-              <Text
-                style={[
-                  styles.langBtnText,
-                  language === lang && styles.langBtnTextActive,
-                ]}
-              >
-                {t(`languages.${lang}`)}
+              <Text style={styles.demoLink}>
+                {t('onboarding.welcome.demoModeTitle')}
               </Text>
             </TouchableOpacity>
-          ))}
-        </View>
-        <View style={styles.unitsRow}>
-          {(['metric', 'imperial'] as Units[]).map((u) => (
-            <TouchableOpacity
-              key={u}
-              style={[styles.langBtn, units === u && styles.langBtnActive]}
-              onPress={() => setUnits(u)}
-            >
-              <Text
+          )}
+          <View style={styles.languageRow}>
+            {SUPPORTED_LANGUAGES.map((lang) => (
+              <TouchableOpacity
+                key={lang}
                 style={[
-                  styles.langBtnText,
-                  units === u && styles.langBtnTextActive,
+                  styles.langBtn,
+                  language === lang && styles.langBtnActive,
                 ]}
+                onPress={() => setLanguage(lang)}
               >
-                {t(`units.${u}`)}
-              </Text>
-            </TouchableOpacity>
-          ))}
+                <Text
+                  style={[
+                    styles.langBtnText,
+                    language === lang && styles.langBtnTextActive,
+                  ]}
+                >
+                  {t(`languages.${lang}`)}
+                </Text>
+              </TouchableOpacity>
+            ))}
+          </View>
+          <View style={styles.unitsRow}>
+            {(['metric', 'imperial'] as Units[]).map((u) => (
+              <TouchableOpacity
+                key={u}
+                style={[styles.langBtn, units === u && styles.langBtnActive]}
+                onPress={() => setUnits(u)}
+              >
+                <Text
+                  style={[
+                    styles.langBtnText,
+                    units === u && styles.langBtnTextActive,
+                  ]}
+                >
+                  {t(`units.${u}`)}
+                </Text>
+              </TouchableOpacity>
+            ))}
+          </View>
+          <LegalRow />
+          <Disclaimer />
         </View>
+      </ScrollView>
+
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate('UserInfo')}
+        >
+          <Text style={styles.buttonText}>
+            {t('onboarding.welcome.getStarted')}
+          </Text>
+        </TouchableOpacity>
       </View>
-      <LegalRow />
-      <Disclaimer />
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => navigation.navigate('UserInfo')}
-      >
-        <Text style={styles.buttonText}>
-          {t('onboarding.welcome.getStarted')}
-        </Text>
-      </TouchableOpacity>
 
       <Modal
         transparent
@@ -142,15 +149,17 @@ const themeStyles = (theme: ITheme) => {
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      paddingHorizontal: 32,
       backgroundColor: theme.color.white,
+    },
+    flex: {
+      flex: 1,
+      paddingHorizontal: 32,
     },
     content: {
       flex: 1,
-      justifyContent: 'center',
       alignItems: 'center',
+      paddingTop: 100,
+      paddingBottom: 100,
     },
     logo: {
       width: 200,
@@ -223,6 +232,7 @@ const themeStyles = (theme: ITheme) => {
       justifyContent: 'center',
       gap: 8,
       marginTop: 12,
+      marginBottom: 32,
     },
     langBtn: {
       paddingHorizontal: 14,
@@ -244,6 +254,13 @@ const themeStyles = (theme: ITheme) => {
       color: theme.color.white,
       ...theme.fonts.medium2,
     },
+    buttonContainer: {
+      position: 'absolute',
+      bottom: 0,
+      width: '100%',
+      paddingHorizontal: 32,
+      backgroundColor: theme.color.white,
+    },
     button: {
       width: '100%',
       backgroundColor: theme.color.primary,
@@ -255,6 +272,9 @@ const themeStyles = (theme: ITheme) => {
     buttonText: {
       color: theme.color.white,
       ...theme.fonts.bold4,
+    },
+    paddingBottom: {
+      paddingBottom: 100,
     },
   });
   return styles;

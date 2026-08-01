@@ -4,6 +4,7 @@ import { MMKV } from 'react-native-mmkv';
 import { getDeviceLanguage, changeLanguage } from '@i18n';
 import { getDeviceUnits } from '@utils/units';
 import { DEFAULT_ACTIVITY_FACTOR } from '@utils/calories';
+import { LOCKED_MODEL, LOCKED_PROVIDER } from '@api/providerPolicy';
 import {
   UserSettings,
   AIProviderType,
@@ -28,8 +29,8 @@ const defaultSettings: UserSettings = {
   activityFactor: DEFAULT_ACTIVITY_FACTOR,
   dailyCalorieGoal: 2000,
   onboardingComplete: false,
-  aiProvider: 'openai',
-  model: PROVIDER_DEFAULT_MODEL.openai,
+  aiProvider: LOCKED_PROVIDER ?? 'openai',
+  model: LOCKED_MODEL ?? PROVIDER_DEFAULT_MODEL.openai,
   apiKey: '',
   language: getDeviceLanguage(),
   themeMode: 'light',
@@ -37,11 +38,30 @@ const defaultSettings: UserSettings = {
   demoAttempts: 5,
 };
 
+/**
+ * On a platform locked to one provider, stored settings can still name a
+ * provider an older build offered. Move them onto the locked provider and drop
+ * the key, which belongs to a service that is no longer reachable here.
+ */
+function applyProviderLock(settings: UserSettings): UserSettings {
+  if (!LOCKED_PROVIDER || settings.aiProvider === LOCKED_PROVIDER) {
+    return settings;
+  }
+  const locked = {
+    ...settings,
+    aiProvider: LOCKED_PROVIDER,
+    model: LOCKED_MODEL ?? PROVIDER_DEFAULT_MODEL[LOCKED_PROVIDER],
+    apiKey: '',
+  };
+  saveSettings(locked);
+  return locked;
+}
+
 function loadSettings(): UserSettings {
   const raw = storage.getString(SETTINGS_KEY);
   if (!raw) return { ...defaultSettings };
   try {
-    return { ...defaultSettings, ...JSON.parse(raw) };
+    return applyProviderLock({ ...defaultSettings, ...JSON.parse(raw) });
   } catch {
     return { ...defaultSettings };
   }

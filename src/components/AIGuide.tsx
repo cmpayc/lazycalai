@@ -15,6 +15,9 @@ import { ITheme } from '@theme/theme.interface';
 import { useTheme } from '@theme/theme.hook';
 import { AIProviderType } from '@types';
 import { PROVIDERS } from '@api/shared';
+import { LOCKED_PROVIDER } from '@api/providerPolicy';
+
+const isLocked = LOCKED_PROVIDER !== null;
 
 const PROVIDER_CONSOLE_URL: Record<AIProviderType, string> = {
   openai: 'https://platform.openai.com/api-keys',
@@ -38,6 +41,10 @@ export default function AIGuide({ provider }: Props) {
 
   const providerLabel =
     PROVIDERS.find((p) => p.key === provider)?.label ?? provider;
+
+  // A locked build accepts free-tier Gemini keys only, so it needs its own
+  // steps instead of the general ones.
+  const guideKey = isLocked && provider === 'gemini' ? 'gemini_free' : provider;
 
   return (
     <>
@@ -77,7 +84,7 @@ export default function AIGuide({ provider }: Props) {
                 {t('onboarding.apiKey.guide.intro')}
               </Text>
               <Text>
-                {t(`onboarding.apiKey.guide.${provider}`)
+                {t(`onboarding.apiKey.guide.${guideKey}`)
                   .split('**')
                   .map((part, idx) => (
                     <Text

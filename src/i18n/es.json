@@ -86,10 +86,21 @@
         "openai": "1. Ve a platform.openai.com e inicia sesión (o crea una cuenta).\n2. Abre la página «API keys» en el menú de la izquierda.\n3. Haz clic en «Create new secret key», ponle un nombre y confirma.\n4. Copia la clave (empieza por sk-) de inmediato: no podrás volver a verla.\n5. Usar la API requiere crédito de facturación en tu cuenta de OpenAI.\n**6. También puedes obtener una cantidad limitada de tokens gratis al día si compartes tus datos con OpenAI. Actívalo en Profile Settings → Data Controls → Sharing → «Share inputs and outputs with OpenAI».",
         "claude": "1. Ve a console.anthropic.com e inicia sesión (o crea una cuenta).\n2. Abre «API Keys» en la configuración de la cuenta.\n3. Haz clic en «Create Key», ponle un nombre y confirma.\n4. Copia la clave y pégala en la aplicación.\n5. Necesitas crédito de facturación en tu cuenta de Anthropic para hacer solicitudes.",
         "gemini": "1. Ve a aistudio.google.com e inicia sesión con tu cuenta de Google.\n2. Haz clic en «Get API key» en el menú de arriba a la izquierda.\n3. Haz clic en «Create API key» y elige un proyecto de Google Cloud.\n4. Copia la clave y pégala en la aplicación.\n**5. El nivel gratuito es generoso, normalmente puedes empezar sin facturación.",
+        "gemini_free": "1. Ve a aistudio.google.com e inicia sesión con tu cuenta de Google.\n2. Haz clic en «Get API key» en el menú de arriba a la izquierda.\n3. Haz clic en «Create API key» y elige un proyecto de Google Cloud sin cuenta de facturación vinculada.\n4. Copia la clave y pégala en la aplicación.\n**5. NO actives la facturación en ese proyecto. La aplicación funciona solo con claves de Free Tier: la clave se comprueba antes de cada análisis y una clave con facturación activada se rechaza.",
         "grok": "1. Ve a console.x.ai e inicia sesión con tu cuenta de X.\n2. Abre la sección «API Keys».\n3. Haz clic en «Create API Key», ponle un nombre y confirma.\n4. Copia la clave y pégala en la aplicación.\n5. xAI requiere créditos prepagados antes de que la API funcione.",
         "qwen": "1. Ve a bailian.console.aliyun.com (Alibaba Cloud Model Studio) e inicia sesión.\n2. Abre la gestión de «API-KEY» en el menú de la cuenta.\n3. Haz clic en «Create API Key» y confirma.\n4. Copia la clave y pégala en la aplicación.\n5. Asegúrate de que los modelos Qwen (Tongyi) estén habilitados en tu cuenta.",
         "openrouter": "1. Ve a openrouter.ai e inicia sesión (o crea una cuenta).\n2. Abre «Keys» en el menú de la cuenta.\n3. Haz clic en «Create Key», ponle un nombre y confirma.\n4. Copia la clave y pégala en la aplicación.\n5. Añade créditos a tu cuenta de OpenRouter para usar modelos de pago.\n**5.1. No necesitas tarjeta de crédito para usar modelos gratuitos: puedes omitir este paso."
-      }
+      },
+      "freeTierTitle": "Introduce tu clave gratuita de Gemini",
+      "freeTierBody": "Para reconocer imágenes con IA necesitas introducir una clave API gratuita de Google Gemini. La app funciona SOLO con claves creadas en el plan gratuito (Free Tier). Crea una en Google AI Studio sin activar la facturación y pégala abajo.",
+      "freeTierPaidBlocked": "Una clave con la facturación activada NO funcionará. La clave se comprueba antes de cada análisis y una clave de pago se rechaza.",
+      "freeTierHint": "Tu clave se comprueba antes de cada análisis. Si se activa la facturación, el análisis de fotos deja de funcionar.",
+      "freeKeyLabel": "Clave API de Gemini gratuita",
+      "freeKeyPlaceholder": "Pega tu clave gratuita de Gemini",
+      "noKeyNotice": "Sin clave puedes añadir comidas a mano, pero el análisis de fotos no funcionará.",
+      "skipTitle": "¿Continuar sin clave?",
+      "skipMessage": "El análisis de fotos necesita una clave gratuita de Gemini. Sin ella solo funcionará la entrada manual de comidas. Puedes añadir una clave más tarde en Ajustes.",
+      "skipConfirm": "Continuar sin clave"
     }
   },
   "home": {
@@ -104,6 +115,10 @@
     "tips": {
       "title": "Consejos",
       "items": {
+        "freeUse": {
+          "title": "Gratis, sin pagos",
+          "body": "La app es gratuita, y también la clave de la API de Google Gemini que analiza las fotos. Crea la clave en Google AI Studio sin activar la facturación y no pagarás nada."
+        },
         "accuracy": {
           "title": "Verifica las cifras",
           "body": "La IA no siempre acierta con los gramos y las calorías. Vigila los valores y ajústalos cuando sea necesario."
@@ -307,5 +322,10 @@
   "modelSelector": {
     "demoMode": "Modo demo ({{num}} solicitudes gratuitas). Después debes usar otro proveedor de IA.",
     "custom": "Personalizado"
+  },
+  "errors": {
+    "paidKeyNotAllowed": "Esta clave API tiene la facturación activada. En la app solo funcionan claves gratuitas de Gemini. Crea una clave sin facturación en Google AI Studio y cámbiala en Ajustes.",
+    "keyCheckFailed": "No se pudo comprobar tu clave API. Revisa tu conexión e inténtalo de nuevo.",
+    "keyCheckFailedReason": "No se pudo comprobar tu clave API: {{reason}}"
   }
 }

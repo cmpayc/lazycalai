@@ -86,10 +86,21 @@
         "openai": "1. 打开 platform.openai.com 并登录（或注册账号）。\n2. 在左侧菜单打开“API keys”页面。\n3. 点击“Create new secret key”，命名并确认。\n4. 立即复制密钥（以 sk- 开头）——之后将无法再次查看。\n5. 使用 API 需要 OpenAI 账户中有余额。\n**6. 如果同意与 OpenAI 共享数据，每天还可以获得少量免费额度。在 Profile Settings → Data Controls → Sharing → “Share inputs and outputs with OpenAI”中开启。",
         "claude": "1. 打开 console.anthropic.com 并登录（或注册账号）。\n2. 在账户设置中打开“API Keys”。\n3. 点击“Create Key”，命名并确认。\n4. 复制密钥并粘贴回应用中。\n5. 发送请求需要 Anthropic 账户中有余额。",
         "gemini": "1. 打开 aistudio.google.com 并使用 Google 账号登录。\n2. 点击左上角菜单中的“Get API key”。\n3. 点击“Create API key”并选择一个 Google Cloud 项目。\n4. 复制生成的密钥并粘贴回应用中。\n**5. 免费额度较为充足，通常无需付费即可开始。",
+        "gemini_free": "1. 打开 aistudio.google.com 并使用 Google 账号登录。\n2. 点击左上角菜单中的“Get API key”。\n3. 点击“Create API key”，并选择一个未关联结算账号的 Google Cloud 项目。\n4. 复制生成的密钥并粘贴回应用中。\n**5. 请勿为该项目开启结算。本应用仅支持 Free Tier 密钥：每次分析前都会检查密钥，已开启结算的密钥会被拒绝。",
         "grok": "1. 打开 console.x.ai 并使用 X 账号登录。\n2. 打开“API Keys”部分。\n3. 点击“Create API Key”，命名并确认。\n4. 复制密钥并粘贴回应用中。\n5. xAI 需要预付余额后 API 才能使用。",
         "qwen": "1. 打开 bailian.console.aliyun.com（阿里云百炼）并登录。\n2. 在账户菜单中打开“API-KEY”管理。\n3. 点击“创建 API Key”并确认。\n4. 复制密钥并粘贴回应用中。\n5. 请确认账户已开通通义千问（Qwen）模型。",
         "openrouter": "1. 打开 openrouter.ai 并登录（或注册账号）。\n2. 在账户菜单中打开“Keys”。\n3. 点击“Create Key”，命名并确认。\n4. 复制密钥并粘贴回应用中。\n5. 为 OpenRouter 账户充值以使用付费模型。\n**5.1. 使用免费模型无需信用卡，可跳过此步骤。"
-      }
+      },
+      "freeTierTitle": "请输入你的免费 Gemini 密钥",
+      "freeTierBody": "要使用 AI 识别图片，需要输入免费的 Google Gemini API 密钥。本应用仅支持在免费额度（Free Tier）中创建的密钥。请在 Google AI Studio 中创建密钥，不要开启结算，然后粘贴到下方。",
+      "freeTierPaidBlocked": "开启了结算的密钥将无法使用。每次分析前都会检查密钥，付费密钥会被拒绝。",
+      "freeTierHint": "每次分析前都会检查你的密钥。一旦该密钥开启结算，照片分析将无法使用。",
+      "freeKeyLabel": "免费 Gemini API 密钥",
+      "freeKeyPlaceholder": "粘贴你的免费 Gemini 密钥",
+      "noKeyNotice": "没有密钥仍可手动添加餐食，但照片分析无法使用。",
+      "skipTitle": "不填密钥继续？",
+      "skipMessage": "照片分析需要免费的 Gemini 密钥。没有密钥时只能手动添加餐食。你可以稍后在设置中添加密钥。",
+      "skipConfirm": "不填密钥继续"
     }
   },
   "home": {
@@ -104,6 +115,10 @@
     "tips": {
       "title": "小贴士",
       "items": {
+        "freeUse": {
+          "title": "完全免费",
+          "body": "本应用免费，用于照片分析的 Google Gemini API 密钥同样免费。在 Google AI Studio 中创建密钥时不要开启结算，你无需支付任何费用。"
+        },
         "accuracy": {
           "title": "核对数值",
           "body": "AI 并不总能准确判断克数和卡路里。请留意这些数值，必要时手动调整。"
@@ -307,5 +322,10 @@
   "modelSelector": {
     "demoMode": "演示模式（{{num}} 次免费请求）。之后你必须使用其他 AI 提供商。",
     "custom": "自定义"
+  },
+  "errors": {
+    "paidKeyNotAllowed": "该 API 密钥已开启结算。本应用仅支持免费的 Gemini 密钥。请在 Google AI Studio 创建未开启结算的密钥，并在设置中替换。",
+    "keyCheckFailed": "无法验证你的 API 密钥。请检查网络连接后重试。",
+    "keyCheckFailedReason": "无法验证你的 API 密钥：{{reason}}"
   }
 }

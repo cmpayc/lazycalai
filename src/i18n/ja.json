@@ -86,10 +86,21 @@
         "openai": "1. platform.openai.com にアクセスしてサインイン（またはアカウント作成）します。\n2. 左メニューから「API keys」ページを開きます。\n3. 「Create new secret key」をクリックし、名前を付けて確定します。\n4. キー（sk- で始まる）をすぐにコピーします。後で再表示はできません。\n5. API の利用には OpenAI アカウントの支払い残高が必要です。\n**6. データを OpenAI と共有すると、1 日あたり限られた量のトークンを無料で利用できます。Profile Settings → Data Controls → Sharing → 「Share inputs and outputs with OpenAI」で有効にしてください。",
         "claude": "1. console.anthropic.com にアクセスしてサインイン（またはアカウント作成）します。\n2. アカウント設定の「API Keys」を開きます。\n3. 「Create Key」をクリックし、名前を付けて確定します。\n4. キーをコピーしてアプリに貼り付けます。\n5. リクエストには Anthropic アカウントの支払い残高が必要です。",
         "gemini": "1. aistudio.google.com にアクセスし、Google アカウントでサインインします。\n2. 左上のメニューから「Get API key」をクリックします。\n3. 「Create API key」をクリックし、Google Cloud プロジェクトを選びます。\n4. 生成されたキーをコピーしてアプリに貼り付けます。\n**5. 無料枠が大きいため、通常は支払い設定なしで始められます。",
+        "gemini_free": "1. aistudio.google.com にアクセスし、Google アカウントでサインインします。\n2. 左上のメニューから「Get API key」をクリックします。\n3. 「Create API key」をクリックし、請求先アカウントが紐づいていない Google Cloud プロジェクトを選びます。\n4. 生成されたキーをコピーしてアプリに貼り付けます。\n**5. そのプロジェクトで請求を有効にしないでください。このアプリは Free Tier のキーのみで動作します。キーは解析のたびに確認され、請求が有効なキーは拒否されます。",
         "grok": "1. console.x.ai にアクセスし、X アカウントでサインインします。\n2. 「API Keys」セクションを開きます。\n3. 「Create API Key」をクリックし、名前を付けて確定します。\n4. キーをコピーしてアプリに貼り付けます。\n5. xAI では API 利用前にプリペイド残高が必要です。",
         "qwen": "1. bailian.console.aliyun.com（Alibaba Cloud Model Studio）にアクセスしてサインインします。\n2. アカウントメニューから「API-KEY」管理を開きます。\n3. 「Create API Key」をクリックして確定します。\n4. キーをコピーしてアプリに貼り付けます。\n5. アカウントで Qwen（通義）モデルが有効になっていることを確認してください。",
         "openrouter": "1. openrouter.ai にアクセスしてサインイン（またはアカウント作成）します。\n2. アカウントメニューから「Keys」を開きます。\n3. 「Create Key」をクリックし、名前を付けて確定します。\n4. キーをコピーしてアプリに貼り付けます。\n5. 有料モデルを使うには OpenRouter アカウントに残高を追加してください。\n**5.1. 無料モデルを使う場合はクレジットカード不要です。この手順は省略できます。"
-      }
+      },
+      "freeTierTitle": "無料の Gemini キーを入力してください",
+      "freeTierBody": "AI で画像を認識するには、無料の Google Gemini API キーを入力する必要があります。このアプリは無料枠（Free Tier）で作成したキーのみで動作します。Google AI Studio で請求を有効にせずにキーを作成し、下に貼り付けてください。",
+      "freeTierPaidBlocked": "請求が有効なキーは使用できません。キーは解析のたびに確認され、有料キーは拒否されます。",
+      "freeTierHint": "キーは解析のたびに確認されます。請求が有効になると写真の解析は使えなくなります。",
+      "freeKeyLabel": "無料枠の Gemini API キー",
+      "freeKeyPlaceholder": "無料の Gemini キーを貼り付け",
+      "noKeyNotice": "キーがなくても食事を手動で追加できますが、写真の解析は使えません。",
+      "skipTitle": "キーなしで続けますか？",
+      "skipMessage": "写真の解析には無料の Gemini キーが必要です。キーがない場合は手動入力のみ使えます。キーは後で設定から追加できます。",
+      "skipConfirm": "キーなしで続ける"
     }
   },
   "home": {
@@ -104,6 +115,10 @@
     "tips": {
       "title": "ヒント",
       "items": {
+        "freeUse": {
+          "title": "無料で使えます",
+          "body": "アプリは無料で、写真解析に使う Google Gemini API キーも無料です。Google AI Studio で請求を有効にせずにキーを作成すれば、支払いは一切発生しません。"
+        },
         "accuracy": {
           "title": "数値を確認しましょう",
           "body": "AIはグラム数やカロリーを必ずしも正確に判定できません。値を確認し、必要に応じて調整してください。"
@@ -307,5 +322,10 @@
   "modelSelector": {
     "demoMode": "デモモード（無料リクエスト{{num}}回）。その後は別のAIプロバイダーを使用する必要があります。",
     "custom": "カスタム"
+  },
+  "errors": {
+    "paidKeyNotAllowed": "この API キーは請求が有効になっています。このアプリでは無料の Gemini キーのみ使用できます。Google AI Studio で請求なしのキーを作成し、設定で入れ替えてください。",
+    "keyCheckFailed": "API キーを確認できませんでした。通信状況を確認してもう一度お試しください。",
+    "keyCheckFailedReason": "API キーを確認できませんでした: {{reason}}"
   }
 }
