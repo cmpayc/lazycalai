@@ -9,7 +9,7 @@ Free* OpenSource AI-powered calorie tracking for the lazy. Take a photo of your 
 
 Bring your own API key from any supported provider. Everything is stored on-device.
 
-**Free means the app itself is free — no subscriptions or service charges. You only pay the third-party AI providers directly for their API usage.*
+**Free means the app itself is free — no subscriptions or service charges. For Android you can use free API provider limits (FreeTier for Gemini, sharing data for OpenAI, and free models for OpenRouter) or use paid APIs if you want more freedom. iOS only supports FreeTier API keys for Gemini.*
 
 ## Built with AI under human supervision
 
@@ -121,6 +121,23 @@ yarn test            # jest
 ### Adding an AI provider
 
 Add a client in `src/api/`, wire it into `providerFactory.ts`, and extend `AIProviderType` in `src/types/index.ts`. Register its models in `PROVIDER_MODELS` and a default in `PROVIDER_DEFAULT_MODEL`.
+
+### Unlocking all providers on iOS (demo builds only)
+
+The published iOS build is locked to Gemini on a free-tier key. Two platform overrides do this, and Metro picks them up automatically for iOS because of the `.ios.ts` suffix:
+
+- [src/api/providerPolicy.ios.ts](src/api/providerPolicy.ios.ts) sets `LOCKED_PROVIDER` / `LOCKED_MODEL`, which hides the provider and model pickers and pins the stored settings.
+- [src/api/providerFactory.ios.ts](src/api/providerFactory.ios.ts) builds only `GeminiProvider` (wrapped in the free-tier guard), so no other provider client ends up in the iOS bundle.
+
+To get the full provider list in a local build, delete both files:
+
+```sh
+rm src/api/providerFactory.ios.ts src/api/providerPolicy.ios.ts
+```
+
+Metro then falls back to the shared [providerFactory.ts](src/api/providerFactory.ts) and [providerPolicy.ts](src/api/providerPolicy.ts), where `LOCKED_PROVIDER` is `null`, and iOS behaves like Android: every provider and model is selectable with your own key. Restart Metro with a cleared cache (`npm start -- --reset-cache`) and rebuild the app. An existing install keeps its stored Gemini settings; pick another provider in Settings.
+
+This is for local demonstration and development only. Keep the overrides in place for anything you submit to the App Store, since the restriction is what keeps that build compliant.
 
 ### Changing the DB schema
 
