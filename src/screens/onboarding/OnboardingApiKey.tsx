@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import {
+  Alert,
   View,
   Text,
   TextInput,
@@ -8,7 +9,6 @@ import {
   KeyboardAvoidingView,
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
-import Config from 'react-native-config';
 
 import { ITheme } from '@theme/theme.interface';
 import { useTheme } from '@theme/theme.hook';
@@ -18,7 +18,11 @@ import { AIProviderType, PROVIDER_DEFAULT_MODEL } from '@types';
 import ModelSelector from '@components/ModelSelector';
 import OnboardingBackButton from '@components/OnboardingBackButton';
 import { PROVIDERS } from '@api/shared';
+import { LOCKED_MODEL, LOCKED_PROVIDER } from '@api/providerPolicy';
+import { DEMO_API_URL } from '@api/demoConfig';
 import AIGuide from '@components/AIGuide';
+
+const isLocked = LOCKED_PROVIDER !== null;
 
 export default function OnboardingApiKey() {
   const { t } = useTranslation();
@@ -40,21 +44,23 @@ export default function OnboardingApiKey() {
   const { theme } = useThemeContext();
   const [apiKey, setApiKey] = useState(oldApiKey || '');
   const [provider, setProvider] = useState<AIProviderType>(
-    oldApiKey ? oldAIProvider : !Config.DEMO_API_URL ? 'openrouter' : 'demo',
+    LOCKED_PROVIDER ??
+      (oldApiKey ? oldAIProvider : !DEMO_API_URL ? 'openrouter' : 'demo'),
   );
   const [model, setModel] = useState(
-    oldApiKey
-      ? oldModel
-      : !Config.DEMO_API_URL
-        ? PROVIDER_DEFAULT_MODEL.openrouter
-        : PROVIDER_DEFAULT_MODEL.demo,
+    LOCKED_MODEL ??
+      (oldApiKey
+        ? oldModel
+        : !DEMO_API_URL
+          ? PROVIDER_DEFAULT_MODEL.openrouter
+          : PROVIDER_DEFAULT_MODEL.demo),
   );
 
   const providers = useMemo(() => {
     const allProviders: (typeof PROVIDERS)[] = [];
     for (let i = 0; i < PROVIDERS.length; i += 3) {
       let addProviders = PROVIDERS.slice(i, i + 3);
-      if (!Config.DEMO_API_URL) {
+      if (!DEMO_API_URL) {
         addProviders = addProviders.filter((p) => p.key !== 'demo');
       }
       allProviders.push(addProviders);
@@ -67,18 +73,40 @@ export default function OnboardingApiKey() {
     setModel(PROVIDER_DEFAULT_MODEL[p]);
   };
 
-  const handleFinish = () => {
-    if (provider !== 'demo' && !apiKey.trim()) return;
+  const complete = (key: string) => {
     setOnboardingComplete({
       sex,
       weightKg,
       heightCm,
       age,
       dailyCalorieGoal,
-      apiKey: apiKey.trim(),
+      apiKey: key,
       aiProvider: provider,
       model,
     });
+  };
+
+  const handleFinish = () => {
+    const key = apiKey.trim();
+    if (key) {
+      complete(key);
+      return;
+    }
+    if (isLocked) {
+      Alert.alert(
+        t('onboarding.apiKey.skipTitle'),
+        t('onboarding.apiKey.skipMessage'),
+        [
+          { text: t('common.cancel'), style: 'cancel' },
+          {
+            text: t('onboarding.apiKey.skipConfirm'),
+            onPress: () => complete(''),
+          },
+        ],
+      );
+      return;
+    }
+    if (provider === 'demo') complete('');
   };
 
   return (
@@ -86,47 +114,65 @@ export default function OnboardingApiKey() {
       <OnboardingBackButton />
       <Text style={styles.title}>{t('onboarding.apiKey.title')}</Text>
 
-      <Text style={styles.label}>{t('onboarding.apiKey.provider')}</Text>
-      <View style={styles.providersRows}>
-        {providers.map((group, idx) => (
-          // eslint-disable-next-line react/no-array-index-key
-          <View style={styles.providerRow} key={idx}>
-            {group.map((p) => (
-              <TouchableOpacity
-                key={p.key}
-                style={[
-                  styles.providerBtn,
-                  provider === p.key && styles.providerBtnActive,
-                ]}
-                onPress={() => handleProviderChange(p.key)}
-              >
-                <Text
-                  style={[
-                    styles.providerBtnText,
-                    provider === p.key && styles.providerBtnTextActive,
-                  ]}
-                >
-                  {p.label}
-                </Text>
-              </TouchableOpacity>
+      {isLocked ? (
+        <View style={styles.notice}>
+          <Text style={styles.noticeTitle}>
+            {t('onboarding.apiKey.freeTierTitle')}
+          </Text>
+          <Text style={styles.noticeText}>
+            {t('onboarding.apiKey.freeTierBody')}
+          </Text>
+          <Text style={styles.noticeStrong}>
+            {t('onboarding.apiKey.freeTierPaidBlocked')}
+          </Text>
+        </View>
+      ) : (
+        <>
+          <Text style={styles.label}>{t('onboarding.apiKey.provider')}</Text>
+          <View style={styles.providersRows}>
+            {providers.map((group, idx) => (
+              // eslint-disable-next-line react/no-array-index-key
+              <View style={styles.providerRow} key={idx}>
+                {group.map((p) => (
+                  <TouchableOpacity
+                    key={p.key}
+                    style={[
+                      styles.providerBtn,
+                      provider === p.key && styles.providerBtnActive,
+                    ]}
+                    onPress={() => handleProviderChange(p.key)}
+                  >
+                    <Text
+                      style={[
+                        styles.providerBtnText,
+                        provider === p.key && styles.providerBtnTextActive,
+                      ]}
+                    >
+                      {p.label}
+                    </Text>
+                  </TouchableOpacity>
+                ))}
+              </View>
             ))}
           </View>
-        ))}
-      </View>
 
-      <Text style={styles.label}>{t('onboarding.apiKey.model')}</Text>
-      <ModelSelector
-        provider={provider}
-        value={model}
-        demoAttempts={demoAttempts}
-        onChange={setModel}
-      />
+          <Text style={styles.label}>{t('onboarding.apiKey.model')}</Text>
+          <ModelSelector
+            provider={provider}
+            value={model}
+            demoAttempts={demoAttempts}
+            onChange={setModel}
+          />
+        </>
+      )}
 
       {provider !== 'demo' && (
         <>
           <View style={styles.labelRow}>
             <Text style={styles.labelInline}>
-              {t('onboarding.apiKey.apiKey')}
+              {isLocked
+                ? t('onboarding.apiKey.freeKeyLabel')
+                : t('onboarding.apiKey.apiKey')}
             </Text>
             <AIGuide provider={provider} />
           </View>
@@ -134,24 +180,42 @@ export default function OnboardingApiKey() {
             style={styles.input}
             value={apiKey}
             onChangeText={setApiKey}
-            placeholder={t('onboarding.apiKey.apiKeyPlaceholder')}
+            placeholder={
+              isLocked
+                ? t('onboarding.apiKey.freeKeyPlaceholder')
+                : t('onboarding.apiKey.apiKeyPlaceholder')
+            }
             placeholderTextColor={theme.color.placeholder}
             autoCapitalize="none"
             autoCorrect={false}
             secureTextEntry
           />
+          {isLocked && (
+            <Text style={styles.hint}>
+              {apiKey.trim()
+                ? t('onboarding.apiKey.freeTierHint')
+                : t('onboarding.apiKey.noKeyNotice')}
+            </Text>
+          )}
         </>
       )}
 
       <TouchableOpacity
         style={[
           styles.button,
-          provider !== 'demo' && !apiKey.trim() && styles.buttonDisabled,
+          !isLocked &&
+            provider !== 'demo' &&
+            !apiKey.trim() &&
+            styles.buttonDisabled,
         ]}
         onPress={handleFinish}
-        disabled={provider !== 'demo' && !apiKey.trim()}
+        disabled={!isLocked && provider !== 'demo' && !apiKey.trim()}
       >
-        <Text style={styles.buttonText}>{t('onboarding.apiKey.finish')}</Text>
+        <Text style={styles.buttonText}>
+          {isLocked && !apiKey.trim()
+            ? t('onboarding.apiKey.skipConfirm')
+            : t('onboarding.apiKey.finish')}
+        </Text>
       </TouchableOpacity>
     </KeyboardAvoidingView>
   );
@@ -186,6 +250,30 @@ const themeStyles = (theme: ITheme) => {
     labelInline: {
       ...theme.fonts.bold2,
       color: theme.color.subText,
+    },
+    notice: {
+      borderWidth: 1,
+      borderColor: theme.color.warningColor,
+      borderRadius: 12,
+      padding: 16,
+      gap: 8,
+    },
+    noticeTitle: {
+      ...theme.fonts.bold3,
+      color: theme.color.main,
+    },
+    noticeText: {
+      ...theme.fonts.regular3,
+      color: theme.color.subText,
+    },
+    noticeStrong: {
+      ...theme.fonts.bold2,
+      color: theme.color.warningColor,
+    },
+    hint: {
+      ...theme.fonts.regular2,
+      color: theme.color.subText,
+      marginTop: 8,
     },
     providersRows: {
       gap: 8,

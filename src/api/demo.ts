@@ -1,8 +1,7 @@
-import Config from 'react-native-config';
-
 import { getDeviceId } from '@utils/deviceId';
 import { useSettingsStore } from '@store/settingsStore';
 import { AIProvider, FoodAnalysisResult, ProviderConfig } from '../types';
+import { DEMO_API_URL } from './demoConfig';
 import { fetchWithTimeout, validateResult } from './shared';
 
 export class DemoProvider implements AIProvider {
@@ -17,7 +16,7 @@ export class DemoProvider implements AIProvider {
       image: imageBase64,
       language: this.language,
     });
-    const response = await fetchWithTimeout(Config.DEMO_API_URL ?? '', {
+    const response = await fetchWithTimeout(DEMO_API_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

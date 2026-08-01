@@ -9,6 +9,7 @@ import {
   Dimensions,
   NativeSyntheticEvent,
   NativeScrollEvent,
+  Platform,
 } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
@@ -16,25 +17,24 @@ import { useTranslation } from 'react-i18next';
 import { ITheme } from '@theme/theme.interface';
 import { useTheme } from '@theme/theme.hook';
 
-const TIP_KEYS = [
-  'accuracy',
-  'lighting',
-  'averaging',
-  'packaging',
-  'scale',
-  'freeTiers',
-  'models',
-] as const;
+const TIPS_ANDROID = [
+  { key: 'freeTiers', emoji: '🎁' },
+  { key: 'accuracy', emoji: '🔢' },
+  { key: 'lighting', emoji: '💡' },
+  { key: 'averaging', emoji: '📊' },
+  { key: 'packaging', emoji: '📦' },
+  { key: 'scale', emoji: '⚖️' },
+  { key: 'models', emoji: '🤖' },
+];
 
-const TIP_EMOJI: Record<(typeof TIP_KEYS)[number], string> = {
-  accuracy: '🔢',
-  lighting: '💡',
-  averaging: '📊',
-  packaging: '📦',
-  scale: '⚖️',
-  freeTiers: '🎁',
-  models: '🤖',
-};
+const TIPS_IOS = [
+  { key: 'freeUse', emoji: '🎁' },
+  { key: 'accuracy', emoji: '🔢' },
+  { key: 'lighting', emoji: '💡' },
+  { key: 'averaging', emoji: '📊' },
+  { key: 'packaging', emoji: '📦' },
+  { key: 'scale', emoji: '⚖️' },
+];
 
 export default function HomeTips() {
   const { t } = useTranslation();
@@ -53,6 +53,8 @@ export default function HomeTips() {
     setIndex(0);
     setVisible(true);
   };
+
+  const TIPS = Platform.OS === 'ios' ? TIPS_IOS : TIPS_ANDROID;
 
   return (
     <>
@@ -94,9 +96,9 @@ export default function HomeTips() {
                 showsHorizontalScrollIndicator={false}
                 onMomentumScrollEnd={onMomentumScrollEnd}
               >
-                {TIP_KEYS.map((key) => (
+                {TIPS.map(({ key, emoji }) => (
                   <View key={key} style={[styles.slide, { width: slideWidth }]}>
-                    <Text style={styles.slideEmoji}>{TIP_EMOJI[key]}</Text>
+                    <Text style={styles.slideEmoji}>{emoji}</Text>
                     <Text style={styles.slideTitle}>
                       {t(`home.tips.items.${key}.title`)}
                     </Text>
@@ -109,7 +111,7 @@ export default function HomeTips() {
             </View>
 
             <View style={styles.dots}>
-              {TIP_KEYS.map((key, i) => (
+              {TIPS.map(({ key }, i) => (
                 <View
                   key={key}
                   style={[styles.dot, i === index && styles.dotActive]}
